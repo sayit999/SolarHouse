@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<business-report from_date="24/12/2016" to_date="13/1/2017" is_amendment="0">
+	<report_overall>
+		<cash_brought_forward>0</cash_brought_forward>
+		<cash_counted>0</cash_counted>
+	</report_overall>
+	<products_modified>
+		<product_modified_header>product_code, product_name, product_cat_code, product_qty, product_qty_uom, product_cost, product_ret_disc_room_perentage, product_min_gp_margin_percentage, product_ret_sale_price, product_comments</product_modified_header>
+		<add>L028, Yingli 2-bulb solar kit Model SLK 6005, Lights, 0, pc, 0, 0, 0, 0, </add>
+	</products_modified>
+	<expenses_categories_modified>
+		<expense_category_modified_header>category_code, category_name, category_description</expense_category_modified_header>
+		<add>MTZ041, Misc Shop Repair, Matengenezo ya Duka</add>
+	</expenses_categories_modified>
+	<sales>
+		<sale_header>sale_sold_on, sale_prod_code, sale_qty, sale_price, sale_comments,is_reversal,is_amendment</sale_header>
+		<sale>24/12/2016, L003, 1, 10000, , 0, 0</sale>
+		<sale>24/12/2016, RT010, 2, 22000, , 0, 0</sale>
+		<sale>24/12/2016, MI036, 1, 10000, , 0, 0</sale>
+		<sale>24/12/2016, L003, 2, 22000, , 0, 0</sale>
+		<sale>24/12/2016, L006, 2, 50000, , 0, 0</sale>
+		<sale>24/12/2016, L020, 1, 30000, , 0, 0</sale>
+		<sale>27/12/2016, EP033, 1, 1000, , 0, 0</sale>
+		<sale>27/12/2016, EP037, 1, 1000, , 0, 0</sale>
+		<sale>27/12/2016, BAT009, 1, 220000, , 0, 0</sale>
+		<sale>27/12/2016, CC003, 1, 40000, , 0, 0</sale>
+		<sale>27/12/2016, SP008, 1, 150000, , 0, 0</sale>
+		<sale>27/12/2016, EP011, 5, 25000, , 0, 0</sale>
+		<sale>27/12/2016, B007, 1, 9000, , 0, 0</sale>
+		<sale>27/12/2016, SPC004, 1, 5000, , 0, 0</sale>
+		<sale>27/12/2016, EP021, 1, 4000, , 0, 0</sale>
+		<sale>27/12/2016, EP026, 2, 3000, , 0, 0</sale>
+		<sale>27/12/2016, EP012, 20, 30000, , 0, 0</sale>
+		<sale>27/12/2016, L003, 1, 11000, , 0, 0</sale>
+		<sale>27/12/2016, I003, 1, 50000, , 0, 0</sale>
+		<sale>27/12/2016, SP048, 1, 65000, , 0, 0</sale>
+		<sale>27/12/2016, BAT014, 1, 70000, , 0, 0</sale>
+		<sale>27/12/2016, CC001, 1, 45000, , 0, 0</sale>
+		<sale>27/12/2016, B006, 1, 7000, , 0, 0</sale>
+		<sale>27/12/2016, B002, 2, 10000, , 0, 0</sale>
+		<sale>28/12/2016, EP026, 2, 3000, , 0, 0</sale>
+		<sale>28/12/2016, B003, 2, 11000, , 0, 0</sale>
+		<sale>28/12/2016, RT003, 1, 14000, , 0, 0</sale>
+		<sale>28/12/2016, SPC004, 1, 5000, , 0, 0</sale>
+		<sale>28/12/2016, RT012, 1, 18000, , 0, 0</sale>
+		<sale>29/12/2016, CC012, 1, 82000, , 0, 0</sale>
+		<sale>29/12/2016, I001, 1, 65000, , 0, 0</sale>
+		<sale>29/12/2016, BAT010, 1, 250000, , 0, 0</sale>
+		<sale>29/12/2016, B005, 12, 60000, , 0, 0</sale>
+		<sale>29/12/2016, EP017, 2, 6000, , 0, 0</sale>
+		<sale>29/12/2016, SP009, 1, 180000, , 0, 0</sale>
+		<sale>29/12/2016, BAT010, 1, 270000, , 0, 0</sale>
+		<sale>29/12/2016, EP026, 6, 9000, , 0, 0</sale>
+		<sale>29/12/2016, B002, 3, 15000, , 0, 0</sale>
+		<sale>29/12/2016, B003, 2, 12000, , 0, 0</sale>
+		<sale>29/12/2016, I001, 1, 65000, , 0, 0</sale>
+		<sale>29/12/2016, EP011, 5, 25000, , 0, 0</sale>
+		<sale>29/12/2016, EP026, 12, 18000, , 0, 0</sale>
+		<sale>29/12/2016, EP018, 5, 10000, , 0, 0</sale>
+		<sale>29/12/2016, EP011, 5, 25000, , 0, 0</sale>
+		<sale>29/12/2016, BAT002, 1, 48000, , 0, 0</sale>
+		<sale>29/12/2016, EP018, 4, 8000, , 0, 0</sale>
+		<sale>29/12/2016, CC003, 1, 45000, , 0, 0</sale>
+		<sale>29/12/2016, BAT009, 1, 215000, , 0, 0</sale>
+		<sale>29/12/2016, SP009, 1, 190000, , 0, 0</sale>
+		<sale>29/12/2016, EP012, 35, 55000, , 0, 0</sale>
+		<sale>29/12/2016, EP037, 5, 5000, , 0, 0</sale>
+		<sale>29/12/2016, EP017, 1, 3000, , 0, 0</sale>
+		<sale>29/12/2016, L003, 1, 10000, , 0, 0</sale>
+		<sale>29/12/2016, RT010, 1, 10000, , 0, 0</sale>
+		<sale>29/12/2016, EP043, 1, 4000, , 0, 0</sale>
+		<sale>29/12/2016, EP043, 1, 4000, , 0, 0</sale>
+		<sale>29/12/2016, L003, 1, 11000, , 0, 0</sale>
+		<sale>30/12/2016, RT003, 1, 13000, , 0, 0</sale>
+		<sale>31/12/2016, L003, 1, 10000, , 0, 0</sale>
+		<sale>31/12/2016, EP037, 1, 1000, , 0, 0</sale>
+		<sale>31/12/2016, EP012, 12, 18000, , 0, 0</sale>
+		<sale>31/12/2016, L007, 1, 40000, , 0, 0</sale>
+		<sale>31/12/2016, L003, 1, 12000, , 0, 0</sale>
+		<sale>31/12/2016, EP017, 1, 3000, , 0, 0</sale>
+		<sale>31/12/2016, RT003, 1, 15000, , 0, 0</sale>
+		<sale>31/12/2016, B002, 2, 10000, , 0, 0</sale>
+		<sale>31/12/2016, BAT001, 1, 25000, , 0, 0</sale>
+		<sale>2/1/2017, L003, 1, 12000, , 0, 0</sale>
+		<sale>2/1/2017, RT014, 1, 30000, , 0, 0</sale>
+		<sale>3/1/2017, EA003, 1, 36000, , 0, 0</sale>
+		<sale>3/1/2017, L006, 10, 180000, , 0, 0</sale>
+		<sale>3/1/2017, EP012, 1, 1500, , 0, 0</sale>
+		<sale>4/1/2017, L020, 1, 32000, , 0, 0</sale>
+		<sale>4/1/2017, L006, 1, 20000, , 0, 0</sale>
+		<sale>4/1/2017, B003, 1, 6000, , 0, 0</sale>
+		<sale>5/1/2017, SPC004, 1, 7000, tulikosea badala ya 7000 tukaandika 10000, 0, 0</sale>
+		<sale>5/1/2017, L003, 4, 48000, , 0, 0</sale>
+		<sale>5/1/2017, RT010, 2, 22000, , 0, 0</sale>
+		<sale>6/1/2017, L003, 1, 10000, , 0, 0</sale>
+		<sale>6/1/2017, B007, 1, 8000, , 0, 0</sale>
+		<sale>6/1/2017, L027, 4, 54000, , 0, 0</sale>
+		<sale>7/1/2017, L006, 1, 25000, , 0, 0</sale>
+		<sale>7/1/2017, L015, 1, 60000, , 0, 0</sale>
+		<sale>7/1/2017, SPC001, 1, 25000, , 0, 0</sale>
+		<sale>7/1/2017, EP023, 4, 10000, , 0, 0</sale>
+		<sale>7/1/2017, L027, 1, 15000, , 0, 0</sale>
+		<sale>7/1/2017, BAT009, 7, 1610000, , 0, 0</sale>
+		<sale>7/1/2017, SP009, 3, 600000, , 0, 0</sale>
+		<sale>7/1/2017, EA003, 1, 40000, , 0, 0</sale>
+		<sale>7/1/2017, L008, 1, 60000, , 0, 0</sale>
+		<sale>9/1/2017, L020, 1, 30000, , 0, 0</sale>
+		<sale>9/1/2017, L026, 1, 130000, , 0, 0</sale>
+		<sale>10/1/2017, L027, 3, 38000, , 0, 0</sale>
+		<sale>10/1/2017, EA003, 1, 40000, , 0, 0</sale>
+		<sale>10/1/2017, RT005, 1, 10000, , 0, 0</sale>
+		<sale>11/1/2017, RT014, 1, 30000, , 0, 0</sale>
+		<sale>11/1/2017, RT010, 1, 9000, , 0, 0</sale>
+		<sale>12/1/2017, EP026, 1, 1500, , 0, 0</sale>
+		<sale>12/1/2017, B003, 1, 7000, , 0, 0</sale>
+		<sale>12/1/2017, B001, 2, 9000, , 0, 0</sale>
+		<sale>13/1/2017, SMS003, 1, 70000, , 0, 0</sale>
+		<sale>13/1/2017, L027, 2, 26000, , 0, 0</sale>
+	</sales>
+	<purchases>
+		<purchase_header>purchase_purchased_on, purchase_suplr_code, purchase_qty, purchase_prod_code, purchase_cash_amt, purchase_credit_amt, purchase_comments,is_reversal</purchase_header>
+		<purchase>27/12/2016, SPLR016, 5, EP047, 40000, 0, , 0, 0</purchase>
+		<purchase>27/12/2016, SPLR016, 50, EP018, 42500, 0, , 0, 0</purchase>
+		<purchase>27/12/2016, SPLR016, 30, EP017, 28500, 0, , 0, 0</purchase>
+		<purchase>29/12/2016, SPLR016, 40, EP037, 20000, 0, , 0, 0</purchase>
+		<purchase>1/1/2017, SPLR007, 10, RT010, 50000, 0, , 0, 0</purchase>
+		<purchase>1/1/2017, SPLR007, 10, L006, 130000, 0, , 0, 0</purchase>
+		<purchase>2/1/2017, SPLR007, 10, L006, 130000, 0, , 0, 0</purchase>
+		<purchase>6/1/2017, SPLR031, 5, L027, 45000, 0, , 0, 0</purchase>
+		<purchase>7/1/2017, SPLR016, 10, EP023, 16000, 0, , 0, 0</purchase>
+		<purchase>7/1/2017, SPLR032, 7, BAT009, 1305000, 0, , 0, 0</purchase>
+		<purchase>7/1/2017, SPLR029, 24, EA003, 664000, 0, , 0, 0</purchase>
+		<purchase>7/1/2017, SPLR032, 25, L027, 0, 0, , 0, 0</purchase>
+		<purchase>11/1/2017, SPLR028, 10, L028, 387000, 0, , 0, 0</purchase>
+	</purchases>
+	<expenses>
+		<expense_header>expense_expensed_on, expense_code, expense_amount, expense_comments,is_reversal</expense_header>
+		<expense>24/12/2016, MTZ001, 8000, , 0, 0</expense>
+		<expense>24/12/2016, MTZ020, 40000, , 0, 0</expense>
+		<expense>27/12/2016, MTZ012, 15900, , 0, 0</expense>
+		<expense>27/12/2016, MTZ001, 8000, , 0, 0</expense>
+		<expense>27/12/2016, MTZ001, 7500, , 0, 0</expense>
+		<expense>29/12/2016, MTZ001, 8000, , 0, 0</expense>
+		<expense>30/12/2016, MTZ001, 7500, , 0, 0</expense>
+		<expense>30/12/2016, MTZ041, 4000, fix the Fan, 0, 0</expense>
+		<expense>31/12/2016, MTZ034, 165000, Happy likizo ya 2016, 0, 0</expense>
+		<expense>31/12/2016, MTZ001, 7500, , 0, 0</expense>
+		<expense>31/12/2016, MTZ015, 200000, , 0, 0</expense>
+		<expense>31/12/2016, MTZ004, 165000, , 0, 0</expense>
+		<expense>31/12/2016, MTZ009, 1100000, , 0, 0</expense>
+		<expense>31/12/2016, MTZ014, 84000, , 0, 0</expense>
+		<expense>1/1/2017, MTZ001, 5000, , 0, 0</expense>
+		<expense>2/1/2017, MTZ001, 8000, , 0, 0</expense>
+		<expense>3/1/2017, MTZ001, 7500, , 0, 0</expense>
+		<expense>4/1/2017, MTZ001, 7500, , 0, 0</expense>
+		<expense>5/1/2017, MTZ041, 3000, Sijui kwa ni nini. Lakini tuli andika 3000, 0, 0</expense>
+		<expense>5/1/2017, MTZ001, 8000, , 0, 0</expense>
+		<expense>5/1/2017, MTZ008, 10000, , 0, 0</expense>
+		<expense>6/1/2017, MTZ001, 7500, , 0, 0</expense>
+		<expense>7/1/2017, MTZ005, 2500, , 0, 0</expense>
+		<expense>7/1/2017, MTZ001, 8000, , 0, 0</expense>
+		<expense>8/1/2017, MTZ001, 8000, , 0, 0</expense>
+		<expense>9/1/2017, MTZ001, 7500, , 0, 0</expense>
+		<expense>10/1/2017, MTZ001, 7500, , 0, 0</expense>
+		<expense>11/1/2017, MTZ001, 7500, , 0, 0</expense>
+		<expense>12/1/2017, MTZ001, 7500, , 0, 0</expense>
+		<expense>12/1/2017, MTZ001, 7500, , 0, 0</expense>
+	</expenses>
+</business-report>

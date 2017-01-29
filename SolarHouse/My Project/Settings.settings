@@ -1,0 +1,36 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="business_reports_submitted_dir" Type="System.String" Scope="User">
+      <Value Profile="(Default)">business_reports\submitted</Value>
+    </Setting>
+    <Setting Name="business_reports_to_submit_dir" Type="System.String" Scope="User">
+      <Value Profile="(Default)">business_reports\to_submit</Value>
+    </Setting>
+    <Setting Name="database_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">solarhousearushadatabasetest</Value>
+    </Setting>
+    <Setting Name="email_xml_to" Type="System.String" Scope="User">
+      <Value Profile="(Default)">happytemba99@gmail.com;firoz.karmali@gmail.com</Value>
+    </Setting>
+    <Setting Name="mysql_execs" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Program Files\MySQL\MySQL Server 5.7\bin\</Value>
+    </Setting>
+    <Setting Name="mysql_backup_cmd" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mysqldump</Value>
+    </Setting>
+    <Setting Name="db_backup_dir" Type="System.String" Scope="User">
+      <Value Profile="(Default)">database_backup</Value>
+    </Setting>
+    <Setting Name="mysql_restore_cmd" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mysql</Value>
+    </Setting>
+    <Setting Name="business_reports_to_load" Type="System.String" Scope="User">
+      <Value Profile="(Default)">business_reports\to_load</Value>
+    </Setting>
+    <Setting Name="business_reports_loaded" Type="System.String" Scope="User">
+      <Value Profile="(Default)">business_reports\loaded</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

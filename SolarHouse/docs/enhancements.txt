@@ -1,0 +1,5 @@
+1. Backup file name put the latest date the backup contains.  That is, the max date of Sold on, Purchased on, Debt paid on, or Expensed on.  So, that the user can know what date he is restoring to
+2. Fix the bug of The report being readonly after a Submit.
+3. The app losing focus when we say the the databasee has been restored/backedup
+4. Let user be able to modify transactions of submitted reports.
+5. Clean up the toolbar icons
