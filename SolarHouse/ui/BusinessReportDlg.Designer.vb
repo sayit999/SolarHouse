@@ -25,14 +25,6 @@ Partial Class BusinessReportDlg
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(BusinessReportDlg))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -61,6 +53,14 @@ Partial Class BusinessReportDlg
         Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.newBusinessReportBtn = New System.Windows.Forms.Button()
         Me.reportsAvailComboBox = New System.Windows.Forms.ComboBox()
@@ -94,23 +94,6 @@ Partial Class BusinessReportDlg
         Me.businessReportTabControl = New System.Windows.Forms.TabControl()
         Me.salesReportTab = New System.Windows.Forms.TabPage()
         Me.salesGrdView = New SolarHouse.SalesRprtGridView()
-        Me.saleSoldOn = New SolarHouse.MaskedEditColumn()
-        Me.saleProductCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.saleProductName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.saleQtySold = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.saleUomName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.saleTotalCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.saleSaleAmt = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.saleProfit = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.saleProfitPercentage = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.saleComments = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.saleSaleId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.saleQtyUomId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.saleProductId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.saleProdAcbCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.isSalePosted = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.isSalePostedReversal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.is_sale_amendment = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.purchasesReportTab = New System.Windows.Forms.TabPage()
         Me.purchasesGrdView = New SolarHouse.PurchasesRprtGridView()
         Me.purchasePurchasedOn = New SolarHouse.MaskedEditColumn()
@@ -200,6 +183,23 @@ Partial Class BusinessReportDlg
         Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.saleSoldOn = New SolarHouse.MaskedEditColumn()
+        Me.saleProductCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.saleProductName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.saleQtySold = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.saleUomName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.saleTotalCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.saleSaleAmt = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.saleProfit = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.saleProfitPercentage = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.saleComments = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.saleSaleId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.saleQtyUomId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.saleProductId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.saleProdAcbCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.isSalePosted = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.isSalePostedReversal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.is_sale_amendment = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.countedCashErrorPic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cashBroughtForwardErrorPic, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -615,142 +615,6 @@ Partial Class BusinessReportDlg
         Me.salesGrdView.Size = New System.Drawing.Size(1470, 355)
         Me.salesGrdView.TabIndex = 0
         '
-        'saleSoldOn
-        '
-        Me.saleSoldOn.DataPropertyName = "sold_on"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.saleSoldOn.DefaultCellStyle = DataGridViewCellStyle2
-        Me.saleSoldOn.HeaderText = "Sold On"
-        Me.saleSoldOn.Mask = Nothing
-        Me.saleSoldOn.Name = "saleSoldOn"
-        Me.saleSoldOn.PromptChar = Global.Microsoft.VisualBasic.ChrW(95)
-        Me.saleSoldOn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.saleSoldOn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.saleSoldOn.ValidatingType = Nothing
-        '
-        'saleProductCode
-        '
-        Me.saleProductCode.DataPropertyName = "product_code"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.saleProductCode.DefaultCellStyle = DataGridViewCellStyle3
-        Me.saleProductCode.HeaderText = "Product"
-        Me.saleProductCode.Name = "saleProductCode"
-        Me.saleProductCode.Width = 75
-        '
-        'saleProductName
-        '
-        Me.saleProductName.DataPropertyName = "product_name"
-        Me.saleProductName.HeaderText = "Product Name"
-        Me.saleProductName.Name = "saleProductName"
-        Me.saleProductName.ReadOnly = True
-        Me.saleProductName.Width = 300
-        '
-        'saleQtySold
-        '
-        Me.saleQtySold.DataPropertyName = "qty_sold"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.Format = "N0"
-        Me.saleQtySold.DefaultCellStyle = DataGridViewCellStyle4
-        Me.saleQtySold.HeaderText = "Qty"
-        Me.saleQtySold.Name = "saleQtySold"
-        Me.saleQtySold.Width = 60
-        '
-        'saleUomName
-        '
-        Me.saleUomName.DataPropertyName = "qty_uom_name"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.saleUomName.DefaultCellStyle = DataGridViewCellStyle5
-        Me.saleUomName.HeaderText = "Uom"
-        Me.saleUomName.Name = "saleUomName"
-        Me.saleUomName.ReadOnly = True
-        '
-        'saleTotalCost
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle6.Format = "N0"
-        Me.saleTotalCost.DefaultCellStyle = DataGridViewCellStyle6
-        Me.saleTotalCost.HeaderText = "Total Cost"
-        Me.saleTotalCost.Name = "saleTotalCost"
-        Me.saleTotalCost.ReadOnly = True
-        '
-        'saleSaleAmt
-        '
-        Me.saleSaleAmt.DataPropertyName = "sale_amt"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle7.Format = "N0"
-        Me.saleSaleAmt.DefaultCellStyle = DataGridViewCellStyle7
-        Me.saleSaleAmt.HeaderText = "Sale Price"
-        Me.saleSaleAmt.Name = "saleSaleAmt"
-        '
-        'saleProfit
-        '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle8.Format = "N0"
-        Me.saleProfit.DefaultCellStyle = DataGridViewCellStyle8
-        Me.saleProfit.HeaderText = "Profit"
-        Me.saleProfit.Name = "saleProfit"
-        Me.saleProfit.ReadOnly = True
-        '
-        'saleProfitPercentage
-        '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.saleProfitPercentage.DefaultCellStyle = DataGridViewCellStyle9
-        Me.saleProfitPercentage.HeaderText = "Profit %"
-        Me.saleProfitPercentage.Name = "saleProfitPercentage"
-        Me.saleProfitPercentage.ReadOnly = True
-        '
-        'saleComments
-        '
-        Me.saleComments.DataPropertyName = "comments"
-        Me.saleComments.HeaderText = "Comments"
-        Me.saleComments.Name = "saleComments"
-        Me.saleComments.Width = 400
-        '
-        'saleSaleId
-        '
-        Me.saleSaleId.DataPropertyName = "sale_id"
-        Me.saleSaleId.HeaderText = "ID"
-        Me.saleSaleId.Name = "saleSaleId"
-        Me.saleSaleId.ReadOnly = True
-        '
-        'saleQtyUomId
-        '
-        Me.saleQtyUomId.DataPropertyName = "qty_uom_id"
-        Me.saleQtyUomId.HeaderText = "saleQtyUomId"
-        Me.saleQtyUomId.Name = "saleQtyUomId"
-        Me.saleQtyUomId.Visible = False
-        '
-        'saleProductId
-        '
-        Me.saleProductId.DataPropertyName = "product_id"
-        Me.saleProductId.HeaderText = "saleProductId"
-        Me.saleProductId.Name = "saleProductId"
-        Me.saleProductId.Visible = False
-        '
-        'saleProdAcbCost
-        '
-        Me.saleProdAcbCost.HeaderText = "saleProdAcbCost"
-        Me.saleProdAcbCost.Name = "saleProdAcbCost"
-        Me.saleProdAcbCost.Visible = False
-        '
-        'isSalePosted
-        '
-        Me.isSalePosted.HeaderText = "isSalePosted"
-        Me.isSalePosted.Name = "isSalePosted"
-        Me.isSalePosted.Visible = False
-        '
-        'isSalePostedReversal
-        '
-        Me.isSalePostedReversal.HeaderText = "isSalePostedReversal"
-        Me.isSalePostedReversal.Name = "isSalePostedReversal"
-        Me.isSalePostedReversal.Visible = False
-        '
-        'is_sale_amendment
-        '
-        Me.is_sale_amendment.HeaderText = "is_sale_amendment"
-        Me.is_sale_amendment.Name = "is_sale_amendment"
-        Me.is_sale_amendment.Visible = False
-        '
         'purchasesReportTab
         '
         Me.purchasesReportTab.Controls.Add(Me.purchasesGrdView)
@@ -829,7 +693,7 @@ Partial Class BusinessReportDlg
         Me.purchaseProductName.HeaderText = "Product Name"
         Me.purchaseProductName.Name = "purchaseProductName"
         Me.purchaseProductName.ReadOnly = True
-        Me.purchaseProductName.Width = 300
+        Me.purchaseProductName.Width = 250
         '
         'purchaseQty
         '
@@ -839,7 +703,7 @@ Partial Class BusinessReportDlg
         Me.purchaseQty.DefaultCellStyle = DataGridViewCellStyle13
         Me.purchaseQty.HeaderText = "Qty"
         Me.purchaseQty.Name = "purchaseQty"
-        Me.purchaseQty.Width = 60
+        Me.purchaseQty.Width = 40
         '
         'purchaseQtyUomName
         '
@@ -848,7 +712,7 @@ Partial Class BusinessReportDlg
         Me.purchaseQtyUomName.HeaderText = "Uom"
         Me.purchaseQtyUomName.Name = "purchaseQtyUomName"
         Me.purchaseQtyUomName.ReadOnly = True
-        Me.purchaseQtyUomName.Width = 75
+        Me.purchaseQtyUomName.Width = 50
         '
         'purchaseCostPerItem
         '
@@ -1551,6 +1415,144 @@ Partial Class BusinessReportDlg
         Me.DataGridViewTextBoxColumn18.HeaderText = "Debt Amount"
         Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
         '
+        'saleSoldOn
+        '
+        Me.saleSoldOn.DataPropertyName = "sold_on"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.saleSoldOn.DefaultCellStyle = DataGridViewCellStyle2
+        Me.saleSoldOn.HeaderText = "Sold On"
+        Me.saleSoldOn.Mask = Nothing
+        Me.saleSoldOn.Name = "saleSoldOn"
+        Me.saleSoldOn.PromptChar = Global.Microsoft.VisualBasic.ChrW(95)
+        Me.saleSoldOn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.saleSoldOn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.saleSoldOn.ValidatingType = Nothing
+        '
+        'saleProductCode
+        '
+        Me.saleProductCode.DataPropertyName = "product_code"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.saleProductCode.DefaultCellStyle = DataGridViewCellStyle3
+        Me.saleProductCode.HeaderText = "Product"
+        Me.saleProductCode.Name = "saleProductCode"
+        Me.saleProductCode.Width = 75
+        '
+        'saleProductName
+        '
+        Me.saleProductName.DataPropertyName = "product_name"
+        Me.saleProductName.HeaderText = "Product Name"
+        Me.saleProductName.Name = "saleProductName"
+        Me.saleProductName.ReadOnly = True
+        Me.saleProductName.Width = 250
+        '
+        'saleQtySold
+        '
+        Me.saleQtySold.DataPropertyName = "qty_sold"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.Format = "N0"
+        Me.saleQtySold.DefaultCellStyle = DataGridViewCellStyle4
+        Me.saleQtySold.HeaderText = "Qty"
+        Me.saleQtySold.Name = "saleQtySold"
+        Me.saleQtySold.Width = 40
+        '
+        'saleUomName
+        '
+        Me.saleUomName.DataPropertyName = "qty_uom_name"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.saleUomName.DefaultCellStyle = DataGridViewCellStyle5
+        Me.saleUomName.HeaderText = "Uom"
+        Me.saleUomName.Name = "saleUomName"
+        Me.saleUomName.ReadOnly = True
+        Me.saleUomName.Width = 50
+        '
+        'saleTotalCost
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "N0"
+        Me.saleTotalCost.DefaultCellStyle = DataGridViewCellStyle6
+        Me.saleTotalCost.HeaderText = "Total Cost"
+        Me.saleTotalCost.Name = "saleTotalCost"
+        Me.saleTotalCost.ReadOnly = True
+        '
+        'saleSaleAmt
+        '
+        Me.saleSaleAmt.DataPropertyName = "sale_amt"
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "N0"
+        Me.saleSaleAmt.DefaultCellStyle = DataGridViewCellStyle7
+        Me.saleSaleAmt.HeaderText = "Sale Price"
+        Me.saleSaleAmt.Name = "saleSaleAmt"
+        '
+        'saleProfit
+        '
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle8.Format = "N0"
+        Me.saleProfit.DefaultCellStyle = DataGridViewCellStyle8
+        Me.saleProfit.HeaderText = "Profit"
+        Me.saleProfit.Name = "saleProfit"
+        Me.saleProfit.ReadOnly = True
+        '
+        'saleProfitPercentage
+        '
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.saleProfitPercentage.DefaultCellStyle = DataGridViewCellStyle9
+        Me.saleProfitPercentage.HeaderText = "Profit %"
+        Me.saleProfitPercentage.Name = "saleProfitPercentage"
+        Me.saleProfitPercentage.ReadOnly = True
+        Me.saleProfitPercentage.Width = 60
+        '
+        'saleComments
+        '
+        Me.saleComments.DataPropertyName = "comments"
+        Me.saleComments.HeaderText = "Comments"
+        Me.saleComments.Name = "saleComments"
+        Me.saleComments.Width = 400
+        '
+        'saleSaleId
+        '
+        Me.saleSaleId.DataPropertyName = "sale_id"
+        Me.saleSaleId.HeaderText = "ID"
+        Me.saleSaleId.Name = "saleSaleId"
+        Me.saleSaleId.ReadOnly = True
+        '
+        'saleQtyUomId
+        '
+        Me.saleQtyUomId.DataPropertyName = "qty_uom_id"
+        Me.saleQtyUomId.HeaderText = "saleQtyUomId"
+        Me.saleQtyUomId.Name = "saleQtyUomId"
+        Me.saleQtyUomId.Visible = False
+        '
+        'saleProductId
+        '
+        Me.saleProductId.DataPropertyName = "product_id"
+        Me.saleProductId.HeaderText = "saleProductId"
+        Me.saleProductId.Name = "saleProductId"
+        Me.saleProductId.Visible = False
+        '
+        'saleProdAcbCost
+        '
+        Me.saleProdAcbCost.HeaderText = "saleProdAcbCost"
+        Me.saleProdAcbCost.Name = "saleProdAcbCost"
+        Me.saleProdAcbCost.Visible = False
+        '
+        'isSalePosted
+        '
+        Me.isSalePosted.HeaderText = "isSalePosted"
+        Me.isSalePosted.Name = "isSalePosted"
+        Me.isSalePosted.Visible = False
+        '
+        'isSalePostedReversal
+        '
+        Me.isSalePostedReversal.HeaderText = "isSalePostedReversal"
+        Me.isSalePostedReversal.Name = "isSalePostedReversal"
+        Me.isSalePostedReversal.Visible = False
+        '
+        'is_sale_amendment
+        '
+        Me.is_sale_amendment.HeaderText = "is_sale_amendment"
+        Me.is_sale_amendment.Name = "is_sale_amendment"
+        Me.is_sale_amendment.Visible = False
+        '
         'BusinessReportDlg
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -1699,25 +1701,6 @@ Partial Class BusinessReportDlg
     Friend WithEvents reEmailBtn As Button
     Friend WithEvents deleteReportBtn As Button
     Friend WithEvents newAmendmentReportBtn As Button
-    Friend WithEvents purchasePurchasedOn As MaskedEditColumn
-    Friend WithEvents purchaseSupplierCode As DataGridViewTextBoxColumn
-    Friend WithEvents purchaseSupplierName As DataGridViewTextBoxColumn
-    Friend WithEvents purchaseProductCode As DataGridViewTextBoxColumn
-    Friend WithEvents purchaseProductName As DataGridViewTextBoxColumn
-    Friend WithEvents purchaseQty As DataGridViewTextBoxColumn
-    Friend WithEvents purchaseQtyUomName As DataGridViewTextBoxColumn
-    Friend WithEvents purchaseCostPerItem As DataGridViewTextBoxColumn
-    Friend WithEvents purchaseAmount As DataGridViewTextBoxColumn
-    Friend WithEvents purchaseAmountPaidCash As DataGridViewTextBoxColumn
-    Friend WithEvents purchaseAmountPaidCredit As DataGridViewTextBoxColumn
-    Friend WithEvents purchaseComments As DataGridViewTextBoxColumn
-    Friend WithEvents purchaseId As DataGridViewTextBoxColumn
-    Friend WithEvents purchaseSupplierId As DataGridViewTextBoxColumn
-    Friend WithEvents purchaseProductId As DataGridViewTextBoxColumn
-    Friend WithEvents purchaseQtyUomId As DataGridViewTextBoxColumn
-    Friend WithEvents isPurchasePosted As DataGridViewTextBoxColumn
-    Friend WithEvents isPurchasePostedReversal As DataGridViewTextBoxColumn
-    Friend WithEvents is_purchase_amendment As DataGridViewTextBoxColumn
     Friend WithEvents expenseExpensedOn As MaskedEditColumn
     Friend WithEvents expenseCategoryCode As DataGridViewTextBoxColumn
     Friend WithEvents expenseExpenseCategoryName As DataGridViewTextBoxColumn
@@ -1738,23 +1721,6 @@ Partial Class BusinessReportDlg
     Friend WithEvents isDebtPaymentPosted As DataGridViewTextBoxColumn
     Friend WithEvents isDebtPaymentPostedReversal As DataGridViewTextBoxColumn
     Friend WithEvents is_debt_payment_amendment As DataGridViewTextBoxColumn
-    Friend WithEvents saleSoldOn As MaskedEditColumn
-    Friend WithEvents saleProductCode As DataGridViewTextBoxColumn
-    Friend WithEvents saleProductName As DataGridViewTextBoxColumn
-    Friend WithEvents saleQtySold As DataGridViewTextBoxColumn
-    Friend WithEvents saleUomName As DataGridViewTextBoxColumn
-    Friend WithEvents saleTotalCost As DataGridViewTextBoxColumn
-    Friend WithEvents saleSaleAmt As DataGridViewTextBoxColumn
-    Friend WithEvents saleProfit As DataGridViewTextBoxColumn
-    Friend WithEvents saleProfitPercentage As DataGridViewTextBoxColumn
-    Friend WithEvents saleComments As DataGridViewTextBoxColumn
-    Friend WithEvents saleSaleId As DataGridViewTextBoxColumn
-    Friend WithEvents saleQtyUomId As DataGridViewTextBoxColumn
-    Friend WithEvents saleProductId As DataGridViewTextBoxColumn
-    Friend WithEvents saleProdAcbCost As DataGridViewTextBoxColumn
-    Friend WithEvents isSalePosted As DataGridViewTextBoxColumn
-    Friend WithEvents isSalePostedReversal As DataGridViewTextBoxColumn
-    Friend WithEvents is_sale_amendment As DataGridViewTextBoxColumn
     Friend WithEvents toSubmitRdBtn As RadioButton
     Friend WithEvents submittedRdBtn As RadioButton
     Friend WithEvents loadedRdBtn As RadioButton
@@ -1766,4 +1732,40 @@ Partial Class BusinessReportDlg
     Friend WithEvents cashBroughtForwardErrorPic As TextBoxErrorPictureBox
     Friend WithEvents fromDateErrorPic As TextBoxErrorPictureBox
     Friend WithEvents toDateErrorPic As TextBoxErrorPictureBox
+    Friend WithEvents purchasePurchasedOn As SolarHouse.MaskedEditColumn
+    Friend WithEvents purchaseSupplierCode As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents purchaseSupplierName As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents purchaseProductCode As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents purchaseProductName As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents purchaseQty As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents purchaseQtyUomName As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents purchaseCostPerItem As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents purchaseAmount As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents purchaseAmountPaidCash As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents purchaseAmountPaidCredit As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents purchaseComments As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents purchaseId As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents purchaseSupplierId As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents purchaseProductId As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents purchaseQtyUomId As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents isPurchasePosted As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents isPurchasePostedReversal As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents is_purchase_amendment As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents saleSoldOn As SolarHouse.MaskedEditColumn
+    Friend WithEvents saleProductCode As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents saleProductName As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents saleQtySold As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents saleUomName As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents saleTotalCost As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents saleSaleAmt As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents saleProfit As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents saleProfitPercentage As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents saleComments As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents saleSaleId As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents saleQtyUomId As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents saleProductId As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents saleProdAcbCost As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents isSalePosted As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents isSalePostedReversal As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents is_sale_amendment As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

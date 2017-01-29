@@ -62,11 +62,34 @@ Public Class UIUtil
             Return False
         End Try
     End Function
+
+    Private Shared Function genDateCompoFormat(cmp As String, fmtChar As Char) As String
+        Dim format As String = ""
+        For i As Integer = 0 To cmp.Length - 1
+            format += fmtChar
+        Next
+        Return format
+    End Function
+
     Public Shared Function parseDate(val As Object) As Date
         If (StringUtil.isEmpty(val)) Then
             parseDate = Nothing
         Else
-            parseDate = Date.ParseExact(val, "dd/MM/yyyy", CultureInfo.InvariantCulture)
+            Dim strDate As String = val
+            Dim dateComponents As String() = strDate.Split("/")
+            If dateComponents.Length = 3 Then
+                Dim dateFormat As String
+                dateFormat = genDateCompoFormat(dateComponents(0), "d")
+                dateFormat += "/" + genDateCompoFormat(dateComponents(1), "M")
+                dateFormat += "/" + genDateCompoFormat(dateComponents(2), "y")
+                Try
+                    Return Date.ParseExact(strDate, dateFormat, CultureInfo.InvariantCulture)
+                Catch ex As FormatException
+                    Return Nothing
+                End Try
+            Else
+                Return Nothing
+            End If
         End If
     End Function
 

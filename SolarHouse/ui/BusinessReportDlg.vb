@@ -285,6 +285,7 @@ Public Class BusinessReportDlg
         cashBroughtForwardErrorPic.init(Me)
         countedCashErrorPic.init(Me)
 
+        Me.Width = businessReportTabControl.Width + businessReportTabControl.Location.X + 50
         Me.Height = businessReportTabControl.Height + businessReportTabControl.Location.Y + 50
 
     End Sub
