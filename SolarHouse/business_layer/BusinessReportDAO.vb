@@ -696,11 +696,11 @@ Public Class BusinessReportDAO
             Return destFile
         End Function
 
-        Public Sub emailReport(fromDate As Date, toDate As Date, absXmlFileName As String)
-            Dim serv As EmailService = New EmailService
-            Dim title As String = Path.GetFileName(absXmlFileName)
-            serv.emailFile(title, My.Settings.email_xml_to, absXmlFileName)
-        End Sub
+    Public Sub emailReport(absXmlFileName As String)
+        Dim serv As EmailService = New EmailService
+        Dim title As String = Path.GetFileName(absXmlFileName)
+        serv.emailFile(title, My.Settings.email_xml_to, absXmlFileName)
+    End Sub
 
 
         Protected Function retrievePostedSaleTransactions(fromdate As Date, toDate As Date, connection As MySqlConnection) As Collection
@@ -970,13 +970,15 @@ Public Class BusinessReportDAO
 
         End Sub
 
-        Public Sub recordLoadSubmitStatus(businessReport As BusinessReport, type As String, cn As MySqlConnection)
-            Dim sqlStr As String
+    Public Sub recordLoadSubmitStatus(businessReport As BusinessReport, type As String, cn As MySqlConnection)
+        Dim sqlStr As String
+        Dim reportType As String = If(businessReport.isAnAmendmentToPostedTrans, "AMENDMENT", "BUSINESS")
 
-            sqlStr = "delete from report_load_submit_status "
-            sqlStr += "where report_from = " + getSqlDate(businessReport.fromDate) + " "
-            sqlStr += "and type = " + prepStrSql(type) + " "
-            executeNonRetrievalSql(sqlStr, cn)
+        sqlStr = "delete from report_load_submit_status "
+        sqlStr += "where report_from = " + getSqlDate(businessReport.fromDate) + " "
+        sqlStr += "and type = " + prepStrSql(type) + " "
+        sqlStr += "and report_type = " + prepStrSql(reportType) + " "
+        executeNonRetrievalSql(sqlStr, cn)
 
         sqlStr = "insert into report_load_submit_status values (" + getSqlDate(businessReport.fromDate) + ", "
         sqlStr += prepStrSql(type) + ","
@@ -984,12 +986,12 @@ Public Class BusinessReportDAO
 
         sqlStr += getSqlDate(businessReport.toDate) + ","
         sqlStr += businessReport.cashBroughtForward.ToString + ","
-        sqlStr += prepStrSql(If(businessReport.isAnAmendmentToPostedTrans, "AMENDMENT", "BUSINESS")) + ","
+        sqlStr += prepStrSql(reportType) + ","
         sqlStr += businessReport.cashCounted.ToString + ", "
 
         sqlStr += prepStrSql(businessReport.absXmlFileName.Replace("\", "\\")) + ")"
-            executeNonRetrievalSql(sqlStr, cn)
-        End Sub
+        executeNonRetrievalSql(sqlStr, cn)
+    End Sub
 
     Public Function retrieveLastReportSubmitted(reportTyp As ReportType) As ReportLoadSubmitStatusVO
         Dim sqlStr As String
@@ -1044,7 +1046,7 @@ Public Class BusinessReportDAO
                 Dim unqPrdIdsTransacted As List(Of Integer) = saveBusinessReportIntoDatabase(businessReport, connection)
                 saveBusinessReportAsXML(businessReport)
                 mainForm.showProgress(25, "Submiting Business Report.  Prepared XML report.")
-                emailReport(businessReport.fromDate, businessReport.toDate, businessReport.absXmlFileName)
+            emailReport(businessReport.absXmlFileName)
                 mainForm.showProgress(50, "Submiting Business Report.  Emailed XML report...")
                 businessReport.absXmlFileName = moveReport(businessReport.absXmlFileName, ReportFile.getSubmitedFolderName())
                 recordLoadSubmitStatus(businessReport, "SUBMIT", connection)
@@ -1842,36 +1844,46 @@ Public Class BusinessReportDAO
 
         End Sub
 
-        Public Function restoreDatabase(restoreAbsDbFile As String)
-            Dim errMsg As String
-            If Not ensureValidDatabaseDumpFile(restoreAbsDbFile, errMsg) Then
-                MessageBox.Show(mainForm, "Error. File:" + restoreAbsDbFile + " is not a valid restore file. Reason: " + errMsg)
-                Return False
-            End If
+    Public Function runMySqlScript(sqlScriptAbsPath As String) As Boolean
+        Dim restoreCmd As String = ControlChars.Quote + My.Settings.mysql_execs_path + My.Settings.mysql_cmd + ControlChars.Quote
+        Dim cmdUtil As New RunCmdUtil
+        '-e "source batch-file"
+        cmdUtil.runCmd(restoreCmd, "--user=root --password=arusha " + My.Settings.database_name + " -e " + ControlChars.Quote + "source " + sqlScriptAbsPath + ControlChars.Quote)
+        Return True
+    End Function
 
-            Dim restoreCmd As String = ControlChars.Quote + My.Settings.mysql_execs + My.Settings.mysql_restore_cmd + ControlChars.Quote
-            Dim cmdUtil As New RunCmdUtil
-            '-e "source batch-file"
-            cmdUtil.runCmd(restoreCmd, "--user=root --password=arusha " + My.Settings.database_name + " -e " + ControlChars.Quote + "source " + restoreAbsDbFile + ControlChars.Quote)
-            Return True
-        End Function
+    Public Function restoreDatabase(restoreAbsDbFile As String)
+        Dim errMsg As String
+        If Not ensureValidDatabaseDumpFile(restoreAbsDbFile, errMsg) Then
+            MessageBox.Show(mainForm, "Error. File:" + restoreAbsDbFile + " is not a valid restore file. Reason: " + errMsg)
+            Return False
+        End If
 
-        Public Function backUpDatabase()
-            Dim minTranDate As Date
-            Dim maxTranDate As Date
-            getPostedTransactionDateRange(minTranDate, maxTranDate)
-            Dim backupFileAbsLoc As String = getBackupFolder()
-            backupFileAbsLoc = MiscUtil.appendPathComponent(backupFileAbsLoc, My.Settings.database_name + "#Max Tran Date " + Format(maxTranDate, "yyyy-MM-dd# ") + Format(Now, "yyyy-MM-dd H-mm-ss") + ".sql")
-            Dim backupCmd As String = ControlChars.Quote + My.Settings.mysql_execs + My.Settings.mysql_backup_cmd + ControlChars.Quote
+        Return runMySqlScript(restoreAbsDbFile)
 
-            Dim cmdUtil As New RunCmdUtil
-            cmdUtil.runCmd(backupCmd, "--databases " + My.Settings.database_name + " -uroot -parusha --result-file=" + ControlChars.Quote + backupFileAbsLoc + ControlChars.Quote)
+        'Dim restoreCmd As String = ControlChars.Quote + My.Settings.mysql_execs_path + My.Settings.mysql_cmd + ControlChars.Quote
+        'Dim cmdUtil As New RunCmdUtil
+        ''-e "source batch-file"
+        'cmdUtil.runCmd(restoreCmd, "--user=root --password=arusha " + My.Settings.database_name + " -e " + ControlChars.Quote + "source " + restoreAbsDbFile + ControlChars.Quote)
+        'Return True
+    End Function
 
-            If (Not File.Exists(backupFileAbsLoc)) Then
-                Throw New FileNotFoundException("Backup failed.  Backup file:" + backupFileAbsLoc + " not found")
-            Else
-                Return backupFileAbsLoc
-            End If
-        End Function
+    Public Function backUpDatabase()
+        Dim minTranDate As Date
+        Dim maxTranDate As Date
+        getPostedTransactionDateRange(minTranDate, maxTranDate)
+        Dim backupFileAbsLoc As String = getBackupFolder()
+        backupFileAbsLoc = MiscUtil.appendPathComponent(backupFileAbsLoc, My.Settings.database_name + "#Max Tran Date " + Format(maxTranDate, "yyyy-MM-dd# ") + Format(Now, "yyyy-MM-dd H-mm-ss") + ".sql")
+        Dim backupCmd As String = ControlChars.Quote + My.Settings.mysql_execs_path + My.Settings.mysql_backup_cmd + ControlChars.Quote
+
+        Dim cmdUtil As New RunCmdUtil
+        cmdUtil.runCmd(backupCmd, "--databases " + My.Settings.database_name + " -uroot -parusha --result-file=" + ControlChars.Quote + backupFileAbsLoc + ControlChars.Quote)
+
+        If (Not File.Exists(backupFileAbsLoc)) Then
+            Throw New FileNotFoundException("Backup failed.  Backup file:" + backupFileAbsLoc + " not found")
+        Else
+            Return backupFileAbsLoc
+        End If
+    End Function
 
     End Class

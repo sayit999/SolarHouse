@@ -14,7 +14,7 @@
     <Setting Name="email_xml_to" Type="System.String" Scope="User">
       <Value Profile="(Default)">happytemba99@gmail.com;firoz.karmali@gmail.com</Value>
     </Setting>
-    <Setting Name="mysql_execs" Type="System.String" Scope="User">
+    <Setting Name="mysql_execs_path" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Program Files\MySQL\MySQL Server 5.7\bin\</Value>
     </Setting>
     <Setting Name="mysql_backup_cmd" Type="System.String" Scope="User">
@@ -23,7 +23,7 @@
     <Setting Name="db_backup_dir" Type="System.String" Scope="User">
       <Value Profile="(Default)">database_backup</Value>
     </Setting>
-    <Setting Name="mysql_restore_cmd" Type="System.String" Scope="User">
+    <Setting Name="mysql_cmd" Type="System.String" Scope="User">
       <Value Profile="(Default)">mysql</Value>
     </Setting>
     <Setting Name="business_reports_to_load" Type="System.String" Scope="User">

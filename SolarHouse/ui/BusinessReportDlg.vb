@@ -1304,7 +1304,7 @@ Public Class BusinessReportDlg
                 If (getBusinessReportToFromDates(fromDate, toDate)) Then
                     Dim fileSel As ReportFile = getBusinessReportFileSelected()
                     MainForm.showProgress(50, "Sending email...")
-                    If (serv.emailBusinessReport(fromDate, toDate, fileSel.getAbsFileName())) Then
+                    If (serv.emailBusinessReport(fileSel.getAbsFileName())) Then
                         MessageBox.Show(Me, "Report Emailed")
                     End If
                     MainForm.showProgress()

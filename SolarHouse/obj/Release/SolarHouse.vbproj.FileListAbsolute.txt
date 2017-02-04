@@ -29,8 +29,6 @@ C:\development\SolarHouse\SolarHouse\obj\Release\SolarHouse.pdb
 C:\development\SolarHouse\SolarHouse\bin\Release\SolarHouse.exe
 C:\development\SolarHouse\SolarHouse\bin\Release\SolarHouse.pdb
 C:\development\SolarHouse\SolarHouse\bin\Release\SolarHouse.xml
-C:\development\SolarHouse\SolarHouse\bin\Release\MySql.Data.dll
-C:\development\SolarHouse\SolarHouse\obj\Release\SolarHouse.vbprojResolveAssemblyReference.cache
 C:\development\SolarHouse\SolarHouse\obj\Release\SolarHouse.AboutBox.resources
 C:\development\SolarHouse\SolarHouse\obj\Release\SolarHouse.BusinessReportDlg.resources
 C:\development\SolarHouse\SolarHouse\obj\Release\SolarHouse.ExpenseCategorieDlg.resources

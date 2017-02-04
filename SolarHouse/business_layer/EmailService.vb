@@ -70,6 +70,9 @@ Public Class EmailService
                 End If
             Next
 
+            If UIUtil.isTestSystem() Then
+                reportTitle = "**** TEST *****" + reportTitle
+            End If
             eMail.Subject = reportTitle
             eMail.IsBodyHtml = False
             eMail.Body = reportTitle

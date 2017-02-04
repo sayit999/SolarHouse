@@ -44,3 +44,4 @@ C:\development\SolarHouse\SolarHouse\bin\Debug\SolarHouse.xml
 C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.exe
 C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.xml
 C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.pdb
+C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.vbprojResolveAssemblyReference.cache

@@ -145,4 +145,8 @@ Public Class UIUtil
     Public Shared Function isEmpty(o As Object)
         Return IsNothing(o) OrElse (IsDBNull(o)) OrElse Len(Trim(o)) = 0
     End Function
+
+    Public Shared Function isTestSystem() As Boolean
+        Return UCase(My.Settings.database_name).IndexOf("TEST") <> -1
+    End Function
 End Class

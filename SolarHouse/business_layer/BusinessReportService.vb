@@ -37,10 +37,10 @@ Public Class BusinessReportService
 
     End Function
 
-    Public Function emailBusinessReport(fromDate As Date, toDate As Date, absXmlFileName As String)
+    Public Function emailBusinessReport(absXmlFileName As String)
         Try
             Dim businessReportDAO As New BusinessReportDAO
-            businessReportDAO.emailReport(fromDate, toDate, absXmlFileName)
+            businessReportDAO.emailReport(absXmlFileName)
             Return True
         Catch ex As System.Net.Mail.SmtpException
             MessageBox.Show(parent, "No internet/Hamna Mtandao.  Hakikisha Modem imeingizwa kwenye computer.  Jaribu tena")

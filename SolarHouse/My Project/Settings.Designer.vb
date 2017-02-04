@@ -78,75 +78,75 @@ Namespace My
             End Set
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("solarhousearushadatabase")>  _
+        <Global.System.Configuration.UserScopedSettingAttribute(), _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.Configuration.DefaultSettingValueAttribute("solarhousearushadatabase")> _
         Public Property database_name() As String
             Get
-                Return CType(Me("database_name"),String)
+                Return CType(Me("database_name"), String)
             End Get
-            Set
+            Set(value As String)
                 Me("database_name") = value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("happytemba99@gmail.com;firoz.karmali@gmail.com")>  _
+
+        <Global.System.Configuration.UserScopedSettingAttribute(), _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.Configuration.DefaultSettingValueAttribute("happytemba99@gmail.com;firoz.karmali@gmail.com")> _
         Public Property email_xml_to() As String
             Get
-                Return CType(Me("email_xml_to"),String)
+                Return CType(Me("email_xml_to"), String)
             End Get
-            Set
+            Set(value As String)
                 Me("email_xml_to") = value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("C:\Program Files\MySQL\MySQL Server 5.7\bin\")>  _
-        Public Property mysql_execs() As String
+
+        <Global.System.Configuration.UserScopedSettingAttribute(), _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.Configuration.DefaultSettingValueAttribute("C:\Program Files\MySQL\MySQL Server 5.7\bin\")> _
+        Public Property mysql_execs_path() As String
             Get
-                Return CType(Me("mysql_execs"),String)
+                Return CType(Me("mysql_execs_path"), String)
             End Get
-            Set
-                Me("mysql_execs") = value
+            Set(value As String)
+                Me("mysql_execs_path") = value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("mysqldump")>  _
+
+        <Global.System.Configuration.UserScopedSettingAttribute(), _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.Configuration.DefaultSettingValueAttribute("mysqldump")> _
         Public Property mysql_backup_cmd() As String
             Get
-                Return CType(Me("mysql_backup_cmd"),String)
+                Return CType(Me("mysql_backup_cmd"), String)
             End Get
-            Set
+            Set(value As String)
                 Me("mysql_backup_cmd") = value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("database_backup")>  _
+
+        <Global.System.Configuration.UserScopedSettingAttribute(), _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.Configuration.DefaultSettingValueAttribute("database_backup")> _
         Public Property db_backup_dir() As String
             Get
-                Return CType(Me("db_backup_dir"),String)
+                Return CType(Me("db_backup_dir"), String)
             End Get
-            Set
+            Set(value As String)
                 Me("db_backup_dir") = value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("mysql")>  _
-        Public Property mysql_restore_cmd() As String
+
+        <Global.System.Configuration.UserScopedSettingAttribute(), _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.Configuration.DefaultSettingValueAttribute("mysql")> _
+        Public Property mysql_cmd() As String
             Get
-                Return CType(Me("mysql_restore_cmd"),String)
+                Return CType(Me("mysql_cmd"), String)
             End Get
-            Set
-                Me("mysql_restore_cmd") = value
+            Set(value As String)
+                Me("mysql_cmd") = value
             End Set
         End Property
         
