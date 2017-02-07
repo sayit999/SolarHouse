@@ -8,10 +8,16 @@ Public Class BusinessReportService
         Me.parent = parent
     End Sub
 
-    Public Function saveBusinessReport(ByRef businessReport As BusinessReportDAO.BusinessReport) As Boolean
+    Public Function runMySqlScript(sqlScriptAbsPath As String) As Boolean
         Dim businessReportDAO As New BusinessReportDAO
+        Return businessReportDAO.runMySqlScript(sqlScriptAbsPath)
+    End Function
+
+    Public Function saveBusinessReport(ByRef businessReport As BusinessReportDAO.BusinessReport) As Boolean
+
         Try
             businessReport.absXmlFileName = ReportFile.getXMLFileNameToSubmit(businessReport.fromDate, businessReport.toDate, ReportFile.getToSubmitFolderName(), businessReport.isAnAmendmentToPostedTrans)
+            Dim businessReportDAO As New BusinessReportDAO
             businessReportDAO.saveBusinessReportAsXML(businessReport)
             Return True
 
@@ -124,16 +130,22 @@ Public Class BusinessReportService
             MessageBox.Show(parent, "Cannot load report.  Report " + fileName + " does not exist")
             Return Nothing
         Else
-            Dim businessReportDAO As New BusinessReportDAO
-            Dim rprt As BusinessReportDAO.BusinessReport = businessReportDAO.readBusinessReportFromXML(fileName)
-            If rprt.isAnAmendmentToPostedTrans AndAlso Not businessReportFile.isSubmitted Then
-                Dim postedTansRprt As BusinessReportDAO.BusinessReport = retrievePostedBusinessTransactions(rprt.fromDate, rprt.toDate)
-                rprt.sales = addPostedToAmendedTrans(postedTansRprt.sales, rprt.sales)
-                rprt.purchases = addPostedToAmendedTrans(postedTansRprt.purchases, rprt.purchases)
-                rprt.expenses = addPostedToAmendedTrans(postedTansRprt.expenses, rprt.expenses)
-                rprt.debtPayments = addPostedToAmendedTrans(postedTansRprt.debtPayments, rprt.debtPayments)
-            End If
-            Return rprt
+            Try
+                Dim businessReportDAO As New BusinessReportDAO
+                Dim rprt As BusinessReportDAO.BusinessReport = businessReportDAO.readBusinessReportFromXML(fileName)
+                If rprt.isAnAmendmentToPostedTrans AndAlso Not businessReportFile.isSubmitted Then
+                    Dim postedTansRprt As BusinessReportDAO.BusinessReport = retrievePostedBusinessTransactions(rprt.fromDate, rprt.toDate)
+                    rprt.sales = addPostedToAmendedTrans(postedTansRprt.sales, rprt.sales)
+                    rprt.purchases = addPostedToAmendedTrans(postedTansRprt.purchases, rprt.purchases)
+                    rprt.expenses = addPostedToAmendedTrans(postedTansRprt.expenses, rprt.expenses)
+                    rprt.debtPayments = addPostedToAmendedTrans(postedTansRprt.debtPayments, rprt.debtPayments)
+                End If
+                Return rprt
+            Catch ex As Exception
+                MessageBox.Show(parent, "Failed to retrieve Report. Reason:" + ex.ToString)
+                Return Nothing
+            End Try
+
         End If
     End Function
 

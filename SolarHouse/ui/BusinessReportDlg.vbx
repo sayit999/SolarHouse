@@ -62,9 +62,6 @@ Public Class BusinessReportDlg
         Dim i As Integer
         busReports = ReportFile.listBusinessReports(businessReportsToRetStatus)
         For i = 0 To busReports.Count - 1
-            If (Not busReports(i).isValidFormat) Then
-                busReports(i).fileName = "Error - Invalid format " + busReports(i).fileName
-            End If
             If busReports(i).isSubmitted Then
                 reportsAvailComboBox.Items.Add(busReports(i).fileName)
             ElseIf busReports(i).isToSubmit Then
@@ -134,11 +131,6 @@ Public Class BusinessReportDlg
 
         Dim businessReportFileToSel As ReportFile = busReports(reportsAvailComboBox.SelectedIndex)
 
-        If (Not businessReportFileToSel.isValidFormat) Then
-            MessageBox.Show(Me, "File has an invalid format.  File cannot be loaded")
-            Return
-        End If
-
         If Not isReportModified() OrElse MessageBox.Show("Report has been modified. If you continue ALL data will be DELETED.  Continue?", "Continue?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
             If businessReportFileToSel.isLoaded OrElse businessReportFileToSel.isSubmitted OrElse businessReportFileToSel.isToSubmit OrElse businessReportFileToSel.isToLoad Then
 
@@ -146,26 +138,18 @@ Public Class BusinessReportDlg
                 isLoading = True
                 UseWaitCursor = True
                 enableButtons(False)
-                MainForm.showProgress(-1, "Loading report...")
-                Dim rprt As BusinessReportDAO.BusinessReport = serv.retrieveBusinessReport(businessReportFileToSel)
-                reptType = If(rprt.isAnAmendmentToPostedTrans, ReportType.amendment_report, ReportType.business_report)
-                MainForm.showProgress(20, "Report read...")
                 wipeOutEnteredData()
-                setUIDateRange(rprt.fromDate, rprt.toDate)
-                MainForm.showProgress(20, "Loading report into UI...")
+                Dim rprt As BusinessReportDAO.BusinessReport = serv.retrieveBusinessReport(businessReportFileToSel)
                 If Not IsNothing(rprt) Then
+                    setUIDateRange(rprt.fromDate, rprt.toDate)
+                    reptType = If(rprt.isAnAmendmentToPostedTrans, ReportType.amendment_report, ReportType.business_report)
                     loadBusinessReportDataIntoUI(rprt)
                 End If
-                MainForm.showProgress(20, "Report loaded into UI...")
                 reportViewedStateChanged()
-                MainForm.showProgress(20, "Summary recalculated...")
                 isLoading = False
                 If Not businessReportFileToSel.isSubmitted AndAlso Not businessReportFileToSel.isLoaded Then
                     validateBusinessReportsComponents()
                 End If
-                MainForm.showProgress(20, "Report validated")
-
-
                 recalcSummary()
                 isModified = False
                 UseWaitCursor = False

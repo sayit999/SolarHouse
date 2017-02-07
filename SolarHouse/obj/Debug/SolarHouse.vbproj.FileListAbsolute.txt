@@ -44,4 +44,9 @@ C:\development\SolarHouse\SolarHouse\bin\Debug\SolarHouse.xml
 C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.exe
 C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.xml
 C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.pdb
+C:\development\SolarHouse\SolarHouse\bin\Debug\SolarHouse.exe.manifest
+C:\development\SolarHouse\SolarHouse\bin\Debug\SolarHouse.application
+C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.exe.manifest
+C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.application
+C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.TaskProgress.resources
 C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.vbprojResolveAssemblyReference.cache

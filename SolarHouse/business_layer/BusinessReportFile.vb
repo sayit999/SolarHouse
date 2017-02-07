@@ -19,6 +19,8 @@ Public Class ReportFile
     Public fromDate As Date = Nothing
     Public toDate As Date = Nothing
 
+    Public isValidFormat As Boolean = True
+
     Public Const FILE_EXT As String = ".xml"
 
     Public Overloads Function Equals(folder As String, nameOfFile As String) As Boolean
@@ -100,7 +102,9 @@ Public Class ReportFile
                     file = New ReportFile
                     file.reportStatus = status
                     sepFileNameFromFolder(coll(i), file.folderName, file.fileName)
-                    dao.readReportDates(coll(i), file.fromDate, file.toDate)
+                    If Not dao.readReportDates(coll(i), file.fromDate, file.toDate) Then
+                        file.isValidFormat = False
+                    End If
                     collectionToReturn.Add(file)
                 End If
             Next

@@ -48,14 +48,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SolarHouse.exe" size="502192">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SolarHouse.exe" size="468400">
       <assemblyIdentity name="SolarHouse" version="1.2.10.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>TUq6RYopwvRDYDeCG3k2Ixw1HIL6FqnTAJaABCx8EMg=</dsig:DigestValue>
+        <dsig:DigestValue>EJvPwAw4urLKqc1j01rdEFrbSLFt/3eIsUaZt4aSWjM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -68,13 +68,13 @@
       <dsig:DigestValue>NHL4ENaH815helDnQN+N1+TwCGRcKziCT/BtqeYBICs=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SolarHouse.exe.config" size="2460">
+  <file name="SolarHouse.exe.config" size="2335">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>v+q+/9RHMO0PhSUT2xzfDPI5m2vltMVNBrmoCCDzjLg=</dsig:DigestValue>
+      <dsig:DigestValue>PwFtrnZksbFuYPebwBBCwIbyvF0UtofeUcWTwDTpiOY=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

@@ -226,7 +226,7 @@ Public Class BusinessReportDAO
             Return Replace(xmlVal, XML_COMMA_SUBST, ",")
         End Function
 
-    Public Sub readReportDates(absXmlFileName As String, ByRef fromDate As Date, ByRef toDate As Date)
+    Public Function readReportDates(absXmlFileName As String, ByRef fromDate As Date, ByRef toDate As Date) As Boolean
 
 
         Dim doc As New XmlDocument()
@@ -250,13 +250,13 @@ Public Class BusinessReportDAO
             If Not StringUtil.isEmpty(root.Attributes.GetNamedItem("to_date").InnerText) AndAlso UIUtil.isValidDate(root.Attributes.GetNamedItem("to_date").InnerText) Then
                 toDate = UIUtil.parseDate(root.Attributes.GetNamedItem("to_date").InnerText)
             End If
+            Return True
 
-
-        Finally
-
+        Catch ex As Exception
+            Return False
         End Try
 
-    End Sub
+    End Function
 
     Public Function readBusinessReportFromXML(absXmlFileName As String) As BusinessReport
         Dim businessReport As BusinessReport = New BusinessReport
@@ -504,9 +504,9 @@ Public Class BusinessReportDAO
                     End If
                 Next
                 Return businessReport
-            Finally
+        Catch ex As Exception
 
-            End Try
+        End Try
 
 
         End Function
@@ -1845,10 +1845,11 @@ Public Class BusinessReportDAO
         End Sub
 
     Public Function runMySqlScript(sqlScriptAbsPath As String) As Boolean
-        Dim restoreCmd As String = ControlChars.Quote + My.Settings.mysql_execs_path + My.Settings.mysql_cmd + ControlChars.Quote
+        Dim sqlScriptCmd As String = ControlChars.Quote + My.Settings.mysql_execs_path + My.Settings.mysql_cmd + ControlChars.Quote
+        Dim sqlScriptArg As String = "--user=root --password=arusha " + My.Settings.database_name + " -e " + ControlChars.Quote + "source " + sqlScriptAbsPath + ControlChars.Quote
         Dim cmdUtil As New RunCmdUtil
         '-e "source batch-file"
-        cmdUtil.runCmd(restoreCmd, "--user=root --password=arusha " + My.Settings.database_name + " -e " + ControlChars.Quote + "source " + sqlScriptAbsPath + ControlChars.Quote)
+        cmdUtil.runCmd(sqlScriptCmd, sqlScriptArg)
         Return True
     End Function
 

@@ -15,9 +15,13 @@ Public Class MainForm
         BusinessReportToolStripMenuItem_Click(sender, e)
     End Sub
 
+    Private Function getMySqlBackUpFolder()
+        Dim appFolder As String = MainForm.getApplicationDataFolder
+        Return MiscUtil.appendPathComponent(appFolder, My.Settings.backup_dir)
+    End Function
+
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-
             ' ensure app folders exist
             If (Not Directory.Exists(Application.UserAppDataPath)) Then
                 FileSystem.MkDir(Application.UserAppDataPath)
@@ -28,15 +32,22 @@ Public Class MainForm
             If (Not Directory.Exists(ReportFile.getSubmitedFolderName())) Then
                 FileSystem.MkDir(ReportFile.getSubmitedFolderName())
             End If
+
             If (Not Directory.Exists(ReportFile.getToLoadFolderName())) Then
                 FileSystem.MkDir(ReportFile.getToLoadFolderName())
             End If
+
             If (Not Directory.Exists(ReportFile.getLoadedFolderName())) Then
                 FileSystem.MkDir(ReportFile.getLoadedFolderName())
             End If
 
             If (Not Directory.Exists(BusinessReportDAO.getBackupFolder())) Then
                 FileSystem.MkDir(BusinessReportDAO.getBackupFolder())
+            End If
+
+
+            If (Not Directory.Exists(getMySqlBackUpFolder())) Then
+                FileSystem.MkDir(getMySqlBackUpFolder())
             End If
 
             Me.Text = "Solar House Arusha - " + My.Application.Info.Version.ToString
@@ -50,10 +61,13 @@ Public Class MainForm
         Else
             Me.BackColor = Color.FromArgb(255, 193, 193)
         End If
+
         MainToolStrip.BackColor = Me.BackColor
         AppProgressBar.Style = ProgressBarStyle.Blocks
         AppProgressBar.Minimum = 0
         AppProgressBar.Maximum = 100
+
+        runMySqlScript()
 
     End Sub
 
@@ -75,6 +89,29 @@ Public Class MainForm
         End If
 
         AppToolStripStatusLabel.Text = statusMsg
+    End Sub
+
+    Private Sub runMySqlScript()
+        Dim serv As BusinessReportService = New BusinessReportService(Me)
+        Dim files As String() = Directory.GetFiles(".")
+        Dim sqlFiles As New List(Of String)
+        For i As Integer = 0 To files.Length - 1
+            If (files(i).LastIndexOf(".sql") <> -1) Then
+                sqlFiles.Add(files(i))
+            End If
+        Next
+        sqlFiles.Sort()
+        For i As Integer = 0 To sqlFiles.Count - 1
+            If (Not serv.runMySqlScript(sqlFiles(i))) Then
+                MessageBox.Show(Me, "Failed to execute Sql Script " + sqlFiles(i))
+            End If
+            Dim fileName As String = Path.GetFileName(sqlFiles(i))
+            Dim nameSufx As String = Now().ToString()
+            nameSufx = nameSufx.Replace("/", "-")
+            nameSufx = nameSufx.Replace(":", "-")
+            My.Computer.FileSystem.MoveFile(sqlFiles(i), MiscUtil.appendPathComponent(getMySqlBackUpFolder(), fileName + "." + nameSufx))
+
+        Next
     End Sub
 
     Private Sub SolarCalcTBBtn_Click(sender As Object, e As EventArgs) Handles SolarCalcTBBtn.Click

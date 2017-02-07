@@ -9,7 +9,7 @@
       <Value Profile="(Default)">business_reports\to_submit</Value>
     </Setting>
     <Setting Name="database_name" Type="System.String" Scope="User">
-      <Value Profile="(Default)">solarhousearushadatabase</Value>
+      <Value Profile="(Default)">solarhousearushadatabasetest</Value>
     </Setting>
     <Setting Name="email_xml_to" Type="System.String" Scope="User">
       <Value Profile="(Default)">happytemba99@gmail.com;firoz.karmali@gmail.com</Value>
@@ -31,6 +31,9 @@
     </Setting>
     <Setting Name="business_reports_loaded" Type="System.String" Scope="User">
       <Value Profile="(Default)">business_reports\loaded</Value>
+    </Setting>
+    <Setting Name="backup_dir" Type="System.String" Scope="User">
+      <Value Profile="(Default)">backup</Value>
     </Setting>
   </Settings>
 </SettingsFile>
