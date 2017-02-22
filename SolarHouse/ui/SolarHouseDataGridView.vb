@@ -110,7 +110,8 @@
 
         If col <> -1 Then
             If row >= grdVw.RowCount Then
-                grdVw.Rows.Insert(row - 1)
+                'grdVw.Rows.Insert(row - 1)
+                grdVw.Rows.Add()
             End If
             grdVw.CurrentCell = grdVw.Item(col, row)
             If (Not grdVw.CurrentCell.Displayed) Then
