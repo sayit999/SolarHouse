@@ -160,6 +160,16 @@
         ' validateRow(e.RowIndex)
     End Sub
 
+    Protected Sub setRowColValidationMesg(mesgType As ValidationMessageType, row As Integer, col As Integer, mesg As String)
+        Dim dt As DataTable = Me.DataSource
+        Dim errorTxtPrefix As String = getMessagePrefix(mesgType)
+        Me.Rows(row).Cells(col).ErrorText = errorTxtPrefix + mesg
+        If (Not IsNothing(dt)) Then
+            dt.Rows(row).SetColumnError(col, errorTxtPrefix + mesg)
+        End If
+        Rows(row).ErrorText = "Row has errors or warnings"
+    End Sub
+
     Protected Overridable Function validateRow(row As Integer) As Boolean
         If Not IsNothing(getBusinessReportDlg()) AndAlso getBusinessReportDlg().isDlgLoading Then
             Return True
@@ -193,15 +203,17 @@
                 If (result.validationMessages(i).validationMessageType = ValidationMessageType.IS_ERROR) Then
                     isValid = False
                 End If
-                errorTxtPrefix = getMessagePrefix(result.validationMessages(i).validationMessageType)
-                Me.Rows(row).Cells(result.validationMessages(i).col).ErrorText = errorTxtPrefix + result.validationMessages(i).validationMessage
-                If (Not IsNothing(dt)) Then
-                    dt.Rows(row).SetColumnError(result.validationMessages(i).col, errorTxtPrefix + result.validationMessages(i).validationMessage)
-                End If
+                setRowColValidationMesg(result.validationMessages(i).validationMessageType, row, result.validationMessages(i).col, result.validationMessages(i).validationMessage)
+
+                'errorTxtPrefix = getMessagePrefix(result.validationMessages(i).validationMessageType)
+                'Me.Rows(row).Cells(result.validationMessages(i).col).ErrorText = errorTxtPrefix + result.validationMessages(i).validationMessage
+                'If (Not IsNothing(dt)) Then
+                '    dt.Rows(row).SetColumnError(result.validationMessages(i).col, errorTxtPrefix + result.validationMessages(i).validationMessage)
+                'End If
             Next
-            If cnt > 0 Then
-                Rows(row).ErrorText = "Row has errors or warnings"
-            End If
+            'If cnt > 0 Then
+            '    Rows(row).ErrorText = "Row has errors or warnings"
+            'End If
         End If
         Return isValid
     End Function

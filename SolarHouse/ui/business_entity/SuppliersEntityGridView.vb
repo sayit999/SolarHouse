@@ -13,6 +13,7 @@
         Me.FirstDisplayedScrollingRowIndex = insRowInd - 1
         Me.CurrentCell = Me.Rows(insRowInd).Cells("entity_name")
         Me.BeginEdit(True)
+        Return row
     End Function
 
 End Class

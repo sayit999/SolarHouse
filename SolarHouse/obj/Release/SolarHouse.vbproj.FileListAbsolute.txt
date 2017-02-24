@@ -28,7 +28,6 @@ C:\development\SolarHouse\SolarHouse\bin\Release\SolarHouse.application
 C:\development\SolarHouse\SolarHouse\bin\Release\SolarHouse.exe
 C:\development\SolarHouse\SolarHouse\bin\Release\SolarHouse.pdb
 C:\development\SolarHouse\SolarHouse\bin\Release\SolarHouse.xml
-C:\development\SolarHouse\SolarHouse\obj\Release\SolarHouse.vbprojResolveAssemblyReference.cache
 C:\development\SolarHouse\SolarHouse\obj\Release\SolarHouse.AboutBox.resources
 C:\development\SolarHouse\SolarHouse\obj\Release\SolarHouse.BusinessReportDlg.resources
 C:\development\SolarHouse\SolarHouse\obj\Release\SolarHouse.ExpenseCategorieDlg.resources
@@ -49,3 +48,5 @@ C:\development\SolarHouse\SolarHouse\obj\Release\SolarHouse.application
 C:\development\SolarHouse\SolarHouse\obj\Release\SolarHouse.exe
 C:\development\SolarHouse\SolarHouse\obj\Release\SolarHouse.xml
 C:\development\SolarHouse\SolarHouse\obj\Release\SolarHouse.pdb
+C:\development\SolarHouse\SolarHouse\obj\Release\SolarHouse.TaskProgress.resources
+C:\development\SolarHouse\SolarHouse\obj\Release\SolarHouse.vbprojResolveAssemblyReference.cache

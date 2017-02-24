@@ -170,6 +170,10 @@ Public Class BusinessReportService
 
     End Function
 
+    Public Sub calcAcbQtyAvail(transHist As List(Of BusinessReportDAO.ProdTransactionHistoryVO))
+        Dim businessReportDAO As New BusinessReportDAO
+        businessReportDAO.calcAcbQtyAvail(transHist)
+    End Sub
 
     Public Function retrieveTransactionHistory(prodCode As String) As List(Of BusinessReportDAO.ProdTransactionHistoryVO)
         Try

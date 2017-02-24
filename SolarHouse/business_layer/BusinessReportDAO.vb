@@ -1009,9 +1009,7 @@ Public Class BusinessReportDAO
         sqlStr += "Where report_load_submit_status.report_from = (Select max(report_load_submit_status.report_from) "
         sqlStr += "                                               From report_load_submit_status "
         sqlStr += "                                               Where report_load_submit_status.report_type =  " + prepStrSql(repType)
-        sqlStr += "                                               and type = 'SUBMIT' "
         sqlStr += "                                               ) "
-        sqlStr += "and type = 'SUBMIT' "
         sqlStr += "and report_load_submit_status.report_type =  " + prepStrSql(repType)
 
         Dim dt As DataTable
@@ -1506,31 +1504,34 @@ Public Class BusinessReportDAO
             Return res
         End Function
 
-        Public Function calcAcbQtyAvail(transHist As List(Of ProdTransactionHistoryVO))
-            Dim qtyAvail As Integer
-            Dim acb As Double
-            Dim denom As Double
+    Public Sub calcAcbQtyAvail(transHist As List(Of ProdTransactionHistoryVO))
 
-            Dim prodId As Integer = -1
-            For i = 0 To transHist.Count - 1
-                If prodId <> transHist(i).productId Then
-                    prodId = transHist(i).productId
-                    qtyAvail = 0
-                    acb = 0
+        Dim qtyAvail As Integer
+        Dim acb As Double
+        Dim denom As Double
+
+        Dim prodCode As String = ""
+
+        For i = 0 To transHist.Count - 1
+            If prodCode <> transHist(i).prodCode Then
+                prodCode = transHist(i).prodCode
+                qtyAvail = 0
+                acb = 0
+            End If
+
+            If (transHist(i).tranTyp = TransactionType.purchase) Then
+                denom = (qtyAvail + transHist(i).qty)
+                If (denom <> 0) Then
+                    acb = ((acb * qtyAvail) + UIUtil.zeroIfEmpty(transHist(i).amount)) / denom
                 End If
-                If (transHist(i).tranTyp = TransactionType.purchase) Then
-                    denom = (qtyAvail + transHist(i).qty)
-                    If (denom <> 0) Then
-                        acb = ((acb * qtyAvail) + UIUtil.zeroIfEmpty(transHist(i).amount)) / denom
-                    End If
-                    qtyAvail += transHist(i).qty
-                ElseIf (transHist(i).tranTyp = TransactionType.sale) Then
-                    qtyAvail -= transHist(i).qty
-                End If
-                transHist(i).acb = acb
-                transHist(i).qtyAvail = qtyAvail
-            Next
-        End Function
+                qtyAvail += transHist(i).qty
+            ElseIf (transHist(i).tranTyp = TransactionType.sale) Then
+                qtyAvail -= transHist(i).qty
+            End If
+            transHist(i).acb = acb
+            transHist(i).qtyAvail = qtyAvail
+        Next
+    End Sub
 
         Public Function retreiveTransactionHistory(Optional prodIds As List(Of Integer) = Nothing, Optional prodCodes As List(Of String) = Nothing) As List(Of ProdTransactionHistoryVO)
             Dim lst As New List(Of ProdTransactionHistoryVO)

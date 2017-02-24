@@ -22,69 +22,69 @@ Public Class SalesRprtGridView
         MyBase.setupGridView()
     End Sub
 
-    Public Function mergeSalesAndPurchases(prdCode As String) As List(Of SalePurchaseQtyVO)
-        Dim tran As SalePurchaseQtyVO
-        Dim dlg As BusinessReportDlg = getBusinessReportDlg()
-        Dim purchasesGrdView As PurchasesRprtGridView = dlg.purchasesGrdView
-        Dim tranDate As Date
+    'Public Function mergeSalesAndPurchases(prdCode As String) As List(Of SalePurchaseQtyVO)
+    '    Dim tran As SalePurchaseQtyVO
+    '    Dim dlg As BusinessReportDlg = getBusinessReportDlg()
+    '    Dim purchasesGrdView As PurchasesRprtGridView = dlg.purchasesGrdView
+    '    Dim tranDate As Date
 
-        Dim merged As List(Of SalePurchaseQtyVO) = New List(Of SalePurchaseQtyVO)
-        For pr As Integer = 0 To purchasesGrdView.Rows.Count - 1
-            tranDate = UIUtil.parseDate(purchasesGrdView.Rows(pr).Cells(purchasesGrdView.Columns("purchasePurchasedOn").Index).Value)
-            If (purchasesGrdView.Rows(pr).Cells(purchasesGrdView.Columns("purchaseProductCode").Index).Value = prdCode AndAlso Not IsNothing(tranDate)) Then
-                tran = New SalePurchaseQtyVO
-                tran.isSale = False
-                tran.tranOn = tranDate
-                tran.qty = UIUtil.zeroIfEmpty(purchasesGrdView.Rows(pr).Cells(purchasesGrdView.Columns("purchaseQty").Index).Value)
-                merged.Add(tran)
-            End If
-        Next
+    '    Dim merged As List(Of SalePurchaseQtyVO) = New List(Of SalePurchaseQtyVO)
+    '    For pr As Integer = 0 To purchasesGrdView.Rows.Count - 1
+    '        tranDate = UIUtil.parseDate(purchasesGrdView.Rows(pr).Cells(purchasesGrdView.Columns("purchasePurchasedOn").Index).Value)
+    '        If (purchasesGrdView.Rows(pr).Cells(purchasesGrdView.Columns("purchaseProductCode").Index).Value = prdCode AndAlso Not IsNothing(tranDate)) Then
+    '            tran = New SalePurchaseQtyVO
+    '            tran.isSale = False
+    '            tran.tranOn = tranDate
+    '            tran.qty = UIUtil.zeroIfEmpty(purchasesGrdView.Rows(pr).Cells(purchasesGrdView.Columns("purchaseQty").Index).Value)
+    '            merged.Add(tran)
+    '        End If
+    '    Next
 
-        Dim isIns As Boolean = False
-        For sr As Integer = 0 To Rows.Count - 1
-            tranDate = UIUtil.parseDate(Rows(sr).Cells(Columns("saleSoldOn").Index).Value, Nothing)
-            If (Rows(sr).Cells(Columns("saleProductCode").Index).Value = prdCode AndAlso Not IsNothing(tranDate)) Then
-                tran = New SalePurchaseQtyVO
-                tran.isSale = True
-                tran.tranOn = tranDate
-                tran.qty = UIUtil.zeroIfEmpty(Rows(sr).Cells(Columns("saleQtySold").Index).Value)
-                For r As Integer = 0 To merged.Count - 1
-                    If merged(r).tranOn > tran.tranOn Then
-                        merged.Insert(r + 1, tran)
-                        isIns = True
-                        Exit For
-                    End If
+    '    Dim isIns As Boolean = False
+    '    For sr As Integer = 0 To Rows.Count - 1
+    '        tranDate = UIUtil.parseDate(Rows(sr).Cells(Columns("saleSoldOn").Index).Value, Nothing)
+    '        If (Rows(sr).Cells(Columns("saleProductCode").Index).Value = prdCode AndAlso Not IsNothing(tranDate)) Then
+    '            tran = New SalePurchaseQtyVO
+    '            tran.isSale = True
+    '            tran.tranOn = tranDate
+    '            tran.qty = UIUtil.zeroIfEmpty(Rows(sr).Cells(Columns("saleQtySold").Index).Value)
+    '            For r As Integer = 0 To merged.Count - 1
+    '                If merged(r).tranOn > tran.tranOn Then
+    '                    merged.Insert(r + 1, tran)
+    '                    isIns = True
+    '                    Exit For
+    '                End If
 
-                Next
-                If Not isIns Then
-                    merged.Add(tran)
-                End If
-            End If
-        Next
-        mergeSalesAndPurchases = merged
-    End Function
+    '            Next
+    '            If Not isIns Then
+    '                merged.Add(tran)
+    '            End If
+    '        End If
+    '    Next
+    '    mergeSalesAndPurchases = merged
+    'End Function
 
-    Protected Function checkForNegativeInventory(prdCode As String) As Boolean
-        Dim isFndErrors As Boolean = False
-        Dim dlg As BusinessReportDlg = getBusinessReportDlg()
-        Dim productsEntityDataSet As DataTable = dlg.productsEntityDataSet
+    'Protected Function checkForNegativeInventory(prdCode As String) As Boolean
+    '    Dim isFndErrors As Boolean = False
+    '    Dim dlg As BusinessReportDlg = getBusinessReportDlg()
+    '    Dim productsEntityDataSet As DataTable = dlg.productsEntityDataSet
 
-        Dim qty As Integer
-        Dim mergedTrans As List(Of SalePurchaseQtyVO)
-        qty = dlg.getProdInventoryQty(prdCode)
-        mergedTrans = mergeSalesAndPurchases(prdCode)
-        For cr = 0 To mergedTrans.Count - 1
-            If (mergedTrans(cr).isSale) Then
-                qty -= mergedTrans(cr).qty
-                If qty < 0 Then
-                    isFndErrors = True
-                End If
-            Else
-                qty += mergedTrans(cr).qty
-            End If
-        Next
-        checkForNegativeInventory = Not isFndErrors
-    End Function
+    '    Dim qty As Integer
+    '    Dim mergedTrans As List(Of SalePurchaseQtyVO)
+    '    qty = dlg.getProdInventoryQty(prdCode)
+    '    mergedTrans = mergeSalesAndPurchases(prdCode)
+    '    For cr = 0 To mergedTrans.Count - 1
+    '        If (mergedTrans(cr).isSale) Then
+    '            qty -= mergedTrans(cr).qty
+    '            If qty < 0 Then
+    '                isFndErrors = True
+    '            End If
+    '        Else
+    '            qty += mergedTrans(cr).qty
+    '        End If
+    '    Next
+    '    checkForNegativeInventory = Not isFndErrors
+    'End Function
 
     Protected Function areSaleAndPurchasesTransactionsAreValid(prdCode As String) As Boolean
         Dim dlg As BusinessReportDlg = getBusinessReportDlg()
@@ -111,6 +111,109 @@ Public Class SalesRprtGridView
 
     End Function
 
+    Private Sub insertIntoHistNotPostedTran(tran As BusinessReportDAO.ProdTransactionHistoryVO, tranHist As List(Of BusinessReportDAO.ProdTransactionHistoryVO))
+        Dim isIns As Boolean = False
+        For r As Integer = 0 To tranHist.Count - 1
+            If tranHist(r).tranDate > tran.tranDate Then
+                tranHist.Insert(r, tran)
+                isIns = True
+                Exit For
+            End If
+        Next
+        If (Not isIns) Then
+            tranHist.Add(tran)
+        End If
+    End Sub
+
+    Private Sub mergeNotPostedTransactionsIntoHist(prodCode As String, ByRef tranHist As List(Of BusinessReportDAO.ProdTransactionHistoryVO))
+        Dim tran As BusinessReportDAO.ProdTransactionHistoryVO
+
+        Dim dlg As BusinessReportDlg = getBusinessReportDlg()
+        Dim purchasesGrdView As PurchasesRprtGridView = dlg.purchasesGrdView
+        Dim tranDate As Date
+        Dim rowProdCode As String
+
+        Dim merged As List(Of SalePurchaseQtyVO) = New List(Of SalePurchaseQtyVO)
+        For pr As Integer = 0 To purchasesGrdView.Rows.Count - 1
+            If Not isTransactionPosted(pr) Then
+                rowProdCode = purchasesGrdView.Rows(pr).Cells("purchaseProductCode").Value
+                tranDate = UIUtil.parseDate(purchasesGrdView.Rows(pr).Cells(purchasesGrdView.Columns("purchasePurchasedOn").Index).Value)
+                If (rowProdCode = prodCode AndAlso Not IsNothing(tranDate)) Then
+                    tran = New BusinessReportDAO.ProdTransactionHistoryVO
+                    tran.tranTyp = BusinessReportDAO.TransactionType.purchase
+                    tran.prodCode = rowProdCode
+                    tran.tranDate = tranDate
+                    tran.qty = UIUtil.zeroIfEmpty(purchasesGrdView.Rows(pr).Cells(purchasesGrdView.Columns("purchaseQty").Index).Value)
+                    tran.acb = 0
+                    insertIntoHistNotPostedTran(tran, tranHist)
+                End If
+            End If
+        Next
+
+        For sr As Integer = 0 To Rows.Count - 1
+            If Not isTransactionPosted(sr) Then
+                rowProdCode = Rows(sr).Cells("saleProductCode").Value
+                tranDate = UIUtil.parseDate(Rows(sr).Cells(Columns("saleSoldOn").Index).Value, Nothing)
+                If (rowProdCode = prodCode AndAlso Not IsNothing(tranDate)) Then
+                    tran = New BusinessReportDAO.ProdTransactionHistoryVO
+                    tran.tranTyp = BusinessReportDAO.TransactionType.sale
+                    tran.prodCode = rowProdCode
+                    tran.tranDate = tranDate
+                    tran.qty = UIUtil.zeroIfEmpty(Rows(sr).Cells(Columns("saleQtySold").Index).Value)
+                    tran.acb = 0
+                    insertIntoHistNotPostedTran(tran, tranHist)
+                End If
+            End If
+        Next
+    End Sub
+
+    Private Function doesHistHaveNegInventory(tranHist As List(Of BusinessReportDAO.ProdTransactionHistoryVO)) As Boolean
+        For r As Integer = 0 To tranHist.Count - 1
+            If tranHist(r).qtyAvail < 0 Then
+                Return True
+            End If
+        Next
+        Return False
+    End Function
+
+    Private Function validateNoNegativeInventory() As Boolean
+        Dim tranHist As List(Of BusinessReportDAO.ProdTransactionHistoryVO)
+        Dim prdsChecked As New List(Of String)
+        Dim serv As New BusinessReportService(getBusinessReportDlg)
+        Dim isValid As Boolean = True
+        Dim prodCode As String
+        For r As Integer = 0 To RowCount - 1
+            prodCode = UIUtil.subsIfEmpty(Rows(r).Cells("saleProductCode").Value, "")
+            If (Not prdsChecked.Exists(Function(x) x = prodCode)) Then
+                prdsChecked.Add(prodCode)
+                tranHist = serv.retrieveTransactionHistory(prodCode)
+                mergeNotPostedTransactionsIntoHist(prodCode, tranHist)
+                serv.calcAcbQtyAvail(tranHist)
+                If doesHistHaveNegInventory(tranHist) Then
+                    For sr As Integer = 0 To Rows.Count - 1
+                        If (Rows(sr).Cells(Columns("saleProductCode").Index).Value = prodCode) Then
+                            setRowColValidationMesg(ValidationMessageType.IS_ERROR, sr, Columns("saleQtySold").Index, "Sale causes negative stock. Sold more than in stock")
+                            isValid = False
+                        End If
+                    Next
+                End If
+            End If
+        Next
+        Return isValid
+    End Function
+
+    Public Overrides Function validateRows()
+        If Not MyBase.validateRows() Then
+            Return False
+        End If
+        Return validateNoNegativeInventory()
+
+        'Dim prdCode As String = Rows(row).Cells("saleProductCode").Value
+        'If areSaleAndPurchasesTransactionsAreValid(prdCode) AndAlso Not checkForNegativeInventory(prdCode) Then
+        '    addError(result, "Sale causes negative stock. Sold more than in stock", row, "saleQtySold")
+        'End If
+
+    End Function
 
     Protected Overrides Sub doValidateRow(row As Integer, ByRef result As RowValidationResult)
         If isReversalTransaction(row) Then
@@ -144,12 +247,7 @@ Public Class SalesRprtGridView
                 addWarning(result, "Profit is negative", row, "saleProfitPercentage")
             End If
 
-            If (Not UIUtil.toBoolean(Me.Rows(row).Cells("is_sale_amendment").Value)) Then
-                Dim prdCode As String = Rows(row).Cells("saleProductCode").Value
-                If areSaleAndPurchasesTransactionsAreValid(prdCode) AndAlso Not checkForNegativeInventory(prdCode) Then
-                    addError(result, "Sale causes negative stock. Sold more than in stock", row, "saleQtySold")
-                End If
-            End If
+
         End If
 
 
@@ -360,10 +458,10 @@ Public Class SalesRprtGridView
                     End If
 
                     Me.CommitEdit(DataGridViewDataErrorContexts.Commit)
-                        Refresh()
-                        entityDataSetModified(dlg.wasModified())
-                    End If
-                    e.Handled = True
+                    Refresh()
+                    entityDataSetModified(dlg.wasModified())
+                End If
+                e.Handled = True
             End If
         End If
 

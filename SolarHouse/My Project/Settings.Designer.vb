@@ -80,7 +80,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("solarhousearushadatabasetest")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("solarhousearushadatabase")>  _
         Public Property database_name() As String
             Get
                 Return CType(Me("database_name"),String)
@@ -173,15 +173,15 @@ Namespace My
                 Me("business_reports_loaded") = value
             End Set
         End Property
-
-        <Global.System.Configuration.UserScopedSettingAttribute(), _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.Configuration.DefaultSettingValueAttribute("backup")> _
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("backup")>  _
         Public Property backup_dir() As String
             Get
-                Return CType(Me("backup_dir"), String)
+                Return CType(Me("backup_dir"),String)
             End Get
-            Set(value As String)
+            Set
                 Me("backup_dir") = value
             End Set
         End Property

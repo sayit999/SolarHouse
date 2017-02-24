@@ -30,6 +30,7 @@ Public Class BusinessReportGridView
 
     End Class
 
+
     Public Overrides Sub setupGridView()
         MyBase.setupGridView()
 
@@ -326,6 +327,9 @@ Public Class BusinessReportGridView
     End Sub
 
     Protected Overrides Sub OnCellDoubleClick(e As DataGridViewCellEventArgs)
+        If e.RowIndex < 0 Then
+            Return
+        End If
         If isTransactionPosted(e.RowIndex) Then
             MessageBox.Show("Posted transactions cannot be edited. Reverse(delete) the transaction and Add a new one")
         ElseIf isReversalTransaction(e.RowIndex) Then

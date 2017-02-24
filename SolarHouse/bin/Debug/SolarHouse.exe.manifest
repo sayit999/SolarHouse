@@ -4,7 +4,7 @@
   <description asmv2:iconFile="favicon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="SolarHouse" version="1.2.10.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="SolarHouse" version="1.2.12.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="SolarHouse.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -49,13 +49,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SolarHouse.exe" size="502192">
-      <assemblyIdentity name="SolarHouse" version="1.2.10.0" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="SolarHouse" version="1.2.12.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>TUq6RYopwvRDYDeCG3k2Ixw1HIL6FqnTAJaABCx8EMg=</dsig:DigestValue>
+        <dsig:DigestValue>HAwPpdwC3S2xSezE6Sgj99JYQavXvGUo2OHkBINgtgg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
