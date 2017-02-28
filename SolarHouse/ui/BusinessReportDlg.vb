@@ -179,9 +179,9 @@ Public Class BusinessReportDlg
         Return Not isReportModified() OrElse MessageBox.Show("Report has been modified. If you continue ALL data will be DELETED.  Continue?", "Continue?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes
     End Function
 
-    Private Function retrieveLastReportSubmitted() As BusinessReportDAO.ReportLoadSubmitStatusVO
+    Private Function retrieveLastBusinessReportLoadedSubmitted() As BusinessReportDAO.ReportLoadSubmitStatusVO
         Dim serv As New BusinessReportService(Me)
-        Return serv.retrieveLastReportSubmitted(BusinessReportDAO.ReportType.business)
+        Return serv.retrieveLastBusinessReportLoadedSubmitted(BusinessReportDAO.ReportType.business)
     End Function
 
     Private Sub newBusinessReportBtn_Click(sender As Object, e As EventArgs) Handles newBusinessReportBtn.Click
@@ -192,7 +192,7 @@ Public Class BusinessReportDlg
             refreshBusinessReportsAvailComboBox()
             reportViewedStateChanged()
 
-            Dim vo As BusinessReportDAO.ReportLoadSubmitStatusVO = retrieveLastReportSubmitted()
+            Dim vo As BusinessReportDAO.ReportLoadSubmitStatusVO = retrieveLastBusinessReportLoadedSubmitted()
             If (Not IsNothing(vo)) Then
                 reportFromDateTxtBox.Text = UIUtil.toDateString(vo.reportTo.AddDays(1))
                 reportFromDateTxtBox.ReadOnly = True

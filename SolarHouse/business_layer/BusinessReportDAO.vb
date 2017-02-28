@@ -10,23 +10,23 @@ Public Class BusinessReportDAO
     Public Const NULL_NUMBER As Integer = -9999
     Private Const XML_COMMA_SUBST As String = "<comma>"
 
-    Public Shared Function keyisNothing(rowX As DataRow) As Boolean
-        Return rowX Is Nothing OrElse rowX.Item("tran_date") Is Nothing OrElse rowX.Item("product_code") Is Nothing
+    Public Shared Function prodTranKeyisNothing(row As DataRow) As Boolean
+        Return row Is Nothing OrElse row.Item("tran_date") Is Nothing OrElse row.Item("product_code") Is Nothing AndAlso row.Item("updated_on") Is Nothing
     End Function
 
     Public Shared Function compareProdTrans(ByVal x As Object, ByVal y As Object) As Integer
         Dim rowX As DataRow = CType(x, DataRow)
         Dim rowY As DataRow = CType(y, DataRow)
 
-        If keyisNothing(rowX) Then
+        If prodTranKeyisNothing(rowX) AndAlso prodTranKeyisNothing(rowY) Then
             Return 0
-        ElseIf keyisNothing(rowX) Then
+        ElseIf prodTranKeyisNothing(rowX) Then
             Return -1
-        ElseIf keyisNothing(rowY) Then
+        ElseIf prodTranKeyisNothing(rowY) Then
             Return 1
         Else
-            Dim combKeyX As String = rowX.Item("product_code") + Format(rowX.Item("tran_date"), "yyyy/MM/dd") + If(rowX.Item("tran_type") = "purchased", "0", "1")
-            Dim combKeyY As String = rowY.Item("product_code") + Format(rowY.Item("tran_date"), "yyyy/MM/dd") + If(rowY.Item("tran_type") = "purchased", "0", "1")
+            Dim combKeyX As String = rowX.Item("product_code") + Format(rowX.Item("tran_date"), "yyyy/MM/dd") + If(rowX.Item("tran_type") = "purchased", "0", "1") + Format(rowX.Item("updated_on"), "yyyy/MM/dd HH:mm:ss")
+            Dim combKeyY As String = rowY.Item("product_code") + Format(rowY.Item("tran_date"), "yyyy/MM/dd") + If(rowY.Item("tran_type") = "purchased", "0", "1") + Format(rowY.Item("updated_on"), "yyyy/MM/dd HH:mm:ss")
             Return combKeyX.CompareTo(combKeyY)
         End If
 
@@ -62,6 +62,7 @@ Public Class BusinessReportDAO
         Public prodName As String
         Public isAmendment As Boolean
         Public isReversal As Boolean
+        Public updatedOn As Date
 
     End Class
 
@@ -974,11 +975,11 @@ Public Class BusinessReportDAO
         Dim sqlStr As String
         Dim reportType As String = If(businessReport.isAnAmendmentToPostedTrans, "AMENDMENT", "BUSINESS")
 
-        sqlStr = "delete from report_load_submit_status "
-        sqlStr += "where report_from = " + getSqlDate(businessReport.fromDate) + " "
-        sqlStr += "and type = " + prepStrSql(type) + " "
-        sqlStr += "and report_type = " + prepStrSql(reportType) + " "
-        executeNonRetrievalSql(sqlStr, cn)
+        'sqlStr = "delete from report_load_submit_status "
+        'sqlStr += "where report_from = " + getSqlDate(businessReport.fromDate) + " "
+        'sqlStr += "and type = " + prepStrSql(type) + " "
+        'sqlStr += "and report_type = " + prepStrSql(reportType) + " "
+        'executeNonRetrievalSql(sqlStr, cn)
 
         sqlStr = "insert into report_load_submit_status values (" + getSqlDate(businessReport.fromDate) + ", "
         sqlStr += prepStrSql(type) + ","
@@ -993,7 +994,7 @@ Public Class BusinessReportDAO
         executeNonRetrievalSql(sqlStr, cn)
     End Sub
 
-    Public Function retrieveLastReportSubmitted(reportTyp As ReportType) As ReportLoadSubmitStatusVO
+    Public Function retrieveLastBusinessReportLoadedSubmitted(reportTyp As ReportType) As ReportLoadSubmitStatusVO
         Dim sqlStr As String
         Dim stat As ReportLoadSubmitStatusVO = Nothing
 
@@ -1447,15 +1448,19 @@ Public Class BusinessReportDAO
             Next
         End Sub
 
-        Protected Sub updateProductPurchaseQtyAndACB(prodId As Integer, qty As Integer, acb As Double, cn As MySqlConnection, ByRef negProdCodes As List(Of String))
-            Dim sqlStr As String
-            sqlStr = "UPDATE product SET "
-            sqlStr += "acb_cost = " + acb.ToString + ", "
-            sqlStr += "qty_available = " + qty.ToString + ", "
-            sqlStr += getAuditSqlStr(True)
-            sqlStr += "WHERE product_id = " + CStr(prodId)
-            executeNonRetrievalSql(sqlStr, cn)
-        End Sub
+    Protected Sub updateProductPurchaseQtyAndACB(prodId As Integer, qty As Integer, acb As Double, cn As MySqlConnection, ByRef negProdCodes As List(Of String))
+
+
+        Dim sqlStr As String
+
+        sqlStr = "UPDATE product SET "
+        sqlStr += "acb_cost = " + acb.ToString + ", "
+        sqlStr += "qty_available = " + qty.ToString + ", "
+        sqlStr += getAuditSqlStr(True)
+        sqlStr += "WHERE product_id = " + CStr(prodId)
+        executeNonRetrievalSql(sqlStr, cn)
+    End Sub
+
 
         Public Function recalcAllProductAcbAndQty()
             Dim ds As DataTable = Nothing
@@ -1490,19 +1495,22 @@ Public Class BusinessReportDAO
 
         End Function
 
-        Public Function merge(purchaseTbl As DataTable, saleTbl As DataTable) As List(Of DataRow)
-            Dim res As New List(Of DataRow)
+    Public Function merge(purchaseTbl As DataTable, saleTbl As DataTable) As List(Of DataRow)
 
-            For r As Integer = 0 To purchaseTbl.Rows.Count - 1
-                res.Add(purchaseTbl.Rows(r))
-            Next
-            For r As Integer = 0 To saleTbl.Rows.Count - 1
-                res.Add(saleTbl.Rows(r))
-            Next
+        Dim res As New List(Of DataRow)
 
-            res.Sort(AddressOf compareProdTrans)
-            Return res
-        End Function
+        For r As Integer = 0 To purchaseTbl.Rows.Count - 1
+            res.Add(purchaseTbl.Rows(r))
+        Next
+
+        For r As Integer = 0 To saleTbl.Rows.Count - 1
+            res.Add(saleTbl.Rows(r))
+        Next
+
+        res.Sort(AddressOf compareProdTrans)
+        Return res
+
+    End Function
 
     Public Sub calcAcbQtyAvail(transHist As List(Of ProdTransactionHistoryVO))
 
@@ -1513,6 +1521,7 @@ Public Class BusinessReportDAO
         Dim prodCode As String = ""
 
         For i = 0 To transHist.Count - 1
+
             If prodCode <> transHist(i).prodCode Then
                 prodCode = transHist(i).prodCode
                 qtyAvail = 0
@@ -1533,123 +1542,128 @@ Public Class BusinessReportDAO
         Next
     End Sub
 
-        Public Function retreiveTransactionHistory(Optional prodIds As List(Of Integer) = Nothing, Optional prodCodes As List(Of String) = Nothing) As List(Of ProdTransactionHistoryVO)
-            Dim lst As New List(Of ProdTransactionHistoryVO)
+    Public Function retreiveTransactionHistory(Optional prodIds As List(Of Integer) = Nothing, Optional prodCodes As List(Of String) = Nothing) As List(Of ProdTransactionHistoryVO)
 
-            If prodIds Is Nothing AndAlso prodCodes Is Nothing Then
-                Return lst
-            End If
+        Dim lst As New List(Of ProdTransactionHistoryVO)
 
-            Dim prdsSql As String = "and " + If(prodIds Is Nothing, "product.product_code in " + getProdInSql(prodIds, prodCodes), "product.product_id in " + getProdInSql(prodIds, prodCodes))
-            Dim dt1 As DataTable = Nothing
-            Dim dt2 As DataTable = Nothing
-            Dim res As List(Of DataRow)
-            Dim adp As MySqlDataAdapter
-
-            Dim connection As MySqlConnection = Nothing
-            Dim sqlStr As String
-
-            Try
-                connection = connectToDB()
-                sqlStr = "select "
-                sqlStr += "     'purchased' As tran_type, "
-                sqlStr += "     purchase.purchased_on as tran_date, "
-                sqlStr += "     product.product_code as product_code, "
-                sqlStr += "     product.product_name As prod_name, "
-                sqlStr += "     product.product_id As product_id, "
-                sqlStr += "     purchase.qty_purchased as qty, "
-                sqlStr += "     qty_uom.qty_uom_name As qty_uom, "
-                sqlStr += "     purchase.amt_purchased as amt, "
-                sqlStr += "     supplier.supplier_name as supplier_name, "
-                sqlStr += "      '' acb_cost, "
-                sqlStr += "      '' qty_avail, "
-                sqlStr += "     purchase.comments  as comments, "
-                sqlStr += "     purchase.is_amendment as is_amendment,"
-                sqlStr += "     purchase.is_reversal as is_reversal "
-                sqlStr += "From product, "
-                sqlStr += "     purchase, "
-                sqlStr += "     qty_uom, "
-                sqlStr += "     supplier "
-                sqlStr += "Where purchase.product_id = product.product_id "
-                sqlStr += prdsSql
-                sqlStr += "And   purchase.purchased_on >= '2016-01-31' "
-                sqlStr += "And   qty_uom.qty_uom_id = product.qty_uom_id "
-                sqlStr += "And   purchase.supplier_id = supplier.supplier_id "
-                sqlStr += "order by tran_date, tran_type "
-
-                adp = New MySqlDataAdapter(sqlStr, connection)
-                dt1 = New DataTable
-                adp.Fill(dt1)
-
-                sqlStr = "Select  "
-                sqlStr += "      'sold' As tran_type,"
-                sqlStr += "      sale.sold_on as tran_date, "
-                sqlStr += "      product.product_code as product_code, "
-                sqlStr += "      product.product_name As prod_name, "
-                sqlStr += "      product.product_id As product_id, "
-                sqlStr += "      sale.qty_sold as qty, "
-                sqlStr += "      qty_uom.qty_uom_name As qty_uom, "
-                sqlStr += "      sale.sale_amt as amt, "
-                sqlStr += "      '' as supplier_name, "
-                sqlStr += "      '' acb_cost, "
-                sqlStr += "      '' qty_avail, "
-                sqlStr += "      sale.comments as comments, "
-                sqlStr += "      sale.is_amendment as is_amendment,"
-                sqlStr += "      sale.is_reversal as is_reversal "
-                sqlStr += "From  sale, "
-                sqlStr += "      product, "
-                sqlStr += "      qty_uom "
-                sqlStr += "Where sale.product_id = product.product_id "
-                sqlStr += prdsSql
-                sqlStr += "And   sale.sold_on >= '2016-01-31' "
-                sqlStr += "And qty_uom.qty_uom_id = product.qty_uom_id "
-                sqlStr += "order by tran_date, tran_type "
-                adp = New MySqlDataAdapter(sqlStr, connection)
-                dt2 = New DataTable
-                adp.Fill(dt2)
-
-                res = merge(dt1, dt2)
-
-                Dim dRow As DataRow
-                Dim tVo As ProdTransactionHistoryVO
-                For r As Integer = 0 To res.Count - 1
-                    tVo = New ProdTransactionHistoryVO
-                    dRow = res(r)
-                    tVo.tranDate = dRow.Item("tran_date")
-                    tVo.tranTyp = If(dRow.Item("tran_type") = "purchased", TransactionType.purchase, TransactionType.sale)
-                    tVo.qty = UIUtil.zeroIfEmpty(dRow.Item("qty"))
-                    tVo.uom = UIUtil.subsIfEmpty(dRow.Item("qty_uom"), "")
-                    tVo.purchasedFrom = UIUtil.subsIfEmpty(dRow.Item("supplier_name"), "")
-                    tVo.amount = UIUtil.zeroIfEmpty(dRow.Item("amt"))
-                    tVo.comments = UIUtil.subsIfEmpty(dRow.Item("comments"), "")
-                    tVo.prodCode = UIUtil.subsIfEmpty(dRow.Item("product_code"), "")
-                    tVo.prodName = UIUtil.subsIfEmpty(dRow.Item("prod_name"), "")
-
-                    tVo.productId = dRow.Item("product_id")
-                    tVo.supplierName = dRow.Item("supplier_name")
-
-                    tVo.isReversal = UIUtil.toBoolean(dRow.Item("is_reversal"))
-                    tVo.isAmendment = UIUtil.toBoolean(dRow.Item("is_amendment"))
-
-                    lst.Add(tVo)
-                Next
-                calcAcbQtyAvail(lst)
-            Catch ex As Exception
-                Throw ex
-            Finally
-                If Not IsNothing(dt1) Then
-                    dt1.Dispose()
-                End If
-                If Not IsNothing(dt2) Then
-                    dt2.Dispose()
-                End If
-                If (Not IsNothing(connection)) Then
-                    connection.Close()
-                End If
-            End Try
-
+        If prodIds Is Nothing AndAlso prodCodes Is Nothing Then
             Return lst
-        End Function
+        End If
+
+        Dim prdsSql As String = "and " + If(prodIds Is Nothing, "product.product_code in " + getProdInSql(prodIds, prodCodes), "product.product_id in " + getProdInSql(prodIds, prodCodes))
+
+        Dim dt1 As DataTable = Nothing
+        Dim dt2 As DataTable = Nothing
+        Dim res As List(Of DataRow)
+        Dim adp As MySqlDataAdapter
+
+        Dim connection As MySqlConnection = Nothing
+        Dim sqlStr As String
+
+        Try
+            connection = connectToDB()
+            sqlStr = "select "
+            sqlStr += "     'purchased' As tran_type, "
+            sqlStr += "     purchase.purchased_on as tran_date, "
+            sqlStr += "     product.product_code as product_code, "
+            sqlStr += "     product.product_name As prod_name, "
+            sqlStr += "     product.product_id As product_id, "
+            sqlStr += "     purchase.qty_purchased as qty, "
+            sqlStr += "     qty_uom.qty_uom_name As qty_uom, "
+            sqlStr += "     purchase.amt_purchased as amt, "
+            sqlStr += "     supplier.supplier_name as supplier_name, "
+            sqlStr += "      '' acb_cost, "
+            sqlStr += "      '' qty_avail, "
+            sqlStr += "     purchase.comments  as comments, "
+            sqlStr += "     purchase.is_amendment as is_amendment,"
+            sqlStr += "     purchase.is_reversal as is_reversal, "
+            sqlStr += "     purchase.updated_on "
+            sqlStr += "From product, "
+            sqlStr += "     purchase, "
+            sqlStr += "     qty_uom, "
+            sqlStr += "     supplier "
+            sqlStr += "Where purchase.product_id = product.product_id "
+            sqlStr += prdsSql
+            sqlStr += "And   purchase.purchased_on >= '2016-01-31' "
+            sqlStr += "And   qty_uom.qty_uom_id = product.qty_uom_id "
+            sqlStr += "And   purchase.supplier_id = supplier.supplier_id "
+            sqlStr += "order by tran_date, tran_type, purchase.updated_on  "
+
+            adp = New MySqlDataAdapter(sqlStr, connection)
+            dt1 = New DataTable
+            adp.Fill(dt1)
+
+            sqlStr = "Select  "
+            sqlStr += "      'sold' As tran_type,"
+            sqlStr += "      sale.sold_on as tran_date, "
+            sqlStr += "      product.product_code as product_code, "
+            sqlStr += "      product.product_name As prod_name, "
+            sqlStr += "      product.product_id As product_id, "
+            sqlStr += "      sale.qty_sold as qty, "
+            sqlStr += "      qty_uom.qty_uom_name As qty_uom, "
+            sqlStr += "      sale.sale_amt as amt, "
+            sqlStr += "      '' as supplier_name, "
+            sqlStr += "      '' acb_cost, "
+            sqlStr += "      '' qty_avail, "
+            sqlStr += "      sale.comments as comments, "
+            sqlStr += "      sale.is_amendment as is_amendment,"
+            sqlStr += "      sale.is_reversal as is_reversal, "
+            sqlStr += "     sale.updated_on "
+            sqlStr += "From  sale, "
+            sqlStr += "      product, "
+            sqlStr += "      qty_uom "
+            sqlStr += "Where sale.product_id = product.product_id "
+            sqlStr += prdsSql
+            sqlStr += "And   sale.sold_on >= '2016-01-31' "
+            sqlStr += "And qty_uom.qty_uom_id = product.qty_uom_id "
+            sqlStr += "order by tran_date, tran_type, sale.updated_on "
+            adp = New MySqlDataAdapter(sqlStr, connection)
+            dt2 = New DataTable
+            adp.Fill(dt2)
+
+            res = merge(dt1, dt2)
+
+            Dim dRow As DataRow
+            Dim tVo As ProdTransactionHistoryVO
+            For r As Integer = 0 To res.Count - 1
+                tVo = New ProdTransactionHistoryVO
+                dRow = res(r)
+                tVo.tranDate = dRow.Item("tran_date")
+                tVo.tranTyp = If(dRow.Item("tran_type") = "purchased", TransactionType.purchase, TransactionType.sale)
+                tVo.qty = UIUtil.zeroIfEmpty(dRow.Item("qty"))
+                tVo.uom = UIUtil.subsIfEmpty(dRow.Item("qty_uom"), "")
+                tVo.purchasedFrom = UIUtil.subsIfEmpty(dRow.Item("supplier_name"), "")
+                tVo.amount = UIUtil.zeroIfEmpty(dRow.Item("amt"))
+                tVo.comments = UIUtil.subsIfEmpty(dRow.Item("comments"), "")
+                tVo.prodCode = UIUtil.subsIfEmpty(dRow.Item("product_code"), "")
+
+                tVo.prodName = UIUtil.subsIfEmpty(dRow.Item("prod_name"), "")
+
+                tVo.productId = dRow.Item("product_id")
+                tVo.supplierName = dRow.Item("supplier_name")
+
+                tVo.isReversal = UIUtil.toBoolean(dRow.Item("is_reversal"))
+                tVo.isAmendment = UIUtil.toBoolean(dRow.Item("is_amendment"))
+                tVo.updatedOn = dRow.Item("updated_on")
+                lst.Add(tVo)
+            Next
+            calcAcbQtyAvail(lst)
+        Catch ex As Exception
+            Throw ex
+        Finally
+            If Not IsNothing(dt1) Then
+                dt1.Dispose()
+            End If
+            If Not IsNothing(dt2) Then
+                dt2.Dispose()
+            End If
+            If (Not IsNothing(connection)) Then
+                connection.Close()
+            End If
+        End Try
+
+        Return lst
+    End Function
 
         Private Sub setProdsACBAbdQtyToZero(prodIds As List(Of Integer), cn As MySqlConnection)
             Dim sqlStr As String
@@ -1660,51 +1674,55 @@ Public Class BusinessReportDAO
             sqlStr += "where product_id in " + getProdInSql(prodIds)
             executeNonRetrievalSql(sqlStr, cn)
 
-        End Sub
+    End Sub
 
-        Protected Function recalcProductAcbAndQty(prodIds As List(Of Integer), cn As MySqlConnection) As Boolean
-            Dim negProdCodes As New List(Of String)
-            If (prodIds.Count <= 0) Then
-                Return True
-            End If
 
-            setProdsACBAbdQtyToZero(prodIds, cn)
+    Protected Function recalcProductAcbAndQty(prodIds As List(Of Integer), cn As MySqlConnection) As Boolean
 
-            Dim res As List(Of ProdTransactionHistoryVO) = retreiveTransactionHistory(prodIds, Nothing)
-            Dim hasProdHitNeg As Boolean = False
-            Dim prodId As Integer = -1
-            Dim qtyAvail As Integer
-            Dim acb As Integer
-            For i = 0 To res.Count - 1
-                If prodId <> res(i).productId Then
-                    If (prodId <> -1) AndAlso Not hasProdHitNeg Then
-                        updateProductPurchaseQtyAndACB(prodId, qtyAvail, acb, cn, negProdCodes)
-                    End If
-                    prodId = res(i).productId
-                    hasProdHitNeg = False
+        Dim negProdCodes As New List(Of String)
+        If (prodIds.Count <= 0) Then
+            Return True
+        End If
+
+        setProdsACBAbdQtyToZero(prodIds, cn)
+
+        Dim res As List(Of ProdTransactionHistoryVO) = retreiveTransactionHistory(prodIds, Nothing)
+        Dim hasProdHitNeg As Boolean = False
+        Dim prodId As Integer = -1
+        Dim qtyAvail As Integer
+        Dim acb As Integer
+        For i = 0 To res.Count - 1
+            If prodId <> res(i).productId Then
+                If (prodId <> -1) AndAlso Not hasProdHitNeg Then
+                    updateProductPurchaseQtyAndACB(prodId, qtyAvail, acb, cn, negProdCodes)
                 End If
-
-                If (qtyAvail < 0 OrElse acb < 0) AndAlso Not hasProdHitNeg Then
-                    hasProdHitNeg = True
-                    Dim code As String = res(i).prodCode
-                    negProdCodes.Add(code + "(" + If(qtyAvail < 0, "qty:" + qtyAvail.ToString, "") + " " + If(acb < 0, "acb:" + acb.ToString, "") + ")")
-                End If
-                qtyAvail = res(i).qtyAvail
-                acb = res(i).acb
-            Next
-
-            If (prodId <> -1) AndAlso Not hasProdHitNeg Then
-                updateProductPurchaseQtyAndACB(prodId, qtyAvail, acb, cn, negProdCodes)
+                prodId = res(i).productId
+                hasProdHitNeg = False
             End If
 
-            If (negProdCodes.Count > 0) Then
-                informUserOfProdsYieldingNegInventory(negProdCodes)
-                Return False
-            Else
-                Return True
+            qtyAvail = res(i).qtyAvail
+            acb = res(i).acb
+
+            If (qtyAvail < 0 OrElse acb < 0) AndAlso Not hasProdHitNeg Then
+                hasProdHitNeg = True
+                Dim code As String = res(i).prodCode
+                negProdCodes.Add(code + "(" + If(qtyAvail < 0, "qty:" + qtyAvail.ToString, "") + " " + If(acb < 0, "acb:" + acb.ToString, "") + ")")
             End If
 
-        End Function
+        Next
+
+        If (prodId <> -1) AndAlso Not hasProdHitNeg Then
+            updateProductPurchaseQtyAndACB(prodId, qtyAvail, acb, cn, negProdCodes)
+        End If
+
+        If (negProdCodes.Count > 0) Then
+            informUserOfProdsYieldingNegInventory(negProdCodes)
+            Return False
+        Else
+            Return True
+        End If
+
+    End Function
 
         Public Function lookupProdQtyAndAcb(prodIds As List(Of Integer)) As DataTable
             Dim sql As String

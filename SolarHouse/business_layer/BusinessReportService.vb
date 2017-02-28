@@ -187,10 +187,10 @@ Public Class BusinessReportService
         End Try
     End Function
 
-    Public Function retrieveLastReportSubmitted(reportTyp As BusinessReportDAO.ReportType) As BusinessReportDAO.ReportLoadSubmitStatusVO
+    Public Function retrieveLastBusinessReportLoadedSubmitted(reportTyp As BusinessReportDAO.ReportType) As BusinessReportDAO.ReportLoadSubmitStatusVO
         Try
             Dim businessReportDAO As New BusinessReportDAO
-            Return businessReportDAO.retrieveLastReportSubmitted(reportTyp)
+            Return businessReportDAO.retrieveLastBusinessReportLoadedSubmitted(reportTyp)
         Catch ex As Exception
             MessageBox.Show(parent, "Failed to retrieve Last Report Submitted.  Reason:" + ex.ToString)
             Return Nothing
