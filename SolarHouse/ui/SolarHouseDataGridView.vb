@@ -2,8 +2,6 @@
     Inherits DataGridView
     ' attibutes
 
-
-
     Public Const ROW_VALIDATION_MESSAGE As Integer = 99999
 
     Private prevRowEntered As Integer = -1
@@ -359,7 +357,9 @@
 
     End Sub
 
-
+    Protected Function isValidDataGridViewRow(row As Integer) As Boolean
+        Return row >= 0 AndAlso row < Rows.Count
+    End Function
 
 
 End Class

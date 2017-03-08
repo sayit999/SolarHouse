@@ -6,7 +6,7 @@
     End Sub
 
     Protected Overrides Function isReversalTransaction(row As Integer) As Boolean
-        Return UIUtil.toBoolean(Rows(row).Cells("isPurchasePostedReversal").Value)
+        Return isValidDataGridViewRow(row) AndAlso UIUtil.toBoolean(Rows(row).Cells("isPurchasePostedReversal").Value)
     End Function
 
     Protected Overrides Sub indicateTransactionReversed(row As Integer, Optional isReversed As Boolean = True)
@@ -25,7 +25,7 @@
     End Sub
 
     Protected Overrides Function isTransactionPosted(row As Integer) As Boolean
-        Return UIUtil.toBoolean(Rows(row).Cells("isPurchasePosted").Value)
+        Return isValidDataGridViewRow(row) AndAlso UIUtil.toBoolean(Rows(row).Cells("isPurchasePosted").Value)
     End Function
 
     Protected Overrides Sub doValidateRow(row As Integer, ByRef result As RowValidationResult)

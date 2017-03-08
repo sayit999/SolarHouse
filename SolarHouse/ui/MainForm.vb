@@ -169,6 +169,8 @@ Public Class MainForm
     End Sub
 
     Private Sub CalcQtyACBBtn_Click(sender As Object, e As EventArgs) Handles CalcQtyACBBtn.Click
+        'Dim dlg As New TestWindowsControlLibrary.TestDLLForm
+        'dlg.ShowDialog()
         Dim serv As New BusinessReportService(Me)
         If serv.recalcProductAcbAndQty() Then
             MessageBox.Show("Inventory ACB and Qty Recalculated")

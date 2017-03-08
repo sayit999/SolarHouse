@@ -420,12 +420,11 @@ Public Class SalesRprtGridView
     End Sub
 
     Protected Overrides Function isTransactionPosted(row As Integer) As Boolean
-        Return UIUtil.toBoolean(Rows(row).Cells("isSalePosted").Value)
+        Return isValidDataGridViewRow(row) AndAlso UIUtil.toBoolean(Rows(row).Cells("isSalePosted").Value)
     End Function
 
     Protected Overrides Function isReversalTransaction(row As Integer) As Boolean
-        Return UIUtil.toBoolean(Rows(row).Cells("isSalePostedReversal").Value)
-
+        Return isValidDataGridViewRow(row) AndAlso UIUtil.toBoolean(Rows(row).Cells("isSalePostedReversal").Value)
     End Function
 
     Protected Overrides Sub indicateTransactionReversed(row As Integer, Optional isReversed As Boolean = True)
