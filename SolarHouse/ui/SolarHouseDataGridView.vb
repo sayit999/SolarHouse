@@ -322,7 +322,12 @@
     End Sub
 
     Public Function insertRowAtCurrentPos()
-        insertRowAtCurrentPos = insertRow(CurrentCell.RowIndex)
+        Dim insRow As Integer = If(IsNothing(CurrentCell), 0, CurrentCell.RowIndex + 1)
+
+        If (insRow > Rows.Count) Then
+            insRow = Rows.Count
+        End If
+        Return insertRow(insRow)
     End Function
 
     Public Overridable Function insertRow(rowAt As Integer)

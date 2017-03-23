@@ -222,7 +222,7 @@ Public Class BusinessRprtEntityGridView
     End Function
 
     Public Overrides Function insertRow(rowAt As Integer)
-        rowAt += 1
+        ' rowAt += 1
         insertEntityRow(rowAt)
         Return rowAt
     End Function

@@ -49,3 +49,6 @@ C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.application
 C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.exe
 C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.xml
 C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.pdb
+C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.BusinessPerformanceDashboard.resources
+C:\development\SolarHouse\SolarHouse\obj\Debug\SolarHouse.vbprojResolveAssemblyReference.cache
+C:\development\SolarHouse\SolarHouse\bin\Debug\TestWindowsControlLibrary.dll

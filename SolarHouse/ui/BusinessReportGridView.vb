@@ -264,7 +264,7 @@ Public Class BusinessReportGridView
     End Function
 
     Public Overrides Function insertRow(rowAt As Integer)
-        rowAt += 1
+        ' rowAt += 1
         Me.Rows.Insert(rowAt, 1)
         Me.CurrentCell = Me.Rows(rowAt).Cells(0)
         BeginEdit(True)
@@ -410,7 +410,7 @@ Public Class BusinessReportGridView
 
     Protected Overrides Sub OnKeyUp(e As KeyEventArgs)
         If (e.KeyCode = Keys.Insert) Then
-            insertRow(CurrentRow.Index)
+            insertRowAtCurrentPos()
             e.Handled = True
         End If
         MyBase.OnKeyUp(e)

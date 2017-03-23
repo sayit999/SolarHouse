@@ -4,7 +4,7 @@
   <description asmv2:iconFile="favicon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="SolarHouse" version="1.2.12.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="SolarHouse" version="1.2.15.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="SolarHouse.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -48,14 +48,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SolarHouse.exe" size="502192">
-      <assemblyIdentity name="SolarHouse" version="1.2.12.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SolarHouse.exe" size="499120">
+      <assemblyIdentity name="SolarHouse" version="1.2.15.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>HAwPpdwC3S2xSezE6Sgj99JYQavXvGUo2OHkBINgtgg=</dsig:DigestValue>
+        <dsig:DigestValue>WWKdG3wCVvUqBoN0EG32LS9ST+wm6vPZU6sPTzO5S18=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TestWindowsControlLibrary.dll" size="30208">
+      <assemblyIdentity name="TestWindowsControlLibrary" version="1.0.6268.31048" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>nwqUaK5+xUKMw3E4HjvyXNs+r22UwS7O/DyTnDYCx+c=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

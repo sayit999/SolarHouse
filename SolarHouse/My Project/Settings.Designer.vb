@@ -80,7 +80,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("solarhousearushadatabase")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("solarhousearushadatabasetest")>  _
         Public Property database_name() As String
             Get
                 Return CType(Me("database_name"),String)

@@ -7,14 +7,14 @@
     <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="SolarHouse.exe.manifest" size="5205">
+    <dependentAssembly dependencyType="install" codebase="SolarHouse.exe.manifest" size="5880">
       <assemblyIdentity name="SolarHouse.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>t0A3RZZCrcrxfvRV7UfDxpwrU988eHG7V3Zn9ujFDPk=</dsig:DigestValue>
+        <dsig:DigestValue>XHxG1P2PO+aIlL4MfQ+S4QOO/FtPhXzMmlvGuXk7s6c=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
