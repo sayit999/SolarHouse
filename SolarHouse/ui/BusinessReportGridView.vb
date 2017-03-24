@@ -263,18 +263,26 @@ Public Class BusinessReportGridView
         Return UIUtil.zeroIfEmpty(Me.Rows(row).Cells(col).Value)
     End Function
 
+    Private Sub setupNewRow(rowInd As Integer)
+        Me.CurrentCell = Me.Rows(rowInd).Cells(0)
+        BeginEdit(True)
+        Dim dlg As BusinessReportDlg = getBusinessReportDlg()
+        If (Not IsNothing(dlg) AndAlso dlg.isAnAmendementReport) Then
+            Rows(rowInd).Cells(getIsAmendmentColName()).Value = UIUtil.toBinaryBooleanString(True)
+            Rows(rowInd).ReadOnly = False
+            Me.Refresh()
+        End If
+    End Sub
+
+    Protected Overrides Sub OnRowsAdded(e As System.Windows.Forms.DataGridViewRowsAddedEventArgs)
+        setupNewRow(e.RowIndex)
+    End Sub
+
     Public Overrides Function insertRow(rowAt As Integer)
         ' rowAt += 1
         Me.Rows.Insert(rowAt, 1)
-        Me.CurrentCell = Me.Rows(rowAt).Cells(0)
-        BeginEdit(True)
-        insertRow = rowAt
-        Dim dlg As BusinessReportDlg = getBusinessReportDlg()
-        If (Not IsNothing(dlg) AndAlso dlg.isAnAmendementReport) Then
-            Rows(rowAt).Cells(getIsAmendmentColName()).Value = UIUtil.toBinaryBooleanString(True)
-            Rows(rowAt).ReadOnly = False
-            Me.Refresh()
-        End If
+        setupNewRow(rowAt)
+        Return rowAt
     End Function
 
     Protected Overrides Sub colorCell(e As DataGridViewCellFormattingEventArgs)
