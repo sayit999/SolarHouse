@@ -275,7 +275,11 @@ Public Class BusinessReportGridView
     End Sub
 
     Protected Overrides Sub OnRowsAdded(e As System.Windows.Forms.DataGridViewRowsAddedEventArgs)
-        setupNewRow(e.RowIndex)
+        Dim dlg As BusinessReportDlg = getBusinessReportDlg()
+        If (Not IsNothing(dlg) AndAlso Not dlg.isDlgLoading) Then
+            setupNewRow(e.RowIndex)
+        End If
+
     End Sub
 
     Public Overrides Function insertRow(rowAt As Integer)

@@ -41,9 +41,6 @@
             <setting name="business_reports_loaded" serializeAs="String">
                 <value>business_reports\loaded</value>
             </setting>
-            <setting name="backup_dir" serializeAs="String">
-                <value>backup</value>
-            </setting>
         </SolarHouse.My.MySettings>
     </userSettings>
 </configuration>
