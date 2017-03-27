@@ -154,7 +154,7 @@ Public Class SolarHouseDao
         sql += "      product.retail_discount_room_percentage, "
         sql += "      product.min_ret_gross_profit_margin_percentage, "
         sql += "      product.retail_sale_price, "
-        sql += "      low_stock_alert_qty, "
+        ' sql += "      low_stock_alert_qty, "
         sql += "      is_reorder, "
         sql += "      product.comments, "
         sql += "      product.product_id "

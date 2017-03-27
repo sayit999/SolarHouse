@@ -48,14 +48,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SolarHouse.exe" size="468400">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SolarHouse.exe" size="467888">
       <assemblyIdentity name="SolarHouse" version="1.2.17.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>tKTD9Gqj0b9CFHiVJLug8EVott8CrPWNRmEtM5a7DD4=</dsig:DigestValue>
+        <dsig:DigestValue>QBogFMqA4yzGYq1+PkG4Enisu+OYI5fkwcNCEtz2aR4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
