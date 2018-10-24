@@ -149,4 +149,24 @@ Public Class UIUtil
     Public Shared Function isTestSystem() As Boolean
         Return UCase(My.Settings.database_name).IndexOf("TEST") <> -1
     End Function
+
+    Public Shared Sub shadeAlternateGridRows(grdVw As DataGridView)
+        For i = 0 To (grdVw.RowCount - 1)
+            If i Mod 2 = 0 Then
+                grdVw.Rows(i).DefaultCellStyle.BackColor = Color.FromArgb(239, 254, 255)
+            Else
+                grdVw.Rows(i).DefaultCellStyle.BackColor = Color.White
+            End If
+        Next
+    End Sub
+
+    Public Shared Function getForm(forname As String) As Form
+
+        For Each frm As Form In Application.OpenForms
+            If frm.Name.Equals(forname) Then
+                Return frm
+            End If
+        Next
+        Return Nothing
+    End Function
 End Class

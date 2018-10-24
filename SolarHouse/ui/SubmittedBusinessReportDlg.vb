@@ -1,4 +1,4 @@
-﻿Public Class SubmittedProdsAcbAndQtyDlg
+﻿Public Class SubmittedBusinessReportDlg
     Dim affectedPrdsQtyAndAcb As DataTable
 
     Public Sub New(affectedPrdsQtyAndAcb As DataTable)
@@ -34,6 +34,7 @@
             Next
         End If
 
+        lowStockAlertGrdVw.loadGrid()
 
     End Sub
 End Class

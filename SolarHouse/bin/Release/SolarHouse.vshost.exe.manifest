@@ -4,7 +4,7 @@
   <description asmv2:iconFile="favicon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="SolarHouse" version="1.2.17.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="SolarHouse" version="1.2.25.1" language="neutral" processorArchitecture="msil" />
     <commandLine file="SolarHouse.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -48,14 +48,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SolarHouse.exe" size="467888">
-      <assemblyIdentity name="SolarHouse" version="1.2.17.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SolarHouse.exe" size="655360">
+      <assemblyIdentity name="SolarHouse" version="1.2.25.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>QBogFMqA4yzGYq1+PkG4Enisu+OYI5fkwcNCEtz2aR4=</dsig:DigestValue>
+        <dsig:DigestValue>DVcL1lj2ImjL6Qwbtz+K9ZOYSsXl4puAzBl/3ydy3+o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -80,13 +80,13 @@
       <dsig:DigestValue>NHL4ENaH815helDnQN+N1+TwCGRcKziCT/BtqeYBICs=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SolarHouse.exe.config" size="2456">
+  <file name="SolarHouse.exe.config" size="2739">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>K9IGyg2xeon9sJBdIzl2xOLG9kY5KljT5c37ZX0REvE=</dsig:DigestValue>
+      <dsig:DigestValue>bW9zINjjLUzJ0lNrx5iRklls0RaE4jQt9hAjKvk25c4=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

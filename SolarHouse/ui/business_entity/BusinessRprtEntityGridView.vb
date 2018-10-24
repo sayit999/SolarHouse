@@ -144,11 +144,11 @@ Public Class BusinessRprtEntityGridView
     Protected Function isUnique(val As String, colName As String)
         Dim rows As Integer = Me.RowCount
         Dim r As Integer
-        val = UCase(val)
+        val = UCase(Trim(val))
         Dim count As Integer = 0
         For r = 0 To Me.RowCount - 1
             If (Not StringUtil.isEmpty(Me.Rows(r).Cells(colName).Value)) Then
-                If (UCase(Me.Rows(r).Cells(colName).Value) = val) Then
+                If (UCase(Trim(Me.Rows(r).Cells(colName).Value)) = val) Then
                     count += 1
                 End If
                 If (count > 1) Then

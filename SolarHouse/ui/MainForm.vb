@@ -8,7 +8,7 @@ Public Class MainForm
     End Function
 
     Private Sub BusinessReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BusinessReportToolStripMenuItem.Click
-        BusinessReportDlg.ShowDialog()
+        BusinessReportDlg.ShowDialog(Me)
     End Sub
 
     Private Sub BusinessReportTBBtn_Click(sender As Object, e As EventArgs) Handles BusinessReportTBBtn.Click
@@ -177,4 +177,14 @@ Public Class MainForm
         End If
     End Sub
 
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles lowStockBtn.Click
+        Dim dlg As LowStockAlertForm = New LowStockAlertForm
+        dlg.ShowDialog()
+    End Sub
+
+
+    Private Sub debtPaymentHistoryButton_Click(sender As Object, e As EventArgs) Handles debtPaymentHistoryButton.Click
+        Dim dlg As CreditPurchPaymentHistDlg = New CreditPurchPaymentHistDlg
+        dlg.ShowDialog()
+    End Sub
 End Class

@@ -9,6 +9,8 @@ End Class
 Public Class SalesRprtGridView
     Inherits BusinessReportGridView
 
+    Dim NO_SALE As String = "NO_SALE"
+
     Private Sub InitializeComponent()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -20,6 +22,23 @@ Public Class SalesRprtGridView
 
     Public Overrides Sub setupGridView()
         MyBase.setupGridView()
+
+        transactionComparer.compCols.Add(0)
+        transactionComparer.compCols.Add(1)
+        transactionComparer.compCols.Add(15)
+        transactionComparer.compCols.Add(16)
+
+    End Sub
+
+    Public Sub prodPurchasedChanged(prodCode As String)
+        Dim dlg As BusinessReportDlg = getBusinessReportDlg()
+        Dim acb As Integer = dlg.productTransactionHistory.getProductAcb(prodCode)
+        For r As Integer = 0 To RowCount - 1
+            If UIUtil.subsIfEmpty(Rows(r).Cells("saleProductCode").Value, "") = prodCode Then
+                Me.Rows(r).Cells("saleProdAcbCost").Value = acb
+            End If
+        Next
+        Refresh()
     End Sub
 
     'Public Function mergeSalesAndPurchases(prdCode As String) As List(Of SalePurchaseQtyVO)
@@ -111,85 +130,86 @@ Public Class SalesRprtGridView
 
     End Function
 
-    Private Sub insertIntoHistNotPostedTran(tran As BusinessReportDAO.ProdTransactionHistoryVO, tranHist As List(Of BusinessReportDAO.ProdTransactionHistoryVO))
-        Dim isIns As Boolean = False
-        For r As Integer = 0 To tranHist.Count - 1
-            If tranHist(r).tranDate > tran.tranDate Then
-                tranHist.Insert(r, tran)
-                isIns = True
-                Exit For
-            End If
-        Next
-        If (Not isIns) Then
-            tranHist.Add(tran)
-        End If
-    End Sub
+    'Private Sub insertIntoHistNotPostedTran(tran As BusinessReportDAO.ProdTransactionHistoryVO, tranHist As List(Of BusinessReportDAO.ProdTransactionHistoryVO))
+    '    Dim isIns As Boolean = False
+    '    For r As Integer = 0 To tranHist.Count - 1
+    '        If tranHist(r).tranDate > tran.tranDate Then
+    '            tranHist.Insert(r, tran)
+    '            isIns = True
+    '            Exit For
+    '        End If
+    '    Next
+    '    If (Not isIns) Then
+    '        tranHist.Add(tran)
+    '    End If
+    'End Sub
 
-    Private Sub mergeNotPostedTransactionsIntoHist(prodCode As String, ByRef tranHist As List(Of BusinessReportDAO.ProdTransactionHistoryVO))
-        Dim tran As BusinessReportDAO.ProdTransactionHistoryVO
+    'Private Sub mergeNotPostedTransactionsIntoHist(prodCode As String, ByRef tranHist As List(Of BusinessReportDAO.ProdTransactionHistoryVO))
+    '    Dim tran As BusinessReportDAO.ProdTransactionHistoryVO
 
-        Dim dlg As BusinessReportDlg = getBusinessReportDlg()
-        Dim purchasesGrdView As PurchasesRprtGridView = dlg.purchasesGrdView
-        Dim tranDate As Date
-        Dim rowProdCode As String
+    '    Dim dlg As BusinessReportDlg = getBusinessReportDlg()
+    '    Dim purchasesGrdView As PurchasesRprtGridView = dlg.purchasesGrdView
+    '    Dim tranDate As Date
+    '    Dim rowProdCode As String
 
-        Dim merged As List(Of SalePurchaseQtyVO) = New List(Of SalePurchaseQtyVO)
-        For pr As Integer = 0 To purchasesGrdView.Rows.Count - 1
-            If Not isTransactionPosted(pr) Then
-                rowProdCode = purchasesGrdView.Rows(pr).Cells("purchaseProductCode").Value
-                tranDate = UIUtil.parseDate(purchasesGrdView.Rows(pr).Cells(purchasesGrdView.Columns("purchasePurchasedOn").Index).Value)
-                If (rowProdCode = prodCode AndAlso Not IsNothing(tranDate)) Then
-                    tran = New BusinessReportDAO.ProdTransactionHistoryVO
-                    tran.tranTyp = BusinessReportDAO.TransactionType.purchase
-                    tran.prodCode = rowProdCode
-                    tran.tranDate = tranDate
-                    tran.qty = UIUtil.zeroIfEmpty(purchasesGrdView.Rows(pr).Cells(purchasesGrdView.Columns("purchaseQty").Index).Value)
-                    tran.acb = 0
-                    insertIntoHistNotPostedTran(tran, tranHist)
-                End If
-            End If
-        Next
+    '    Dim merged As List(Of SalePurchaseQtyVO) = New List(Of SalePurchaseQtyVO)
+    '    For pr As Integer = 0 To purchasesGrdView.Rows.Count - 1
+    '        If Not isTransactionPosted(pr) Then
+    '            rowProdCode = purchasesGrdView.Rows(pr).Cells("purchaseProductCode").Value
+    '            tranDate = UIUtil.parseDate(purchasesGrdView.Rows(pr).Cells(purchasesGrdView.Columns("purchasePurchasedOn").Index).Value)
+    '            If (rowProdCode = prodCode AndAlso Not IsNothing(tranDate)) Then
+    '                tran = New BusinessReportDAO.ProdTransactionHistoryVO
+    '                tran.tranTyp = BusinessReportDAO.TransactionType.purchase
+    '                tran.prodCode = rowProdCode
+    '                tran.tranDate = tranDate
+    '                tran.qty = UIUtil.zeroIfEmpty(purchasesGrdView.Rows(pr).Cells(purchasesGrdView.Columns("purchaseQty").Index).Value)
+    '                tran.acb = 0
+    '                insertIntoHistNotPostedTran(tran, tranHist)
+    '            End If
+    '        End If
+    '    Next
 
-        For sr As Integer = 0 To Rows.Count - 1
-            If Not isTransactionPosted(sr) Then
-                rowProdCode = Rows(sr).Cells("saleProductCode").Value
-                tranDate = UIUtil.parseDate(Rows(sr).Cells(Columns("saleSoldOn").Index).Value, Nothing)
-                If (rowProdCode = prodCode AndAlso Not IsNothing(tranDate)) Then
-                    tran = New BusinessReportDAO.ProdTransactionHistoryVO
-                    tran.tranTyp = BusinessReportDAO.TransactionType.sale
-                    tran.prodCode = rowProdCode
-                    tran.tranDate = tranDate
-                    tran.qty = UIUtil.zeroIfEmpty(Rows(sr).Cells(Columns("saleQtySold").Index).Value)
-                    tran.acb = 0
-                    insertIntoHistNotPostedTran(tran, tranHist)
-                End If
-            End If
-        Next
-    End Sub
+    '    For sr As Integer = 0 To Rows.Count - 1
+    '        If Not isTransactionPosted(sr) Then
+    '            rowProdCode = Rows(sr).Cells("saleProductCode").Value
+    '            tranDate = UIUtil.parseDate(Rows(sr).Cells(Columns("saleSoldOn").Index).Value, Nothing)
+    '            If (rowProdCode = prodCode AndAlso Not IsNothing(tranDate)) Then
+    '                tran = New BusinessReportDAO.ProdTransactionHistoryVO
+    '                tran.tranTyp = BusinessReportDAO.TransactionType.sale
+    '                tran.prodCode = rowProdCode
+    '                tran.tranDate = tranDate
+    '                tran.qty = UIUtil.zeroIfEmpty(Rows(sr).Cells(Columns("saleQtySold").Index).Value)
+    '                tran.acb = 0
+    '                insertIntoHistNotPostedTran(tran, tranHist)
+    '            End If
+    '        End If
+    '    Next
+    'End Sub
 
-    Private Function doesHistHaveNegInventory(tranHist As List(Of BusinessReportDAO.ProdTransactionHistoryVO)) As Boolean
-        For r As Integer = 0 To tranHist.Count - 1
-            If tranHist(r).qtyAvail < 0 Then
-                Return True
-            End If
-        Next
-        Return False
-    End Function
+    'Private Function doesHistHaveNegInventory(tranHist As List(Of BusinessReportDAO.ProdTransactionHistoryVO)) As Boolean
+    '    For r As Integer = 0 To tranHist.Count - 1
+    '        If tranHist(r).qtyAvail < 0 Then
+    '            Return True
+    '        End If
+    '    Next
+    '    Return False
+    'End Function
 
     Private Function validateNoNegativeInventory() As Boolean
-        Dim tranHist As List(Of BusinessReportDAO.ProdTransactionHistoryVO)
+        Dim dlg As BusinessReportDlg = getBusinessReportDlg()
+
+        Dim negProdTrans As List(Of BusinessReportDAO.ProdTransactionHistoryVO)
         Dim prdsChecked As New List(Of String)
-        Dim serv As New BusinessReportService(getBusinessReportDlg)
+
         Dim isValid As Boolean = True
         Dim prodCode As String
         For r As Integer = 0 To RowCount - 1
             prodCode = UIUtil.subsIfEmpty(Rows(r).Cells("saleProductCode").Value, "")
             If (Not prdsChecked.Exists(Function(x) x = prodCode)) Then
                 prdsChecked.Add(prodCode)
-                tranHist = serv.retrieveTransactionHistory(prodCode)
-                mergeNotPostedTransactionsIntoHist(prodCode, tranHist)
-                serv.calcAcbQtyAvail(tranHist)
-                If doesHistHaveNegInventory(tranHist) Then
+                negProdTrans = dlg.productTransactionHistory.getNegTransactonForProd(prodCode)
+                If (negProdTrans.Count > 0) Then
+                    isValid = False
                     For sr As Integer = 0 To Rows.Count - 1
                         If (Rows(sr).Cells(Columns("saleProductCode").Index).Value = prodCode) Then
                             setRowColValidationMesg(ValidationMessageType.IS_ERROR, sr, Columns("saleQtySold").Index, "Sale causes negative stock. Sold more than in stock")
@@ -199,14 +219,32 @@ Public Class SalesRprtGridView
                 End If
             End If
         Next
+
+
         Return isValid
+
     End Function
 
     Public Overrides Function validateRows()
         If Not MyBase.validateRows() Then
             Return False
         End If
-        Return validateNoNegativeInventory()
+
+        Dim areAllSalesPresent As Boolean = True
+        Dim dlg As BusinessReportDlg = getBusinessReportDlg()
+        Dim fromDate As Date
+        Dim toDate As Date
+        If (dlg.getBusinessReportToFromDates(fromDate, toDate)) Then
+            Dim datesNotFound As String = ""
+            If Not doesEveryReportDayHasSales(fromDate, toDate, datesNotFound) Then
+                MessageBox.Show("Repoti(" + UIUtil.toDateString(fromDate) + " - " + UIUtil.toDateString(fromDate) + ") ingiza mauzo tarehe " + datesNotFound)
+                areAllSalesPresent = False
+            End If
+
+        End If
+
+
+        Return areAllSalesPresent AndAlso validateNoNegativeInventory()
 
         'Dim prdCode As String = Rows(row).Cells("saleProductCode").Value
         'If areSaleAndPurchasesTransactionsAreValid(prdCode) AndAlso Not checkForNegativeInventory(prdCode) Then
@@ -215,62 +253,110 @@ Public Class SalesRprtGridView
 
     End Function
 
+    Private Function doesEveryReportDayHasSales(fromDate As Date, toDate As Date, ByRef datesNotFound As String) As Boolean
+
+        Dim dte As Date
+        Dim isFndSaleForDate As Boolean
+
+        datesNotFound = ""
+        dte = fromDate
+        While (dte <= toDate)
+            isFndSaleForDate = False
+            For r As Integer = 0 To RowCount - 1
+                Dim vDate As Date = UIUtil.parseDate(Rows(r).Cells(0).Value)
+                If (vDate = dte) Then
+                    isFndSaleForDate = True
+                End If
+            Next
+            If (Not isFndSaleForDate) Then
+                datesNotFound += UIUtil.toDateString(dte) + ", "
+            End If
+            dte = dte.AddDays(1)
+        End While
+
+        Return StringUtil.isEmpty(datesNotFound)
+
+    End Function
+
     Protected Overrides Sub doValidateRow(row As Integer, ByRef result As RowValidationResult)
-        If isReversalTransaction(row) Then
-            If (StringUtil.isEmpty(Rows(row).Cells(getCommentColName()).Value)) Then
-                addError(result, "Comment has to be entered", row, Columns(getCommentColName()).Index)
-            End If
-        Else
-            MyBase.doValidateRow(row, result)
-            If (StringUtil.isEmpty(Me.Rows(row).Cells("saleProductCode").Value)) Then
-                addError(result, "Product code cannot be empty.", row, "saleProductCode")
-            ElseIf (Not getBusinessReportDlg().isValidCode(Me.Rows(row).Cells("saleProductCode").Value, getBusinessReportDlg().productsEntityDataSet, "product_code")) Then
-                addError(result, "Product code is invalid.", row, "saleProductCode")
-            End If
+        MyBase.doValidateRow(row, result)
 
-            If (StringUtil.isEmpty(Me.Rows(row).Cells("saleQtySold").Value)) Then
-                addError(result, "Qty cannot be empty", row, "saleQtySold")
-            ElseIf UIUtil.zeroIfEmpty(Me.Rows(row).Cells("saleQtySold").Value) < 0 Then
-                addError(result, "Sale Qty cannot be negative", row, "saleQtySold")
-            End If
+        Dim isAReversalTran As Boolean = isReversalTransaction(row)
 
-            If (StringUtil.isEmpty(Me.Rows(row).Cells("saleSaleAmt").Value)) Then
-                addError(result, "Sale amount cannot be empty", row, "saleSaleAmt")
-            End If
+        If (StringUtil.isEmpty(Me.Rows(row).Cells("saleProductCode").Value)) Then
+            addError(result, "Product code cannot be empty.", row, "saleProductCode")
+        ElseIf (Not getBusinessReportDlg().isValidCode(Me.Rows(row).Cells("saleProductCode").Value, getBusinessReportDlg().productsEntityDataSet, "product_code")) Then
+            addError(result, "Product code is invalid.", row, "saleProductCode")
+        End If
+
+        If (StringUtil.isEmpty(Me.Rows(row).Cells("saleQtySold").Value)) Then
+            addError(result, "Qty cannot be empty", row, "saleQtySold")
+        ElseIf Not isAReversalTran AndAlso UIUtil.zeroIfEmpty(Me.Rows(row).Cells("saleQtySold").Value) < 0 Then
+            addError(result, "Sale Qty cannot be negative", row, "saleQtySold")
+        End If
+
+        If (StringUtil.isEmpty(Me.Rows(row).Cells("saleSaleAmt").Value)) Then
+            addError(result, "Sale amount cannot be empty", row, "saleSaleAmt")
+        ElseIf Not isAReversalTran AndAlso UIUtil.zeroIfEmpty(Me.Rows(row).Cells("saleSaleAmt").Value) < 0 Then
+            addError(result, "sale amount cannot be negative", row, "saleSaleAmt")
+        End If
+
+
+        If (Me.Rows(row).Cells("saleProductCode").Value = NO_SALE AndAlso StringUtil.isEmpty(Me.Rows(row).Cells("saleComments").Value)) Then
+            addError(result, "Ingiza sababu hakuna mauzo kwenye comments", row, "saleComments")
+        End If
+
+        If (Not isAReversalTran) Then
             If (Not StringUtil.isEmpty(Me.Rows(row).Cells("saleProfit").Value) AndAlso Me.Rows(row).Cells("saleProfit").Value < 0) Then
                 addWarning(result, "Profit is negative", row, "saleProfit")
                 If StringUtil.isEmpty(Me.Rows(row).Cells("saleComments").Value) Then
                     addError(result, "Enter reason why profit is negeative", row, "saleComments")
                 End If
             End If
+
             If (Not StringUtil.isEmpty(Me.Rows(row).Cells("saleProfitPercentage").Value) AndAlso Me.Rows(row).Cells("saleProfit").Value < 0) Then
                 addWarning(result, "Profit is negative", row, "saleProfitPercentage")
             End If
-
-
         End If
+
 
 
     End Sub
 
     Protected Overrides Sub defaultNewRow(row As Integer)
+        If Not IsNothing(getBusinessReportDlg()) AndAlso getBusinessReportDlg().isDlgLoading Then
+            Return
+        End If
         MyBase.defaultNewRow(row)
-        Rows(row).Cells(Columns("saleQtySold").Index).Value = 1
-        Rows(row).Cells(Columns("saleTotalCost").Index).Value = 0
-        Rows(row).Cells(Columns("saleSaleAmt").Index).Value = 0
-        Rows(row).Cells(Columns("saleProfit").Index).Value = 0
-        Rows(row).Cells(Columns("saleProfitPercentage").Index).Value = 0
+        'Rows(row).Cells(Columns("saleQtySold").Index).Value = 1
+        'Rows(row).Cells(Columns("saleTotalCost").Index).Value = 0
+        'Rows(row).Cells(Columns("saleSaleAmt").Index).Value = 0
+        'Rows(row).Cells(Columns("saleProfit").Index).Value = 0
+        'Rows(row).Cells(Columns("saleProfitPercentage").Index).Value = 0
+        Refresh()
+
+
+
     End Sub
 
 
     Protected Overrides Sub gridCellValueChanged(colInd As Integer, rowInd As Integer)
+        Dim dlg As BusinessReportDlg = getBusinessReportDlg()
 
         If Me.Columns("saleProductCode").Index = colInd Then
-            Dim row As DataRow = getBusinessReportDlg().locateRow(Me.Rows(rowInd).Cells("saleProductCode").Value, "product_code", getBusinessReportDlg().productsEntityDataSet)
+            Dim prodCode As String = Me.Rows(rowInd).Cells("saleProductCode").Value
+            Dim row As DataRow = dlg.locateRow(prodCode, "product_code", getBusinessReportDlg().productsEntityDataSet)
             If (Not IsNothing(row)) Then
                 Me.Rows(rowInd).Cells("saleProductName").Value = row.Item("product_name")
                 Me.Rows(rowInd).Cells("saleUomName").Value = row.Item("qty_uom_name")
-                Me.Rows(rowInd).Cells("saleProdAcbCost").Value = row.Item("acb_cost")
+                ' Me.Rows(rowInd).Cells("saleProdAcbCost").Value = row.Item("acb_cost")
+                Me.Rows(rowInd).Cells("saleProdAcbCost").Value = dlg.productTransactionHistory.getProductAcb(Me.Rows(rowInd).Cells("saleProductCode").Value)
+                If (prodCode = NO_SALE) Then
+                    Rows(rowInd).Cells(Columns("saleSaleAmt").Index).Value = 0
+                End If
+                If (StringUtil.isEmpty(Rows(rowInd).Cells(Columns("saleQtySold").Index).Value)) Then
+                    Rows(rowInd).Cells(Columns("saleQtySold").Index).Value = 1
+                End If
             Else
                 Me.Rows(rowInd).Cells("saleProductName").Value = ""
                 Me.Rows(rowInd).Cells("saleUomName").Value = ""
@@ -325,8 +411,7 @@ Public Class SalesRprtGridView
         Next i
     End Sub
 
-    Public Overrides Sub loadBusinessReportDataFromGrid(busRprt As BusinessReportDAO.BusinessReport)
-        MyBase.loadBusinessReportDataFromGrid(busRprt)
+    Public Function loadSalesReportDataFromGrid() As Collection
         Dim sales As New Collection
         Dim sale As BusinessReportDAO.SaleVO
 
@@ -336,8 +421,14 @@ Public Class SalesRprtGridView
                 sale.transactionId = UIUtil.subsIfEmpty(Rows(i).Cells("saleSaleId").Value, BusinessReportDAO.NULL_NUMBER)
                 sale.tranDate = UIUtil.parseDate(Rows(i).Cells("saleSoldOn").Value, Nothing)
                 sale.prodCode = Rows(i).Cells("saleProductCode").Value
+                sale.prodName = Rows(i).Cells("saleProductName").Value
+
                 sale.qty = Rows(i).Cells("saleQtySold").Value
-                sale.priceSold = Rows(i).Cells("saleSaleAmt").Value
+                sale.qtyUomName = Rows(i).Cells("saleUomName").Value
+
+                sale.totalSaleAmt = Rows(i).Cells("saleSaleAmt").Value
+                sale.totalCostOfProd = Rows(i).Cells("saleTotalCost").Value
+
                 sale.comments = Rows(i).Cells("saleComments").Value
                 sale.isReversal = UIUtil.toBoolean(Rows(i).Cells("isSalePostedReversal").Value)
                 sale.isPosted = UIUtil.toBoolean(Rows(i).Cells("isSalePosted").Value)
@@ -345,7 +436,14 @@ Public Class SalesRprtGridView
                 sales.Add(sale)
             End If
         Next i
-        busRprt.sales = sales
+        Return sales
+
+    End Function
+
+    Public Overrides Sub loadBusinessReportDataFromGrid(busRprt As BusinessReportDAO.BusinessReport)
+        MyBase.loadBusinessReportDataFromGrid(busRprt)
+
+        busRprt.sales = loadSalesReportDataFromGrid()
     End Sub
 
     Protected Overrides Function getCommentColName() As String
@@ -357,7 +455,7 @@ Public Class SalesRprtGridView
     End Function
 
     Public Overrides Sub loadBusinessReportDataIntoGrid(busRprt As BusinessReportDAO.BusinessReport)
-        MyBase.loadBusinessReportDataIntoGrid(busRprt)
+        ' MyBase.loadBusinessReportDataIntoGrid(busRprt)
         Dim sales As Collection = busRprt.sales
         If IsNothing(sales) Then
             Return
@@ -371,14 +469,17 @@ Public Class SalesRprtGridView
                 Rows.Add()
             End If
             sale = sales(i)
-            Dim row As DataRow = getBusinessReportDlg().locateRow(sale.prodCode, "product_code", getBusinessReportDlg().productsEntityDataSet)
+            Dim dlg As BusinessReportDlg = getBusinessReportDlg()
+            Dim row As DataRow = dlg.locateRow(sale.prodCode, "product_code", dlg.productsEntityDataSet)
             If (Not IsNothing(row)) Then
                 Rows(i - 1).Cells("saleProductName").Value = row.Item("product_name")
                 Rows(i - 1).Cells("saleUomName").Value = row.Item("qty_uom_name")
-                acb = row.Item("acb_cost")
+                'acb = row.Item("acb_cost")
             Else
-                acb = 0
+                ' acb = 0
             End If
+            acb = dlg.productTransactionHistory.getProductAcb(sale.prodCode)
+
             Rows(i - 1).Cells("saleSaleId").Value = sale.transactionId
             Rows(i - 1).Cells("saleSoldOn").Value = UIUtil.toDateString(sale.tranDate)
             Rows(i - 1).Cells("saleProductCode").Value = sale.prodCode
@@ -387,8 +488,8 @@ Public Class SalesRprtGridView
             totCost = acb * Rows(i - 1).Cells("saleQtySold").Value
             Rows(i - 1).Cells("saleTotalCost").Value = totCost
 
-            Rows(i - 1).Cells("saleSaleAmt").Value = UIUtil.toAmtString(sale.priceSold)
-            Rows(i - 1).Cells("saleProfit").Value = sale.priceSold - Rows(i - 1).Cells("saleTotalCost").Value
+            Rows(i - 1).Cells("saleSaleAmt").Value = UIUtil.toAmtString(sale.totalSaleAmt)
+            Rows(i - 1).Cells("saleProfit").Value = sale.totalSaleAmt - Rows(i - 1).Cells("saleTotalCost").Value
             If (totCost = 0) Then
                 Me.Rows(i - 1).Cells("saleProfitPercentage").Value = 0
             Else
@@ -400,9 +501,24 @@ Public Class SalesRprtGridView
             Rows(i - 1).Cells("is_sale_amendment").Value = UIUtil.toBinaryBooleanString(sale.isAmendment)
 
         Next i
+        setLoadedProductACBs()
 
         MyBase.loadBusinessReportDataIntoGrid(busRprt)
 
+    End Sub
+
+    Private Sub setLoadedProductACBs()
+        Dim dlg As BusinessReportDlg = getBusinessReportDlg()
+        Dim prodCode As String
+        Dim acb As Integer
+        For i = 0 To (RowCount - 1)
+            If (Not isRowEmpty(i)) Then
+                prodCode = Rows(i).Cells("saleProductCode").Value
+                acb = dlg.productTransactionHistory.getProductAcb(prodCode)
+                Rows(i).Cells("saleProdAcbCost").Value = acb
+                Rows(i).Cells("saleTotalCost").Value = acb * Rows(i).Cells("saleQtySold").Value
+            End If
+        Next
     End Sub
 
     Protected Overrides Sub OnCellBeginEdit(e As DataGridViewCellCancelEventArgs)
@@ -420,18 +536,25 @@ Public Class SalesRprtGridView
     End Sub
 
     Protected Overrides Function isTransactionPosted(row As Integer) As Boolean
-        Return isValidDataGridViewRow(row) AndAlso UIUtil.toBoolean(Rows(row).Cells("isSalePosted").Value)
+        Return isValidDataGridViewRowIndex(row) AndAlso UIUtil.toBoolean(Rows(row).Cells("isSalePosted").Value)
     End Function
 
     Protected Overrides Function isReversalTransaction(row As Integer) As Boolean
-        Return isValidDataGridViewRow(row) AndAlso UIUtil.toBoolean(Rows(row).Cells("isSalePostedReversal").Value)
+        Return isValidDataGridViewRowIndex(row) AndAlso UIUtil.toBoolean(Rows(row).Cells("isSalePostedReversal").Value)
+    End Function
+
+    Protected Overrides Function isReversedTrans(curRow As DataGridViewRow, reversalRow As DataGridViewRow) As Boolean
+        Return curRow.Cells("saleSoldOn").Value = reversalRow.Cells("saleSoldOn").Value AndAlso
+               curRow.Cells("saleProductCode").Value = reversalRow.Cells("saleProductCode").Value AndAlso
+               UIUtil.zeroIfEmpty(curRow.Cells("saleProfit").Value) = -1 * UIUtil.zeroIfEmpty(reversalRow.Cells("saleProfit").Value) AndAlso
+               UIUtil.zeroIfEmpty(curRow.Cells("saleQtySold").Value) = -1 * UIUtil.zeroIfEmpty(reversalRow.Cells("saleQtySold").Value) AndAlso
+               UIUtil.zeroIfEmpty(curRow.Cells("saleSaleAmt").Value) = -1 * UIUtil.zeroIfEmpty(reversalRow.Cells("saleSaleAmt").Value)
     End Function
 
     Protected Overrides Sub indicateTransactionReversed(row As Integer, Optional isReversed As Boolean = True)
         isProgramaticChange = True
         Rows(row).Cells("isSalePostedReversal").Value = UIUtil.toBinaryBooleanString(isReversed)
         Me.Rows(row).Cells("saleProfit").Value = -1 * Me.Rows(row).Cells("saleProfit").Value
-        ' Me.Rows(row).Cells("saleProfitPercentage").Value = "-" + UIUtil.parseDouble(Me.Rows(row).Cells("saleProfitPercentage").Value)
         Me.Rows(row).Cells("saleQtySold").Value = -1 * UIUtil.zeroIfEmpty(Me.Rows(row).Cells("saleQtySold").Value)
         Me.Rows(row).Cells("saleSaleAmt").Value = -1 * UIUtil.zeroIfEmpty(Me.Rows(row).Cells("saleSaleAmt").Value)
         isProgramaticChange = False
@@ -441,7 +564,7 @@ Public Class SalesRprtGridView
 
 
     Public Overrides Sub deleteCurrentRow()
-        deleteRow("Sale", 0, 1)
+        deleteCurrentRow("Sale", 0, 1)
     End Sub
 
     Protected Overrides Sub OnKeyUp(e As KeyEventArgs)

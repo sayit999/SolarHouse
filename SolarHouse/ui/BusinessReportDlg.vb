@@ -26,6 +26,9 @@ Public Class BusinessReportDlg
     Public debtPaymentsDataSet As DataTable = Nothing
     Public expensesDataSet As DataTable = Nothing
 
+    Public productTransactionHistory As ProductTransactionHistory
+
+
     Private busReports As List(Of ReportFile)
 
     Public isLoading As Boolean = False
@@ -233,6 +236,9 @@ Public Class BusinessReportDlg
                 recalcSummary()
                 UseWaitCursor = False
                 isModified = False
+
+                validateBusinessReportsComponents()
+
                 MainForm.showProgress()
             End If
         End If
@@ -269,8 +275,8 @@ Public Class BusinessReportDlg
     End Function
 
     Private Sub BusinessReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        '  refreshBusinessReportsAvailComboBox(Nothing)
+        isLoading = True
+        Me.productTransactionHistory = New ProductTransactionHistory(Me)
         populateDatasetsFromDB()
 
         Me.salesGrdView.setupGridView()
@@ -295,7 +301,7 @@ Public Class BusinessReportDlg
 
         Me.Width = businessReportTabControl.Width + businessReportTabControl.Location.X + 50
         Me.Height = businessReportTabControl.Height + businessReportTabControl.Location.Y + 50
-
+        isLoading = False
     End Sub
 
     Protected Sub refreshPostedTranDateDRange()
@@ -380,18 +386,18 @@ Public Class BusinessReportDlg
 
         If (toDate > Today()) Then
             toDateErrorPic.setErrorText("To Date cannot be in the future ")
-            isError = False
+            isError = True
         End If
 
         If (fromDate > Today()) Then
             fromDateErrorPic.setErrorText("From Date cannot be in the future ")
-            isError = False
+            isError = True
         End If
 
         If (toDate < fromDate) Then
             fromDateErrorPic.setErrorText("From Date has to be less than To Date ")
             toDateErrorPic.setErrorText("To Date has to be greater than From Date ")
-            isError = False
+            isError = True
         End If
 
         Dim txt As String
@@ -411,6 +417,19 @@ Public Class BusinessReportDlg
                 fromDateErrorPic.setErrorText("Transactions upto " + UIUtil.toDateString(maxPostedTranDate) + " have been posted.  To change amend transactions before " + UIUtil.toDateString(maxPostedTranDate))
                 isError = True
 
+            End If
+
+            If Not isError Then
+                If toLoadRdBtn.Checked Then
+                    Dim vo As BusinessReportDAO.ReportLoadSubmitStatusVO = retrieveLastBusinessReportLoadedSubmitted()
+                    If fromDate <> vo.reportTo.AddDays(1) Then
+                        Dim errTxt = "Reports upto " + UIUtil.toDateString(vo.reportTo) + " have been loaded.  Next date to load is " + UIUtil.toDateString(vo.reportTo.AddDays(1))
+                        fromDateErrorPic.addErrorText(errTxt)
+                        toDateErrorPic.addErrorText(errTxt)
+                        isError = True
+                    End If
+
+                End If
             End If
         End If
 
@@ -442,6 +461,7 @@ Public Class BusinessReportDlg
         End If
 
         If isBusinessReport() Then
+
             Dim isCashError As Boolean = False
             cashBroughtForwardErrorPic.setErrorText("")
             countedCashErrorPic.setErrorText("")
@@ -600,6 +620,11 @@ Public Class BusinessReportDlg
             Me.BackColor = Color.FromArgb(240, 240, 240)
         End If
 
+        expenseIncomeIndicator.showIndicator(Not isAnAmendementReport(), startFromJun2018ChkBox.Checked)
+
+        If (isReportSubmitted() OrElse isReportLoaded()) Then
+            Me.productTransactionHistory.reset()
+        End If
 
         If isReportSubmitted() OrElse isReportLoaded() OrElse isReportToLoad() Then
             reportFromDateTxtBox.ReadOnly = True
@@ -678,6 +703,12 @@ Public Class BusinessReportDlg
         Dim serv As BusinessReportService = New BusinessReportService(Me)
         Dim businessReport As BusinessReportDAO.BusinessReport = loadBusinessReportDataFromUI()
         If Not businessReport.isEmpty() Then
+            If (Not isReportToLoad()) Then
+                If MessageBox.Show(Me, "Mauzo, Manunuzi, Matumizi na Malipo YOTE ya LEO ipo kwenye repoti?", "Hakikisha Ume Ingiza Reporti Vizuri", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.No Then
+                    Exit Sub
+                End If
+            End If
+
             If MessageBox.Show(Me, "Do want to " + commitMesg + " the report?", commitMesg + " the Report?", MessageBoxButtons.YesNo) = DialogResult.No Then
                 Exit Sub
             End If
@@ -701,10 +732,11 @@ Public Class BusinessReportDlg
             If (isCommited) Then
                 acceptChanges()
                 refreshPostedTranDateDRange()
-                If (Not businessReport.isAnAmendmentToPostedTrans AndAlso Not IsNothing(affectedPrdsQtyAndAcb)) Then
-                    Dim dlg As New SubmittedProdsAcbAndQtyDlg(affectedPrdsQtyAndAcb)
-                    dlg.ShowDialog()
-                End If
+                ' If (Not businessReport.isAnAmendmentToPostedTrans AndAlso Not IsNothing(affectedPrdsQtyAndAcb)) Then
+                Dim dlg As New SubmittedBusinessReportDlg(affectedPrdsQtyAndAcb)
+                dlg.ShowDialog()
+                ' End If
+                expenseIncomeIndicator.reportSubmitted()
                 changeBusinessReportsToRetStatus(If(businessReportsToRetStatus = ReportFile.BusinessReportStatus.to_load, ReportFile.BusinessReportStatus.loaded, ReportFile.BusinessReportStatus.submitted))
             Else
                 MessageBox.Show(Me, "Failed to commit report")
@@ -809,6 +841,8 @@ Public Class BusinessReportDlg
                             tableRow.Item(productsEntityDataSet.Columns.IndexOf("min_ret_gross_profit_margin_percentage")) = prod.minRetGrossProfitMarginPercentage
                             tableRow.Item(productsEntityDataSet.Columns.IndexOf("retail_sale_price")) = prod.retSalePrice
                             tableRow.Item(productsEntityDataSet.Columns.IndexOf("comments")) = prod.comments
+                            tableRow.Item(productsEntityDataSet.Columns.IndexOf("is_reorder")) = prod.isReorder
+                            tableRow.Item(productsEntityDataSet.Columns.IndexOf("low_stock_alert_qty")) = prod.lowStockAlertQty
                         Case 2
                             exp = entityVO
                             tableRow.Item(expenseCategoriesEntityDataSet.Columns.IndexOf("expense_category_code")) = exp.code
@@ -864,6 +898,8 @@ Public Class BusinessReportDlg
                     vo.minRetGrossProfitMarginPercentage = UIUtil.zeroIfEmpty(dt.Rows(i)("min_ret_gross_profit_margin_percentage", DataRowVersion.Original))
                     vo.retSalePrice = UIUtil.zeroIfEmpty(dt.Rows(i)("retail_sale_price", DataRowVersion.Original))
                     vo.comments = dt.Rows(i)("comments", DataRowVersion.Original).ToString
+                    vo.isReorder = UIUtil.zeroIfEmpty(dt.Rows(i)("is_reorder", DataRowVersion.Original))
+                    vo.lowStockAlertQty = UIUtil.zeroIfEmpty(dt.Rows(i)("low_stock_alert_qty", DataRowVersion.Original))
                 Else
                     vo.id = UIUtil.subsIfEmpty(dt.Rows(i).Item(dt.Columns.IndexOf("product_id")), -1)
                     vo.code = dt.Rows(i).Item(dt.Columns.IndexOf("product_code")).ToString
@@ -876,6 +912,8 @@ Public Class BusinessReportDlg
                     vo.minRetGrossProfitMarginPercentage = UIUtil.zeroIfEmpty(dt.Rows(i).Item(dt.Columns.IndexOf("min_ret_gross_profit_margin_percentage")))
                     vo.retSalePrice = UIUtil.zeroIfEmpty(dt.Rows(i).Item(dt.Columns.IndexOf("retail_sale_price")))
                     vo.comments = dt.Rows(i).Item(dt.Columns.IndexOf("comments")).ToString
+                    vo.isReorder = UIUtil.zeroIfEmpty(dt.Rows(i).Item(dt.Columns.IndexOf("is_reorder")))
+                    vo.lowStockAlertQty = UIUtil.zeroIfEmpty(dt.Rows(i).Item(dt.Columns.IndexOf("low_stock_alert_qty")))
                 End If
                 busRprt.productsModified.Add(vo)
             Next
@@ -1004,10 +1042,13 @@ Public Class BusinessReportDlg
         maunuallyCountedCashTxtBox.Text = UIUtil.toAmtString(businessReport.cashCounted)
 
         loadEntitiesChangedIntoDataTable(businessReport)
-        salesGrdView.loadBusinessReportDataIntoGrid(businessReport)
         purchasesGrdView.loadBusinessReportDataIntoGrid(businessReport)
+        ' to calc acb correctly sales has to be loaded after purchases for prods that have been purchased and sold
+        salesGrdView.loadBusinessReportDataIntoGrid(businessReport)
+
         expensesGrdView.loadBusinessReportDataIntoGrid(businessReport)
         debtPaymentGrdView.loadBusinessReportDataIntoGrid(businessReport)
+
     End Sub
 
     Private Sub wipeOutEnteredData(Optional isDefaultToFromBusinessDates As Boolean = False)
@@ -1099,6 +1140,9 @@ Public Class BusinessReportDlg
         creditPurchasesTxtBox.Text = FormatNumber(-1 * creditPurchases, 0, TriState.True, TriState.False, True)
         totProfitsTxtBox.Text = FormatNumber(totProfits, 0, TriState.True, TriState.False, True)
 
+        expenseIncomeIndicator.refreshCntrl(salesGrdView.loadSalesReportDataFromGrid())
+
+
         salesTxtBox.Text = FormatNumber(totSales, 0, TriState.True, TriState.False, True)
         expensesTxtBox.Text = FormatNumber(-1 * expensesGrdView.getTotalExpenses(), 0, TriState.True, TriState.False, True)
         cashPurchasesTxtBox.Text = FormatNumber(-1 * cashPurchases, 0, TriState.True, TriState.False, True)
@@ -1113,6 +1157,8 @@ Public Class BusinessReportDlg
         colorNegNumber(cashPurchasesTxtBox)
         colorNegNumber(creditPurchasesTxtBox)
         colorNegNumber(expensesTxtBox)
+
+        businessReportTabControl.Refresh()
 
         isModified = True
         UseWaitCursor = False
@@ -1266,6 +1312,7 @@ Public Class BusinessReportDlg
         ElseIf tabPageSel.Name = "debtPaymentsReportTab" Then
             debtPaymentGrdView.deleteCurrentRow()
         End If
+        recalcSummary()
     End Sub
 
     Private Sub reportFromDateTxtBox_TextChanged(sender As Object, e As EventArgs) Handles reportFromDateTxtBox.TextChanged
@@ -1328,7 +1375,43 @@ Public Class BusinessReportDlg
         purchasesGrdView.Refresh()
         expensesGrdView.Refresh()
         debtPaymentGrdView.Refresh()
+
     End Sub
 
+    Private Sub businessReportTabControl_DrawItem(sender As Object, e As DrawItemEventArgs) Handles businessReportTabControl.DrawItem
+        Dim doesGrdHaveData As Boolean = False
+        Dim fillColor As Color
+        Dim tabTxtBrsh As System.Drawing.Brush
+
+
+        Select Case e.Index
+            Case 0
+                doesGrdHaveData = salesGrdView.hasDataBeenEntered()
+            Case 1
+                doesGrdHaveData = purchasesGrdView.hasDataBeenEntered()
+            Case 2
+                doesGrdHaveData = expensesGrdView.hasDataBeenEntered()
+            Case 3
+                doesGrdHaveData = debtPaymentGrdView.hasDataBeenEntered()
+        End Select
+
+        Dim paddedBounds As Rectangle = e.Bounds
+        paddedBounds.Inflate(-2, -2)
+        If (doesGrdHaveData) Then
+            fillColor = Color.Aqua
+            tabTxtBrsh = New SolidBrush(Color.Black)
+        Else
+            fillColor = Color.Transparent
+            tabTxtBrsh = New SolidBrush(Color.Black)
+        End If
+
+        e.Graphics.FillRectangle(New SolidBrush(fillColor), e.Bounds)
+        e.Graphics.DrawString(businessReportTabControl.TabPages(e.Index).Text, Me.Font, tabTxtBrsh, paddedBounds)
+
+    End Sub
+
+    Private Sub startFromJun2018ChkBox_CheckStateChanged(sender As Object, e As EventArgs) Handles startFromJun2018ChkBox.CheckStateChanged
+        expenseIncomeIndicator.refreshCntrl(startFromJun2018ChkBox.Checked)
+    End Sub
 
 End Class

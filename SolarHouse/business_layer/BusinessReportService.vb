@@ -159,7 +159,7 @@ Public Class BusinessReportService
         End Try
     End Function
 
-    Public Function recalcProductAcbAndQty()
+    Public Function recalcProductAcbAndQty() As Boolean
         Try
             Dim businessReportDAO As New BusinessReportDAO
             Return businessReportDAO.recalcAllProductAcbAndQty()
@@ -196,4 +196,44 @@ Public Class BusinessReportService
             Return Nothing
         End Try
     End Function
+
+    Public Function retriveProfitsFromDateRange(startDte As Date, endDte As Date) As Collection
+        Try
+            Dim businessReportDAO As New BusinessReportDAO
+            Return businessReportDAO.retriveProfitsFromDateRange(startDte, endDte)
+        Catch ex As Exception
+            MessageBox.Show(parent, "Failed to retrieve profits.  Reason:" + ex.ToString)
+            Return Nothing
+        End Try
+    End Function
+
+
+    Public Function retriveEstimatedExpenses() As Collection
+        Try
+            Dim businessReportDAO As New BusinessReportDAO
+            Return businessReportDAO.retriveEstimatedExpenses()
+        Catch ex As Exception
+            MessageBox.Show(parent, "Failed to retrieve Estimated Expenses.  Reason:" + ex.ToString)
+            Return Nothing
+        End Try
+    End Function
+
+    Public Sub getSuppliers(sortByCode As Boolean, ByRef ds As DataTable)
+
+        Try
+        SolarHouseDao.getSuppliers(sortByCode, ds)
+        Catch ex As Exception
+            MessageBox.Show(parent, "Failed to retrieve Suppliers.  Reason:" + ex.ToString)
+
+        End Try
+    End Sub
+
+    Public Sub retrieveCrdPurDebtPymntHist(supplierCode As String, ByRef ds As DataTable)
+        Try
+            Dim businessReportDAO As New BusinessReportDAO
+            businessReportDAO.retrieveCrdPurDebtPymntHist(supplierCode, ds)
+        Catch ex As Exception
+            MessageBox.Show(parent, "Failed to retrieve Credit Purchase Debt Payment History.  Reason:" + ex.ToString)
+        End Try
+    End Sub
 End Class

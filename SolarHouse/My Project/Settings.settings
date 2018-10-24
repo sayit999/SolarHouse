@@ -12,7 +12,7 @@
       <Value Profile="(Default)">solarhousearushadatabase</Value>
     </Setting>
     <Setting Name="email_xml_to" Type="System.String" Scope="User">
-      <Value Profile="(Default)">happytemba99@gmail.com;firoz.karmali@gmail.com</Value>
+      <Value Profile="(Default)">firoz.karmali@gmail.com</Value>
     </Setting>
     <Setting Name="mysql_execs_path" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Program Files\MySQL\MySQL Server 5.7\bin\</Value>
@@ -34,6 +34,14 @@
     </Setting>
     <Setting Name="backup_dir" Type="System.String" Scope="User">
       <Value Profile="(Default)">backup</Value>
+    </Setting>
+    <Setting Name="solarhousearushadatabaseConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;server=127.0.0.1;user id=root;password=arusha;persistsecurityinfo=True;database=solarhousearushadatabase&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">server=127.0.0.1;user id=root;password=arusha;persistsecurityinfo=True;database=solarhousearushadatabase</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -9,6 +9,14 @@
 
     End Sub
 
+    Public Sub addErrorText(errorText As String)
+        If (Me.errorText.Length > 0) Then
+            Me.errorText = Me.errorText + ","
+        End If
+        Me.errorText = Me.errorText + errorText
+        setErrorText(Me.errorText)
+    End Sub
+
     Public Sub setErrorText(errorText As String)
         Me.errorText = errorText
         If (errorText.Length > 0) Then

@@ -21,7 +21,7 @@
 
         Dim i As Integer = UIUtil.zeroIfEmpty(Rows(row).Cells("productsQtyAvail").Value)
         If (i < 0) Then
-            addError(result, "Qty cannot be negative", row, "productsQtyAvail")
+            addError(result, "Qty hai wezi kuwa negative", row, "productsQtyAvail")
         End If
 
         If (StringUtil.isEmpty(Rows(row).Cells("productsQtyUom").Value)) Then
@@ -132,4 +132,21 @@
         Return row
     End Function
 
+    Protected Overrides Sub colorCell(e As DataGridViewCellFormattingEventArgs)
+
+        Dim row = e.RowIndex
+        Dim qtyAvailColIdx = Columns("productsQtyAvail").Index
+        If (e.ColumnIndex = qtyAvailColIdx) Then
+            If ((UIUtil.zeroIfEmpty(Rows(row).Cells(Columns("prodIsReorder").Index).Value) = 1) AndAlso
+                (UIUtil.zeroIfEmpty(Rows(row).Cells(qtyAvailColIdx).Value) < UIUtil.zeroIfEmpty(Rows(row).Cells(Columns("prod_min_stock_qty").Index).Value))) Then
+                Rows(row).Cells(qtyAvailColIdx).Style.BackColor = Color.Red
+            Else
+                MyBase.colorCell(e)
+            End If
+        Else
+            MyBase.colorCell(e)
+        End If
+
+
+    End Sub
 End Class

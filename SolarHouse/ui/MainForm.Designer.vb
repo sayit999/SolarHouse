@@ -41,6 +41,8 @@ Partial Class MainForm
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.AppProgressBar = New System.Windows.Forms.ToolStripProgressBar()
         Me.AppToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.debtPaymentHistoryButton = New System.Windows.Forms.ToolStripButton()
+        Me.lowStockBtn = New System.Windows.Forms.ToolStripButton()
         Me.AppMenuStrip.SuspendLayout()
         Me.MainToolStrip.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -53,7 +55,8 @@ Partial Class MainForm
         Me.AppMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.AppMenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.AppMenuStrip.Name = "AppMenuStrip"
-        Me.AppMenuStrip.Size = New System.Drawing.Size(1500, 28)
+        Me.AppMenuStrip.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
+        Me.AppMenuStrip.Size = New System.Drawing.Size(1300, 23)
         Me.AppMenuStrip.TabIndex = 0
         Me.AppMenuStrip.Text = "MenuStrip1"
         '
@@ -61,31 +64,31 @@ Partial Class MainForm
         '
         Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BusinessReportToolStripMenuItem, Me.ToolStripSeparator1})
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(47, 24)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(39, 19)
         Me.EditToolStripMenuItem.Text = "&Edit"
         '
         'BusinessReportToolStripMenuItem
         '
         Me.BusinessReportToolStripMenuItem.Name = "BusinessReportToolStripMenuItem"
-        Me.BusinessReportToolStripMenuItem.Size = New System.Drawing.Size(188, 26)
+        Me.BusinessReportToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.BusinessReportToolStripMenuItem.Text = "Business &Report"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(185, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(154, 6)
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(53, 24)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 19)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(125, 26)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'MainToolStrip
@@ -93,11 +96,11 @@ Partial Class MainForm
         Me.MainToolStrip.AutoSize = False
         Me.MainToolStrip.BackColor = System.Drawing.Color.Silver
         Me.MainToolStrip.ImageScalingSize = New System.Drawing.Size(30, 30)
-        Me.MainToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator2, Me.BusinessReportTBBtn, Me.SolarCalcTBBtn, Me.ToolStripSeparator4, Me.BackupDatabaseBtn, Me.RestoreDatabaseBtn, Me.EmailBackupDatabaseBtn, Me.CalcQtyACBBtn})
-        Me.MainToolStrip.Location = New System.Drawing.Point(0, 28)
+        Me.MainToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator2, Me.BusinessReportTBBtn, Me.SolarCalcTBBtn, Me.ToolStripSeparator4, Me.BackupDatabaseBtn, Me.RestoreDatabaseBtn, Me.EmailBackupDatabaseBtn, Me.CalcQtyACBBtn, Me.debtPaymentHistoryButton, Me.lowStockBtn})
+        Me.MainToolStrip.Location = New System.Drawing.Point(0, 23)
         Me.MainToolStrip.Name = "MainToolStrip"
         Me.MainToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.MainToolStrip.Size = New System.Drawing.Size(1500, 120)
+        Me.MainToolStrip.Size = New System.Drawing.Size(1300, 98)
         Me.MainToolStrip.Stretch = True
         Me.MainToolStrip.TabIndex = 1
         Me.MainToolStrip.Text = "ToolStrip1"
@@ -105,7 +108,7 @@ Partial Class MainForm
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 120)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 98)
         '
         'BusinessReportTBBtn
         '
@@ -135,7 +138,7 @@ Partial Class MainForm
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 120)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 98)
         '
         'BackupDatabaseBtn
         '
@@ -186,33 +189,59 @@ Partial Class MainForm
         '
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AppProgressBar, Me.AppToolStripStatusLabel})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 902)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 730)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1500, 24)
+        Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 10, 0)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1300, 22)
         Me.StatusStrip1.TabIndex = 2
         Me.StatusStrip1.Text = "StatusStrip1"
         '
         'AppProgressBar
         '
         Me.AppProgressBar.Name = "AppProgressBar"
-        Me.AppProgressBar.Size = New System.Drawing.Size(100, 18)
+        Me.AppProgressBar.Size = New System.Drawing.Size(75, 16)
         '
         'AppToolStripStatusLabel
         '
         Me.AppToolStripStatusLabel.Name = "AppToolStripStatusLabel"
-        Me.AppToolStripStatusLabel.Size = New System.Drawing.Size(0, 19)
+        Me.AppToolStripStatusLabel.Size = New System.Drawing.Size(0, 17)
+        '
+        'debtPaymentHistoryButton
+        '
+        Me.debtPaymentHistoryButton.AutoSize = False
+        Me.debtPaymentHistoryButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.debtPaymentHistoryButton.Image = CType(resources.GetObject("debtPaymentHistoryButton.Image"), System.Drawing.Image)
+        Me.debtPaymentHistoryButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.debtPaymentHistoryButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.debtPaymentHistoryButton.Name = "debtPaymentHistoryButton"
+        Me.debtPaymentHistoryButton.Size = New System.Drawing.Size(147, 186)
+        Me.debtPaymentHistoryButton.Text = "ToolStripButton1"
+        Me.debtPaymentHistoryButton.ToolTipText = "Historia ya malipo and manunuzi ya mkopo"
+        '
+        'lowStockBtn
+        '
+        Me.lowStockBtn.AutoSize = False
+        Me.lowStockBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.lowStockBtn.Image = CType(resources.GetObject("lowStockBtn.Image"), System.Drawing.Image)
+        Me.lowStockBtn.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.lowStockBtn.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.lowStockBtn.Name = "lowStockBtn"
+        Me.lowStockBtn.Size = New System.Drawing.Size(147, 186)
+        Me.lowStockBtn.Text = "Mzigo yaku agiza"
+        Me.lowStockBtn.ToolTipText = "Mzigo yaku agiza"
         '
         'MainForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(1500, 926)
+        Me.ClientSize = New System.Drawing.Size(1300, 752)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MainToolStrip)
         Me.Controls.Add(Me.AppMenuStrip)
         Me.HelpButton = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "MainForm"
         Me.Text = "Solar House Arusha"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -245,4 +274,6 @@ Partial Class MainForm
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
     Friend WithEvents EmailBackupDatabaseBtn As ToolStripButton
     Friend WithEvents CalcQtyACBBtn As ToolStripButton
+    Friend WithEvents debtPaymentHistoryButton As System.Windows.Forms.ToolStripButton
+    Friend WithEvents lowStockBtn As System.Windows.Forms.ToolStripButton
 End Class

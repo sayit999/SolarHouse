@@ -92,7 +92,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("happytemba99@gmail.com;firoz.karmali@gmail.com")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("firoz.karmali@gmail.com")>  _
         Public Property email_xml_to() As String
             Get
                 Return CType(Me("email_xml_to"),String)
@@ -184,6 +184,17 @@ Namespace My
             Set
                 Me("backup_dir") = value
             End Set
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=127.0.0.1;user id=root;password=arusha;persistsecurityinfo=True;database=s"& _ 
+            "olarhousearushadatabase")>  _
+        Public ReadOnly Property solarhousearushadatabaseConnectionString() As String
+            Get
+                Return CType(Me("solarhousearushadatabaseConnectionString"),String)
+            End Get
         End Property
     End Class
 End Namespace

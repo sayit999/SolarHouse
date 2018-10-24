@@ -1,0 +1,17 @@
+update product set  product.low_stock_alert_qty = 1,  product.is_reorder = 1  where product.product_id = 374; 
+update product set  product.low_stock_alert_qty = 2,  product.is_reorder = 1  where product.product_id = 29; 
+update product set  product.low_stock_alert_qty = 1,  product.is_reorder = 1  where product.product_id = 233; 
+update product set  product.low_stock_alert_qty = 1,  product.is_reorder = 1  where product.product_id = 234; 
+update product set  product.low_stock_alert_qty = 2,  product.is_reorder = 1  where product.product_id = 375; 
+update product set  product.low_stock_alert_qty = 2,  product.is_reorder = 1  where product.product_id = 12; 
+update product set  product.low_stock_alert_qty = 2,  product.is_reorder = 1  where product.product_id = 14; 
+update product set  product.low_stock_alert_qty = 3,  product.is_reorder = 1  where product.product_id = 100; 
+update product set  product.low_stock_alert_qty = 2,  product.is_reorder = 1  where product.product_id = 101; 
+update product set  product.low_stock_alert_qty = 5,  product.is_reorder = 1  where product.product_id = 359; 
+update product set  product.low_stock_alert_qty = 1,  product.is_reorder = 1  where product.product_id = 367; 
+update product set  product.low_stock_alert_qty = 5,  product.is_reorder = 1  where product.product_id = 118; 
+update product set  product.low_stock_alert_qty = 1,  product.is_reorder = 1  where product.product_id = 110; 
+update product set  product.low_stock_alert_qty = 1,  product.is_reorder = 1  where product.product_id = 112; 
+update product set  product.low_stock_alert_qty = 1,  product.is_reorder = 1  where product.product_id = 114; 
+update product set  product.low_stock_alert_qty = 1,  product.is_reorder = 1  where product.product_id = 329; 
+commit;

@@ -23,12 +23,6 @@ Partial Class ProductsDlg
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -38,10 +32,32 @@ Partial Class ProductsDlg
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.deleteProdBtn = New System.Windows.Forms.Button()
         Me.addProdBtn = New System.Windows.Forms.Button()
         Me.searchEntitiesText = New System.Windows.Forms.TextBox()
         Me.productsGridView = New SolarHouse.ProductsEntityGridView()
+        Me.code = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.entity_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.productsProdCatName = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.productsCategoryId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.productsQtyAvail = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.prod_min_stock_qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.productsQtyUom = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.productsQtyUomId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.productsAcbCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.productsRetaildiscountroompercentage = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.productsMinretgrossprofitmarginpercentage = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.productsRetailSalePrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.prodIsReorder = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.productsComments = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.entity_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -60,27 +76,13 @@ Partial Class ProductsDlg
         Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.saveBtn = New System.Windows.Forms.Button()
         Me.selectEntityBtn = New System.Windows.Forms.Button()
-        Me.code = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.entity_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.productsProdCatName = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.productsCategoryId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.productsQtyAvail = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.productsQtyUom = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.productsQtyUomId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.productsAcbCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.productsRetaildiscountroompercentage = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.productsMinretgrossprofitmarginpercentage = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.productsRetailSalePrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.prodIsReorder = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.productsComments = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.entity_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.productsGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'deleteProdBtn
         '
         Me.deleteProdBtn.Location = New System.Drawing.Point(872, 21)
-        Me.deleteProdBtn.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.deleteProdBtn.Margin = New System.Windows.Forms.Padding(2)
         Me.deleteProdBtn.Name = "deleteProdBtn"
         Me.deleteProdBtn.Size = New System.Drawing.Size(58, 21)
         Me.deleteProdBtn.TabIndex = 5
@@ -90,7 +92,7 @@ Partial Class ProductsDlg
         'addProdBtn
         '
         Me.addProdBtn.Location = New System.Drawing.Point(810, 21)
-        Me.addProdBtn.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.addProdBtn.Margin = New System.Windows.Forms.Padding(2)
         Me.addProdBtn.Name = "addProdBtn"
         Me.addProdBtn.Size = New System.Drawing.Size(58, 21)
         Me.addProdBtn.TabIndex = 4
@@ -100,7 +102,7 @@ Partial Class ProductsDlg
         'searchEntitiesText
         '
         Me.searchEntitiesText.Location = New System.Drawing.Point(9, 23)
-        Me.searchEntitiesText.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.searchEntitiesText.Margin = New System.Windows.Forms.Padding(2)
         Me.searchEntitiesText.Name = "searchEntitiesText"
         Me.searchEntitiesText.Size = New System.Drawing.Size(606, 20)
         Me.searchEntitiesText.TabIndex = 0
@@ -120,20 +122,169 @@ Partial Class ProductsDlg
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.productsGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.productsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.productsGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.code, Me.entity_name, Me.productsProdCatName, Me.productsCategoryId, Me.productsQtyAvail, Me.productsQtyUom, Me.productsQtyUomId, Me.productsAcbCost, Me.productsRetaildiscountroompercentage, Me.productsMinretgrossprofitmarginpercentage, Me.productsRetailSalePrice, Me.prodIsReorder, Me.productsComments, Me.entity_id})
+        Me.productsGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.code, Me.entity_name, Me.productsProdCatName, Me.productsCategoryId, Me.productsQtyAvail, Me.prod_min_stock_qty, Me.productsQtyUom, Me.productsQtyUomId, Me.productsAcbCost, Me.productsRetaildiscountroompercentage, Me.productsMinretgrossprofitmarginpercentage, Me.productsRetailSalePrice, Me.prodIsReorder, Me.productsComments, Me.entity_id})
         Me.productsGridView.Location = New System.Drawing.Point(9, 58)
-        Me.productsGridView.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.productsGridView.Margin = New System.Windows.Forms.Padding(2)
         Me.productsGridView.MultiSelect = False
         Me.productsGridView.Name = "productsGridView"
         Me.productsGridView.RowTemplate.Height = 24
         Me.productsGridView.Size = New System.Drawing.Size(984, 396)
         Me.productsGridView.TabIndex = 1
         '
+        'code
+        '
+        Me.code.DataPropertyName = "product_code"
+        Me.code.HeaderText = "Code"
+        Me.code.Name = "code"
+        Me.code.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.code.Width = 75
+        '
+        'entity_name
+        '
+        Me.entity_name.DataPropertyName = "product_name"
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Aqua
+        Me.entity_name.DefaultCellStyle = DataGridViewCellStyle2
+        Me.entity_name.HeaderText = "Name"
+        Me.entity_name.Name = "entity_name"
+        Me.entity_name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.entity_name.Width = 300
+        '
+        'productsProdCatName
+        '
+        Me.productsProdCatName.DataPropertyName = "product_category_name"
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.productsProdCatName.DefaultCellStyle = DataGridViewCellStyle3
+        Me.productsProdCatName.HeaderText = "Category"
+        Me.productsProdCatName.Name = "productsProdCatName"
+        Me.productsProdCatName.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.productsProdCatName.Width = 200
+        '
+        'productsCategoryId
+        '
+        Me.productsCategoryId.DataPropertyName = "product_category_id"
+        Me.productsCategoryId.HeaderText = "productsCategoryId"
+        Me.productsCategoryId.Name = "productsCategoryId"
+        Me.productsCategoryId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.productsCategoryId.Visible = False
+        '
+        'productsQtyAvail
+        '
+        Me.productsQtyAvail.DataPropertyName = "qty_available"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "N0"
+        DataGridViewCellStyle4.NullValue = "0"
+        Me.productsQtyAvail.DefaultCellStyle = DataGridViewCellStyle4
+        Me.productsQtyAvail.HeaderText = "Qty Avail"
+        Me.productsQtyAvail.Name = "productsQtyAvail"
+        Me.productsQtyAvail.ReadOnly = True
+        Me.productsQtyAvail.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.productsQtyAvail.Width = 75
+        '
+        'prod_min_stock_qty
+        '
+        Me.prod_min_stock_qty.DataPropertyName = "low_stock_alert_qty"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.Format = "N0"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.prod_min_stock_qty.DefaultCellStyle = DataGridViewCellStyle5
+        Me.prod_min_stock_qty.HeaderText = "Min Stock Qty"
+        Me.prod_min_stock_qty.Name = "prod_min_stock_qty"
+        '
+        'productsQtyUom
+        '
+        Me.productsQtyUom.DataPropertyName = "qty_uom_name"
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.productsQtyUom.DefaultCellStyle = DataGridViewCellStyle6
+        Me.productsQtyUom.HeaderText = "Qty UOM"
+        Me.productsQtyUom.Name = "productsQtyUom"
+        Me.productsQtyUom.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.productsQtyUom.Width = 75
+        '
+        'productsQtyUomId
+        '
+        Me.productsQtyUomId.DataPropertyName = "qty_uom_id"
+        Me.productsQtyUomId.HeaderText = "productsQtyUomId"
+        Me.productsQtyUomId.Name = "productsQtyUomId"
+        Me.productsQtyUomId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.productsQtyUomId.Visible = False
+        '
+        'productsAcbCost
+        '
+        Me.productsAcbCost.DataPropertyName = "acb_cost"
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "N0"
+        DataGridViewCellStyle7.NullValue = "0"
+        Me.productsAcbCost.DefaultCellStyle = DataGridViewCellStyle7
+        Me.productsAcbCost.HeaderText = "Cost"
+        Me.productsAcbCost.Name = "productsAcbCost"
+        Me.productsAcbCost.ReadOnly = True
+        Me.productsAcbCost.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'productsRetaildiscountroompercentage
+        '
+        Me.productsRetaildiscountroompercentage.DataPropertyName = "retail_discount_room_percentage"
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle8.Format = "N0"
+        DataGridViewCellStyle8.NullValue = "0"
+        Me.productsRetaildiscountroompercentage.DefaultCellStyle = DataGridViewCellStyle8
+        Me.productsRetaildiscountroompercentage.HeaderText = "Ret Disc. Room %"
+        Me.productsRetaildiscountroompercentage.Name = "productsRetaildiscountroompercentage"
+        Me.productsRetaildiscountroompercentage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'productsMinretgrossprofitmarginpercentage
+        '
+        Me.productsMinretgrossprofitmarginpercentage.DataPropertyName = "min_ret_gross_profit_margin_percentage"
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle9.Format = "N0"
+        DataGridViewCellStyle9.NullValue = "0"
+        Me.productsMinretgrossprofitmarginpercentage.DefaultCellStyle = DataGridViewCellStyle9
+        Me.productsMinretgrossprofitmarginpercentage.HeaderText = "Min Ret. GP Margin %"
+        Me.productsMinretgrossprofitmarginpercentage.Name = "productsMinretgrossprofitmarginpercentage"
+        Me.productsMinretgrossprofitmarginpercentage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'productsRetailSalePrice
+        '
+        Me.productsRetailSalePrice.DataPropertyName = "retail_sale_price"
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle10.Format = "N0"
+        DataGridViewCellStyle10.NullValue = "0"
+        Me.productsRetailSalePrice.DefaultCellStyle = DataGridViewCellStyle10
+        Me.productsRetailSalePrice.HeaderText = "Ret Sale Price"
+        Me.productsRetailSalePrice.Name = "productsRetailSalePrice"
+        Me.productsRetailSalePrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'prodIsReorder
+        '
+        Me.prodIsReorder.DataPropertyName = "is_reorder"
+        Me.prodIsReorder.HeaderText = "Reorder?"
+        Me.prodIsReorder.Name = "prodIsReorder"
+        Me.prodIsReorder.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.prodIsReorder.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'productsComments
+        '
+        Me.productsComments.DataPropertyName = "comments"
+        Me.productsComments.HeaderText = "Comments"
+        Me.productsComments.Name = "productsComments"
+        Me.productsComments.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.productsComments.Width = 400
+        '
+        'entity_id
+        '
+        Me.entity_id.DataPropertyName = "product_id"
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.Aqua
+        Me.entity_id.DefaultCellStyle = DataGridViewCellStyle11
+        Me.entity_id.HeaderText = "ID"
+        Me.entity_id.Name = "entity_id"
+        Me.entity_id.ReadOnly = True
+        Me.entity_id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.entity_id.Width = 50
+        '
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "product_id"
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.Aqua
-        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.Aqua
+        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle12
         Me.DataGridViewTextBoxColumn1.HeaderText = "product_id"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
@@ -142,8 +293,8 @@ Partial Class ProductsDlg
         'DataGridViewTextBoxColumn2
         '
         Me.DataGridViewTextBoxColumn2.DataPropertyName = "product_code"
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.Aqua
-        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.Aqua
+        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle13
         Me.DataGridViewTextBoxColumn2.HeaderText = "product_code"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.Width = 60
@@ -151,8 +302,8 @@ Partial Class ProductsDlg
         'DataGridViewTextBoxColumn3
         '
         Me.DataGridViewTextBoxColumn3.DataPropertyName = "product_name"
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle14
         Me.DataGridViewTextBoxColumn3.HeaderText = "product_name"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
@@ -161,9 +312,9 @@ Partial Class ProductsDlg
         'DataGridViewTextBoxColumn4
         '
         Me.DataGridViewTextBoxColumn4.DataPropertyName = "product_category_id"
-        DataGridViewCellStyle14.Format = "N0"
-        DataGridViewCellStyle14.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle15.Format = "N0"
+        DataGridViewCellStyle15.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle15
         Me.DataGridViewTextBoxColumn4.HeaderText = "product_category_id"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.Width = 30
@@ -247,8 +398,8 @@ Partial Class ProductsDlg
         'DataGridViewTextBoxColumn15
         '
         Me.DataGridViewTextBoxColumn15.DataPropertyName = "updated_on"
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.Aqua
-        Me.DataGridViewTextBoxColumn15.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle16.BackColor = System.Drawing.Color.Aqua
+        Me.DataGridViewTextBoxColumn15.DefaultCellStyle = DataGridViewCellStyle16
         Me.DataGridViewTextBoxColumn15.HeaderText = "updated_on"
         Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
         Me.DataGridViewTextBoxColumn15.ReadOnly = True
@@ -258,8 +409,8 @@ Partial Class ProductsDlg
         'DataGridViewTextBoxColumn16
         '
         Me.DataGridViewTextBoxColumn16.DataPropertyName = "updated_by"
-        DataGridViewCellStyle16.BackColor = System.Drawing.Color.Aqua
-        Me.DataGridViewTextBoxColumn16.DefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle17.BackColor = System.Drawing.Color.Aqua
+        Me.DataGridViewTextBoxColumn16.DefaultCellStyle = DataGridViewCellStyle17
         Me.DataGridViewTextBoxColumn16.HeaderText = "updated_by"
         Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
         Me.DataGridViewTextBoxColumn16.ReadOnly = True
@@ -269,7 +420,7 @@ Partial Class ProductsDlg
         'saveBtn
         '
         Me.saveBtn.Location = New System.Drawing.Point(934, 21)
-        Me.saveBtn.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.saveBtn.Margin = New System.Windows.Forms.Padding(2)
         Me.saveBtn.Name = "saveBtn"
         Me.saveBtn.Size = New System.Drawing.Size(58, 21)
         Me.saveBtn.TabIndex = 8
@@ -279,151 +430,12 @@ Partial Class ProductsDlg
         'selectEntityBtn
         '
         Me.selectEntityBtn.Location = New System.Drawing.Point(620, 21)
-        Me.selectEntityBtn.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.selectEntityBtn.Margin = New System.Windows.Forms.Padding(2)
         Me.selectEntityBtn.Name = "selectEntityBtn"
         Me.selectEntityBtn.Size = New System.Drawing.Size(58, 21)
         Me.selectEntityBtn.TabIndex = 9
         Me.selectEntityBtn.Text = "select"
         Me.selectEntityBtn.UseVisualStyleBackColor = True
-        '
-        'code
-        '
-        Me.code.DataPropertyName = "product_code"
-        Me.code.HeaderText = "Code"
-        Me.code.Name = "code"
-        Me.code.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.code.Width = 75
-        '
-        'entity_name
-        '
-        Me.entity_name.DataPropertyName = "product_name"
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Aqua
-        Me.entity_name.DefaultCellStyle = DataGridViewCellStyle2
-        Me.entity_name.HeaderText = "Name"
-        Me.entity_name.Name = "entity_name"
-        Me.entity_name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.entity_name.Width = 300
-        '
-        'productsProdCatName
-        '
-        Me.productsProdCatName.DataPropertyName = "product_category_name"
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.PaleTurquoise
-        Me.productsProdCatName.DefaultCellStyle = DataGridViewCellStyle3
-        Me.productsProdCatName.HeaderText = "Category"
-        Me.productsProdCatName.Name = "productsProdCatName"
-        Me.productsProdCatName.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.productsProdCatName.Width = 200
-        '
-        'productsCategoryId
-        '
-        Me.productsCategoryId.DataPropertyName = "product_category_id"
-        Me.productsCategoryId.HeaderText = "productsCategoryId"
-        Me.productsCategoryId.Name = "productsCategoryId"
-        Me.productsCategoryId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.productsCategoryId.Visible = False
-        '
-        'productsQtyAvail
-        '
-        Me.productsQtyAvail.DataPropertyName = "qty_available"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "N0"
-        DataGridViewCellStyle4.NullValue = "0"
-        Me.productsQtyAvail.DefaultCellStyle = DataGridViewCellStyle4
-        Me.productsQtyAvail.HeaderText = "Qty Avail"
-        Me.productsQtyAvail.Name = "productsQtyAvail"
-        Me.productsQtyAvail.ReadOnly = True
-        Me.productsQtyAvail.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.productsQtyAvail.Width = 75
-        '
-        'productsQtyUom
-        '
-        Me.productsQtyUom.DataPropertyName = "qty_uom_name"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.productsQtyUom.DefaultCellStyle = DataGridViewCellStyle5
-        Me.productsQtyUom.HeaderText = "Qty UOM"
-        Me.productsQtyUom.Name = "productsQtyUom"
-        Me.productsQtyUom.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.productsQtyUom.Width = 75
-        '
-        'productsQtyUomId
-        '
-        Me.productsQtyUomId.DataPropertyName = "qty_uom_id"
-        Me.productsQtyUomId.HeaderText = "productsQtyUomId"
-        Me.productsQtyUomId.Name = "productsQtyUomId"
-        Me.productsQtyUomId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.productsQtyUomId.Visible = False
-        '
-        'productsAcbCost
-        '
-        Me.productsAcbCost.DataPropertyName = "acb_cost"
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle6.Format = "N0"
-        DataGridViewCellStyle6.NullValue = "0"
-        Me.productsAcbCost.DefaultCellStyle = DataGridViewCellStyle6
-        Me.productsAcbCost.HeaderText = "Cost"
-        Me.productsAcbCost.Name = "productsAcbCost"
-        Me.productsAcbCost.ReadOnly = True
-        Me.productsAcbCost.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'productsRetaildiscountroompercentage
-        '
-        Me.productsRetaildiscountroompercentage.DataPropertyName = "retail_discount_room_percentage"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle7.Format = "N0"
-        DataGridViewCellStyle7.NullValue = "0"
-        Me.productsRetaildiscountroompercentage.DefaultCellStyle = DataGridViewCellStyle7
-        Me.productsRetaildiscountroompercentage.HeaderText = "Ret Disc. Room %"
-        Me.productsRetaildiscountroompercentage.Name = "productsRetaildiscountroompercentage"
-        Me.productsRetaildiscountroompercentage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'productsMinretgrossprofitmarginpercentage
-        '
-        Me.productsMinretgrossprofitmarginpercentage.DataPropertyName = "min_ret_gross_profit_margin_percentage"
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle8.Format = "N0"
-        DataGridViewCellStyle8.NullValue = "0"
-        Me.productsMinretgrossprofitmarginpercentage.DefaultCellStyle = DataGridViewCellStyle8
-        Me.productsMinretgrossprofitmarginpercentage.HeaderText = "Min Ret. GP Margin %"
-        Me.productsMinretgrossprofitmarginpercentage.Name = "productsMinretgrossprofitmarginpercentage"
-        Me.productsMinretgrossprofitmarginpercentage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'productsRetailSalePrice
-        '
-        Me.productsRetailSalePrice.DataPropertyName = "retail_sale_price"
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle9.Format = "N0"
-        DataGridViewCellStyle9.NullValue = "0"
-        Me.productsRetailSalePrice.DefaultCellStyle = DataGridViewCellStyle9
-        Me.productsRetailSalePrice.HeaderText = "Ret Sale Price"
-        Me.productsRetailSalePrice.Name = "productsRetailSalePrice"
-        Me.productsRetailSalePrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'prodIsReorder
-        '
-        Me.prodIsReorder.DataPropertyName = "is_reorder"
-        Me.prodIsReorder.HeaderText = "Reorder?"
-        Me.prodIsReorder.Name = "prodIsReorder"
-        Me.prodIsReorder.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.prodIsReorder.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'productsComments
-        '
-        Me.productsComments.DataPropertyName = "comments"
-        Me.productsComments.HeaderText = "Comments"
-        Me.productsComments.Name = "productsComments"
-        Me.productsComments.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.productsComments.Width = 400
-        '
-        'entity_id
-        '
-        Me.entity_id.DataPropertyName = "product_id"
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.Aqua
-        Me.entity_id.DefaultCellStyle = DataGridViewCellStyle10
-        Me.entity_id.HeaderText = "ID"
-        Me.entity_id.Name = "entity_id"
-        Me.entity_id.ReadOnly = True
-        Me.entity_id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.entity_id.Width = 50
         '
         'ProductsDlg
         '
@@ -472,6 +484,7 @@ Partial Class ProductsDlg
     Friend WithEvents productsProdCatName As System.Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents productsCategoryId As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents productsQtyAvail As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents prod_min_stock_qty As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents productsQtyUom As System.Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents productsQtyUomId As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents productsAcbCost As System.Windows.Forms.DataGridViewTextBoxColumn

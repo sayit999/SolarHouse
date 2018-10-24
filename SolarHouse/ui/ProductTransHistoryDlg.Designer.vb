@@ -32,8 +32,9 @@ Partial Class SubmittedProductAcbAndQtyDlg
         Me.qty_avail = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.acb = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.comments = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.productLbl = New System.Windows.Forms.Label()
         Me.code = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.productLbl = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'productTransHistoryListView
@@ -98,6 +99,10 @@ Partial Class SubmittedProductAcbAndQtyDlg
         Me.comments.Text = "Comments"
         Me.comments.Width = 250
         '
+        'code
+        '
+        Me.code.Text = "code"
+        '
         'productLbl
         '
         Me.productLbl.AutoSize = True
@@ -107,15 +112,21 @@ Partial Class SubmittedProductAcbAndQtyDlg
         Me.productLbl.Size = New System.Drawing.Size(0, 32)
         Me.productLbl.TabIndex = 1
         '
-        'code
+        'Label1
         '
-        Me.code.Text = "code"
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 600)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(283, 17)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "** ni Mauzo au Manunuzi bado haija rushwa"
         '
         'SubmittedProductAcbAndQtyDlg
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1379, 599)
+        Me.ClientSize = New System.Drawing.Size(1379, 629)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.productLbl)
         Me.Controls.Add(Me.productTransHistoryListView)
         Me.Name = "SubmittedProductAcbAndQtyDlg"
@@ -138,4 +149,5 @@ Partial Class SubmittedProductAcbAndQtyDlg
     Friend WithEvents purchased_from As ColumnHeader
     Friend WithEvents productLbl As Label
     Friend WithEvents code As ColumnHeader
+    Friend WithEvents Label1 As Label
 End Class

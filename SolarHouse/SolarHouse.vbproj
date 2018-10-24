@@ -78,7 +78,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
@@ -117,6 +117,11 @@
   <ItemGroup>
     <Compile Include="business_layer\BusinessReportFile.vb" />
     <Compile Include="business_layer\EmailService.vb" />
+    <Compile Include="solarhousearushadatabaseDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>solarhousearushadatabaseDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ui\AboutBox.Designer.vb">
       <DependentUpon>AboutBox.vb</DependentUpon>
     </Compile>
@@ -168,8 +173,23 @@
     <Compile Include="ui\business_entity\ExpenseCategorieDlg.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ui\ExpenseIncomeIndDetailsDlg.Designer.vb">
+      <DependentUpon>ExpenseIncomeIndDetailsDlg.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\ExpenseIncomeIndDetailsDlg.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\ExpenseIncomeIndicator.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ui\ExpensesRprtGridView.vb">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ui\LowStockAlertForm.Designer.vb">
+      <DependentUpon>LowStockAlertForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\LowStockAlertForm.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="ui\PostedReversalCommentDlg.Designer.vb">
       <DependentUpon>PostedReversalCommentDlg.vb</DependentUpon>
@@ -177,6 +197,13 @@
     <Compile Include="ui\PostedReversalCommentDlg.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ui\CreditPurchPaymentHist.Designer.vb">
+      <DependentUpon>CreditPurchPaymentHist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\CreditPurchPaymentHist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\ProductTransactionHistory.vb" />
     <Compile Include="ui\ProductTransHistoryDlg.Designer.vb">
       <DependentUpon>ProductTransHistoryDlg.vb</DependentUpon>
     </Compile>
@@ -241,10 +268,10 @@
     <Compile Include="ui\business_entity\SuppliersDlg.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ui\SubmittedProdsAcbAndQtyDlg.Designer.vb">
-      <DependentUpon>SubmittedProdsAcbAndQtyDlg.vb</DependentUpon>
+    <Compile Include="ui\SubmittedBusinessReportDlg.Designer.vb">
+      <DependentUpon>SubmittedBusinessReportDlg.vb</DependentUpon>
     </Compile>
-    <Compile Include="ui\SubmittedProdsAcbAndQtyDlg.vb">
+    <Compile Include="ui\SubmittedBusinessReportDlg.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ui\TaskProgress.Designer.vb">
@@ -254,6 +281,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ui\UIUtil.vb" />
+    <Compile Include="ui\LowStockAlertDataGrid.Designer.vb">
+      <DependentUpon>LowStockAlertDataGrid.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\LowStockAlertDataGrid.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="util\MiscUtil.vb" />
     <Compile Include="util\RunCmdUtil.vb" />
     <Compile Include="util\StringUtil.vb" />
@@ -277,8 +310,20 @@
     <EmbeddedResource Include="ui\DateRangeDlg.resx">
       <DependentUpon>DateRangeDlg.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ui\ExpenseIncomeIndDetailsDlg.resx">
+      <DependentUpon>ExpenseIncomeIndDetailsDlg.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\ExpenseIncomeIndicator.resx">
+      <DependentUpon>ExpenseIncomeIndicator.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\LowStockAlertForm.resx">
+      <DependentUpon>LowStockAlertForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ui\PostedReversalCommentDlg.resx">
       <DependentUpon>PostedReversalCommentDlg.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\CreditPurchPaymentHist.resx">
+      <DependentUpon>CreditPurchPaymentHist.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ui\ProductTransHistoryDlg.resx">
       <DependentUpon>ProductTransHistoryDlg.vb</DependentUpon>
@@ -307,11 +352,14 @@
     <EmbeddedResource Include="ui\business_entity\SuppliersDlg.resx">
       <DependentUpon>SuppliersDlg.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ui\SubmittedProdsAcbAndQtyDlg.resx">
-      <DependentUpon>SubmittedProdsAcbAndQtyDlg.vb</DependentUpon>
+    <EmbeddedResource Include="ui\SubmittedBusinessReportDlg.resx">
+      <DependentUpon>SubmittedBusinessReportDlg.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ui\TaskProgress.resx">
       <DependentUpon>TaskProgress.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\LowStockAlertDataGrid.resx">
+      <DependentUpon>LowStockAlertDataGrid.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -327,6 +375,17 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="solarhousearushadatabaseDataSet.xsc">
+      <DependentUpon>solarhousearushadatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="solarhousearushadatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>solarhousearushadatabaseDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="solarhousearushadatabaseDataSet.xss">
+      <DependentUpon>solarhousearushadatabaseDataSet.xsd</DependentUpon>
+    </None>
     <None Include="SolarHouse_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

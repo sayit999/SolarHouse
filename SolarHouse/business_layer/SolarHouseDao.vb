@@ -25,6 +25,7 @@ Public Class SolarHouseDao
 
     End Function
 
+
     Public Function prepStrSql(val As String) As String
         val = UIUtil.subsIfEmpty(val, "")
         prepStrSql = "'" + val.Replace("'", "''") + "'"
@@ -140,6 +141,25 @@ Public Class SolarHouseDao
         adp.Fill(ds)
     End Sub
 
+    Public Shared Sub getSuppliers(sortByCode As Boolean, ByRef ds As DataTable)
+        Dim connection As MySqlConnection = connectToDB()
+        Dim sql As String
+        sql += "select "
+        sql += "     supplier.supplier_code, "
+        sql += "     supplier.supplier_name "
+        sql += "from supplier "
+        If (sortByCode) Then
+            sql += "order by supplier.supplier_code "
+        Else
+            sql += "order by supplier.supplier_name "
+        End If
+
+        Dim adp As MySqlDataAdapter = New MySqlDataAdapter(sql, connection)
+        ds = New DataTable()
+        adp.Fill(ds)
+
+    End Sub
+
     Public Shared Sub loadProducts(ByRef ds As DataTable)
         Dim connection As MySqlConnection = connectToDB()
         Dim sql As String
@@ -154,7 +174,7 @@ Public Class SolarHouseDao
         sql += "      product.retail_discount_room_percentage, "
         sql += "      product.min_ret_gross_profit_margin_percentage, "
         sql += "      product.retail_sale_price, "
-        ' sql += "      low_stock_alert_qty, "
+        sql += "      product.low_stock_alert_qty, "
         sql += "      is_reorder, "
         sql += "      product.comments, "
         sql += "      product.product_id "
@@ -162,6 +182,30 @@ Public Class SolarHouseDao
         sql += "Where product.product_category_id = product_category.product_category_id "
         sql += "and   product.qty_uom_id = qty_uom.qty_uom_id "
         sql += "Order By product.product_code "
+
+        Dim adp As MySqlDataAdapter = New MySqlDataAdapter(sql, connection)
+        ds = New DataTable()
+        adp.Fill(ds)
+    End Sub
+
+
+    Public Shared Sub loadProductsRunningLow(ByRef ds As DataTable)
+        Dim connection As MySqlConnection = connectToDB()
+        Dim sql As String
+
+
+        sql = "Select product.product_code, "
+        sql += "      product.product_name, "
+        sql += "      product.qty_available, "
+        sql += "      qty_uom.qty_uom_name, "
+        sql += "      product.acb_cost, "
+        sql += "      product.low_stock_alert_qty,"
+        sql += "      product.is_reorder "
+        sql += "From product, qty_uom "
+        sql += "Where product.qty_uom_id = qty_uom.qty_uom_id "
+        sql += "and product.qty_available < product.low_stock_alert_qty "
+        sql += "and   product.is_reorder = 1 "
+        sql += "Order By product.product_name "
 
         Dim adp As MySqlDataAdapter = New MySqlDataAdapter(sql, connection)
         ds = New DataTable()

@@ -3,30 +3,80 @@
 Public Class BusinessReportGridView
     Inherits SolarHouseDataGridView
 
+    Protected MAX_ROWS_NUM As Integer = 40
+
     Protected isProgramaticChange As Boolean = False
+
+
     Protected readOnlyCols As List(Of Integer) = New List(Of Integer)
 
+    Protected transactionComparer As TransactionDateComparer = New TransactionDateComparer(New List(Of Integer))
 
     Public Class TransactionDateComparer
         Implements IComparer
+        Public compCols As List(Of Integer)
+
+        Sub New(compCols As List(Of Integer))
+            Me.compCols = compCols
+        End Sub
+
+        'Public Function Compare(ByVal x As Object, ByVal y As Object) As Integer Implements IComparer.Compare
+        '    Dim rowX As DataGridViewRow = CType(x, DataGridViewRow)
+        '    Dim rowY As DataGridViewRow = CType(y, DataGridViewRow)
+        '    Dim medDate As New Date(5000, 12, 1)
+        '    Dim maxDate As New Date(9999, 12, 1)
+        '    Dim tranXDate As Date = UIUtil.parseDate(rowX.Cells(0).Value, Nothing)
+
+        '    If (UIUtil.isNothingDate(tranXDate)) Then
+        '        tranXDate = If(isRowEmpty(rowX), maxDate, medDate)
+        '    End If
+        '    Dim tranYDate As Date = UIUtil.parseDate(rowY.Cells(0).Value, Nothing)
+        '    If (UIUtil.isNothingDate(tranYDate)) Then
+        '        tranYDate = If(isRowEmpty(rowY), maxDate, medDate)
+        '    End If
+        '    Return tranXDate.CompareTo(tranYDate)
+        'End Function
+
+        Private Function convertTranDateToStr(row As DataGridViewRow) As String
+            Dim medDate As New Date(5000, 12, 1)
+            Dim maxDate As New Date(9999, 12, 1)
+            Dim tranDate As Date = UIUtil.parseDate(row.Cells(0).Value, Nothing)
+
+            If (UIUtil.isNothingDate(tranDate)) Then
+                tranDate = If(isRowEmpty(row), maxDate, medDate)
+            End If
+
+            Return Format(UIUtil.parseDate(tranDate), "yyyy-MM-dd")
+        End Function
+
+        Private Function convertRowToCompareStr(row As DataGridViewRow) As String
+            Dim compStr As String = convertTranDateToStr(row)
+            For i As Integer = 1 To compCols.Count - 1
+                compStr += UIUtil.subsIfEmpty(row.Cells(compCols(i)).Value, "")
+            Next
+            Return compStr
+        End Function
 
         Public Function Compare(ByVal x As Object, ByVal y As Object) As Integer Implements IComparer.Compare
             Dim rowX As DataGridViewRow = CType(x, DataGridViewRow)
             Dim rowY As DataGridViewRow = CType(y, DataGridViewRow)
-            Dim medDate As New Date(5000, 12, 1)
-            Dim maxDate As New Date(9999, 12, 1)
-            Dim tranXDate As Date = UIUtil.parseDate(rowX.Cells(0).Value, Nothing)
 
-            If (UIUtil.isNothingDate(tranXDate)) Then
-                tranXDate = If(isRowEmpty(rowX), maxDate, medDate)
-            End If
-            Dim tranYDate As Date = UIUtil.parseDate(rowY.Cells(0).Value, Nothing)
-            If (UIUtil.isNothingDate(tranYDate)) Then
-                tranYDate = If(isRowEmpty(rowY), maxDate, medDate)
-            End If
-            Return tranXDate.CompareTo(tranYDate)
+            Return convertRowToCompareStr(rowX).CompareTo(convertRowToCompareStr(rowY))
+
+
+            'Dim medDate As New Date(5000, 12, 1)
+            'Dim maxDate As New Date(9999, 12, 1)
+            'Dim tranXDate As Date = UIUtil.parseDate(rowX.Cells(0).Value, Nothing)
+
+            'If (UIUtil.isNothingDate(tranXDate)) Then
+            '    tranXDate = If(isRowEmpty(rowX), maxDate, medDate)
+            'End If
+            'Dim tranYDate As Date = UIUtil.parseDate(rowY.Cells(0).Value, Nothing)
+            'If (UIUtil.isNothingDate(tranYDate)) Then
+            '    tranYDate = If(isRowEmpty(rowY), maxDate, medDate)
+            'End If
+            'Return tranXDate.CompareTo(tranYDate)
         End Function
-
 
     End Class
 
@@ -51,9 +101,13 @@ Public Class BusinessReportGridView
         If (dlg.isAnAmendementReport()) Then
             Return
         Else
-            For i As Integer = 1 To 40
+            For i As Integer = 1 To MAX_ROWS_NUM
                 Rows().Add()
             Next
+            Me.CurrentCell = Me(0, 0)
+
+            Me.FirstDisplayedCell = Me.CurrentCell
+
         End If
 
 
@@ -72,7 +126,7 @@ Public Class BusinessReportGridView
     End Sub
 
     Public Overridable Function validateRows()
-        Sort(New TransactionDateComparer)
+        Sort(Me.transactionComparer)
         Dim isValid As Boolean = True
         Dim rowsCnt As Integer = Me.RowCount
         Dim r As Integer
@@ -111,12 +165,64 @@ Public Class BusinessReportGridView
         Next
     End Sub
 
+    Function hasDataBeenEntered()
+        For r As Integer = 0 To Rows.Count - 1
+            If (Not isRowEmpty(r) AndAlso Not isTransactionPosted(r)) Then
+                Return True
+            End If
+        Next
+        Return False
+    End Function
+
     Protected Overrides Sub OnRowValidating(e As DataGridViewCellCancelEventArgs)
         Dim dlg As BusinessReportDlg = getBusinessReportDlg()
         'If (dlg.isAnAmendementReport() AndAlso Not isRowEmpty(e.RowIndex)) Then
         '    Rows(e.RowIndex).Cells(getIsAmendmentColName()).Value = UIUtil.toBinaryBooleanString(True)
         'End If
         MyBase.OnRowValidating(e)
+    End Sub
+
+    Protected Sub validateTransDate(dlg As BusinessReportDlg, row As Integer, ByRef result As RowValidationResult)
+        Dim fromDate As Date
+        Dim toDate As Date
+        Dim toDateStr As String
+        Dim fromDateStr As String
+
+        If (dlg.getBusinessReportToFromDates(fromDate, toDate)) Then
+            toDateStr = UIUtil.toDateString(toDate)
+            fromDateStr = UIUtil.toDateString(fromDate)
+            If (StringUtil.isEmpty(Rows(row).Cells(0).Value)) Then
+                addError(result, "ingiza tarehe", row, 0)
+            ElseIf (Not UIUtil.isValidDate(Rows(row).Cells(0).Value)) Then
+                addError(result, "tarehe sio sahihi", row, 0)
+            Else
+                Dim vDate As Date = UIUtil.parseDate(Rows(row).Cells(0).Value)
+                If vDate < fromDate OrElse vDate > toDate Then
+                    addError(result, " tarehe lazima iwe kati ya tarehe " + fromDateStr + " na " + toDateStr, row, 0)
+                End If
+            End If
+        End If
+    End Sub
+
+    Protected Overridable Function isReversedTrans(curRow As DataGridViewRow, reversalRow As DataGridViewRow) As Boolean
+        Return False
+    End Function
+
+
+    Protected Sub ensureReversedTranExists(rowInd As Integer, ByRef result As RowValidationResult)
+        Dim isreversedRowFnd As Boolean = False
+        Dim reversalRow As DataGridViewRow = Me.Rows(rowInd)
+        For i = 0 To Rows.Count - 1
+            If (i <> rowInd) Then
+                If (isReversedTrans(Me.Rows(i), reversalRow)) Then
+                    isreversedRowFnd = True
+                End If
+            End If
+        Next
+        If Not isreversedRowFnd Then
+            addError(result, "hakuna mauzo,manunuzi,malipo,matumizi hii inayo reverse ", rowInd, 0)
+        End If
+
     End Sub
 
     Protected Overrides Sub doValidateRow(row As Integer, ByRef result As RowValidationResult)
@@ -127,30 +233,15 @@ Public Class BusinessReportGridView
         If (StringUtil.isEmpty(Rows(row).Cells(0).Value)) Then
             addError(result, "Has to be entered", row, 0)
         Else
-            Dim fromDate As Date
-            Dim toDate As Date
-            Dim toDateStr As String
-            Dim fromDateStr As String
+            validateTransDate(dlg, row, result)
+        End If
 
-            If (dlg.getBusinessReportToFromDates(fromDate, toDate)) Then
-                toDateStr = UIUtil.toDateString(toDate)
-                fromDateStr = UIUtil.toDateString(fromDate)
-                If (StringUtil.isEmpty(Rows(row).Cells(0).Value)) Then
-                    addError(result, "date has to be entered", row, 0)
-                ElseIf (Not UIUtil.isValidDate(Rows(row).Cells(0).Value)) Then
-                    addError(result, "invalid date", row, 0)
-                Else
-                    Dim vDate As Date = UIUtil.parseDate(Rows(row).Cells(0).Value)
-                    If vDate < fromDate OrElse vDate > toDate Then
-                        addError(result, "has to be between " + fromDateStr + " and " + toDateStr, row, 0)
-                    End If
-                End If
-            End If
-
+        If isReversalTransaction(row) Then
+            ensureReversedTranExists(row, result)
         End If
 
         If (isAmendmentRow(row) AndAlso StringUtil.isEmpty(Rows(row).Cells(getCommentColName()).Value)) Then
-            addError(result, "Why are you amending a posted period? Enter Comment", row, Columns(getCommentColName()).Index)
+            addError(result, "Andika sababu yaku fanya amendment. Ingiza comment", row, Columns(getCommentColName()).Index)
         End If
     End Sub
 
@@ -399,7 +490,7 @@ Public Class BusinessReportGridView
 
     End Function
 
-    Public Function deleteRow(entityName As String, Optional usrPrmptCol1 As Integer = 0, Optional usrPrmptCol2 As Integer = 1)
+    Public Function deleteCurrentRow(entityName As String, Optional usrPrmptCol1 As Integer = 0, Optional usrPrmptCol2 As Integer = 1)
         Dim rowTxt As String
         Dim isRowDeleted As Boolean = False
 
@@ -415,9 +506,10 @@ Public Class BusinessReportGridView
                 End Try
             Else
                 reversePostedTransaction(CurrentRow.Index)
+                isRowDeleted = False
             End If
         End If
-        deleteRow = isRowDeleted
+        deleteCurrentRow = isRowDeleted
     End Function
 
     Protected Overrides Sub OnKeyUp(e As KeyEventArgs)

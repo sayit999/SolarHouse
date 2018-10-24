@@ -3,10 +3,22 @@
 
     Public Overrides Sub setupGridView()
         MyBase.setupGridView()
+        transactionComparer.compCols.Add(0)
+        transactionComparer.compCols.Add(1)
+        transactionComparer.compCols.Add(2)
+        transactionComparer.compCols.Add(8)
+        transactionComparer.compCols.Add(9)
+
     End Sub
 
     Protected Overrides Function isReversalTransaction(row As Integer) As Boolean
-        Return isValidDataGridViewRow(row) AndAlso UIUtil.toBoolean(Rows(row).Cells("isExpensePostedReversal").Value)
+        Return isValidDataGridViewRowIndex(row) AndAlso UIUtil.toBoolean(Rows(row).Cells("isExpensePostedReversal").Value)
+    End Function
+
+    Protected Overrides Function isReversedTrans(curRow As DataGridViewRow, reversalRow As DataGridViewRow) As Boolean
+        Return curRow.Cells("expenseExpensedOn").Value = reversalRow.Cells("expenseExpensedOn").Value AndAlso
+               curRow.Cells("expenseCategoryCode").Value = reversalRow.Cells("expenseCategoryCode").Value AndAlso
+               UIUtil.zeroIfEmpty(curRow.Cells("expenseAmount").Value) = -1 * UIUtil.zeroIfEmpty(reversalRow.Cells("expenseAmount").Value)
     End Function
 
     Protected Overrides Sub indicateTransactionReversed(row As Integer, Optional isReversed As Boolean = True)
@@ -19,7 +31,7 @@
 
 
     Protected Overrides Function isTransactionPosted(row As Integer) As Boolean
-            Return isValidDataGridViewRow(row) AndAlso UIUtil.toBoolean(Rows(row).Cells("isExpensePosted").Value)
+        Return isValidDataGridViewRowIndex(row) AndAlso UIUtil.toBoolean(Rows(row).Cells("isExpensePosted").Value)
     End Function
 
     Protected Overrides Sub indicateTransactionPosted(row As Integer, Optional isPosted As Boolean = True)
@@ -27,21 +39,23 @@
     End Sub
 
     Protected Overrides Sub doValidateRow(row As Integer, ByRef result As RowValidationResult)
-        If isReversalTransaction(row) Then
-            If (StringUtil.isEmpty(Rows(row).Cells(getCommentColName()).Value)) Then
-                addError(result, "Comment has to be entered", row, Columns(getCommentColName()).Index)
-            End If
-        Else
-            MyBase.doValidateRow(row, result)
-            If (StringUtil.isEmpty(Me.Rows(row).Cells("expenseCategoryCode").Value)) Then
-                addError(result, "Expense code cannot be empty.", row, 1)
-            ElseIf (Not getBusinessReportDlg().isValidCode(Me.Rows(row).Cells("expenseCategoryCode").Value, getBusinessReportDlg().expenseCategoriesEntityDataSet, "expense_category_code")) Then
-                addError(result, "Expense code is Invalid.", row, 1)
-            End If
-            If (StringUtil.isEmpty(Me.Rows(row).Cells("expenseAmount").Value)) Then
-                addError(result, "Expense amount cannot be empty", row, "expenseAmount")
-            End If
+
+        MyBase.doValidateRow(row, result)
+
+        Dim isAReversalTran As Boolean = isReversalTransaction(row)
+
+        If (StringUtil.isEmpty(Me.Rows(row).Cells("expenseCategoryCode").Value)) Then
+            addError(result, "Expense code cannot be empty.", row, 1)
+        ElseIf (Not getBusinessReportDlg().isValidCode(Me.Rows(row).Cells("expenseCategoryCode").Value, getBusinessReportDlg().expenseCategoriesEntityDataSet, "expense_category_code")) Then
+            addError(result, "Expense code is Invalid.", row, 1)
         End If
+
+        If (StringUtil.isEmpty(Me.Rows(row).Cells("expenseAmount").Value)) Then
+            addError(result, "Expense amount cannot be empty", row, "expenseAmount")
+        ElseIf Not isAReversalTran AndAlso UIUtil.zeroIfEmpty(Me.Rows(row).Cells("expenseAmount").Value) < 0 Then
+            addError(result, "Expense amount cannot be negative", row, "expenseAmount")
+        End If
+
 
     End Sub
 
@@ -106,7 +120,7 @@
     End Function
 
     Public Overrides Sub deleteCurrentRow()
-        deleteRow("Expense", 0, 1)
+        deleteCurrentRow("Expense", 0, 1)
     End Sub
 
     Protected Overrides Sub OnKeyUp(e As KeyEventArgs)

@@ -141,7 +141,10 @@
         If Not (UIUtil.isBetween(0, Me.ColumnCount - 1, e.ColumnIndex)) Or Not (UIUtil.isBetween(0, Me.RowCount, e.RowIndex)) Then
             Exit Sub
         End If
-        colorCell(e)
+        If e.RowIndex >= Me.FirstDisplayedScrollingRowIndex AndAlso (e.RowIndex <= (Me.FirstDisplayedScrollingRowIndex + Me.DisplayedRowCount(True))) Then
+            colorCell(e)
+        End If
+
     End Sub
 
     Protected Overrides Sub OnRowValidating(e As DataGridViewCellCancelEventArgs)
@@ -362,7 +365,7 @@
 
     End Sub
 
-    Protected Function isValidDataGridViewRow(row As Integer) As Boolean
+    Protected Function isValidDataGridViewRowIndex(row As Integer) As Boolean
         Return row >= 0 AndAlso row < Rows.Count
     End Function
 
