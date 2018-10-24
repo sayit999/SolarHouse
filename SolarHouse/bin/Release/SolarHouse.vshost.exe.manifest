@@ -4,7 +4,7 @@
   <description asmv2:iconFile="favicon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="SolarHouse" version="1.2.25.1" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="SolarHouse" version="1.2.25.2" language="neutral" processorArchitecture="msil" />
     <commandLine file="SolarHouse.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -49,13 +49,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SolarHouse.exe" size="655360">
-      <assemblyIdentity name="SolarHouse" version="1.2.25.1" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="SolarHouse" version="1.2.25.2" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DVcL1lj2ImjL6Qwbtz+K9ZOYSsXl4puAzBl/3ydy3+o=</dsig:DigestValue>
+        <dsig:DigestValue>LuhKqesLRlh6LimLiDJtSvtf5zEcLfnEQL61/DQo48I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -80,13 +80,13 @@
       <dsig:DigestValue>NHL4ENaH815helDnQN+N1+TwCGRcKziCT/BtqeYBICs=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SolarHouse.exe.config" size="2739">
+  <file name="SolarHouse.exe.config" size="2735">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>bW9zINjjLUzJ0lNrx5iRklls0RaE4jQt9hAjKvk25c4=</dsig:DigestValue>
+      <dsig:DigestValue>7k4ODGPRfDcO9JXEKB7zR7gn31Tr6olKjTA9jYYrx1E=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

@@ -176,6 +176,7 @@ Public Class BusinessReportGridView
 
     Protected Overrides Sub OnRowValidating(e As DataGridViewCellCancelEventArgs)
         Dim dlg As BusinessReportDlg = getBusinessReportDlg()
+        ' GIT test comment
         'If (dlg.isAnAmendementReport() AndAlso Not isRowEmpty(e.RowIndex)) Then
         '    Rows(e.RowIndex).Cells(getIsAmendmentColName()).Value = UIUtil.toBinaryBooleanString(True)
         'End If
