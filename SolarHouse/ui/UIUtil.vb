@@ -93,8 +93,8 @@ Public Class UIUtil
         End If
     End Function
 
-    Public Shared Function parseDouble(str As String) As Double
-        If (StringUtil.isEmpty(str) OrElse Not IsNumeric(str)) Then
+    Public Shared Function parseDouble(str As Object) As Double
+        If (Not IsNumeric(str) OrElse StringUtil.isEmpty(str)) Then
             parseDouble = "0"
         Else
             parseDouble = Double.Parse(str)

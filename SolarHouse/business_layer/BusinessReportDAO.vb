@@ -191,8 +191,10 @@ Public Class BusinessReportDAO
         Public reportTo As Date
         Public cashBroughtForward As Integer
         Public cashCounted As Integer
+        Public cashExpected As Integer
         Public reportType As ReportType
         Public reportFileLocation As String
+        Public reason4CashDiff As String
     End Class
 
     Enum EstimatedExpenseType
@@ -217,6 +219,8 @@ Public Class BusinessReportDAO
 
         Public cashBroughtForward As Double
         Public cashCounted As Double
+        Public cashExpected As Double
+        Public reason4CashCountedVersusBroughtForwardDiff As String
 
         Public suppliersModified As Collection
         Public productsModified As Collection
@@ -348,6 +352,10 @@ Public Class BusinessReportDAO
                             businessReport.cashBroughtForward = UIUtil.parseDouble(reportElement.ChildNodes(ci).InnerText)
                         ElseIf reportElement.ChildNodes(ci).Name = "cash_counted" Then
                             businessReport.cashCounted = UIUtil.parseDouble(reportElement.ChildNodes(ci).InnerText)
+                        ElseIf reportElement.ChildNodes(ci).Name = "cash_expected" Then
+                            businessReport.cashExpected = UIUtil.parseDouble(reportElement.ChildNodes(ci).InnerText)
+                        ElseIf reportElement.ChildNodes(ci).Name = "cash_counted_diff_reason" Then
+                            businessReport.reason4CashCountedVersusBroughtForwardDiff = reportElement.ChildNodes(ci).InnerText
                         End If
                     Next
                 ElseIf reportElement.Name = "suppliers_modified" Then
@@ -588,6 +596,8 @@ Public Class BusinessReportDAO
             writer.WriteStartElement("report_overall")
             writer.WriteElementString("cash_brought_forward", businessReport.cashBroughtForward.ToString)
             writer.WriteElementString("cash_counted", businessReport.cashCounted.ToString)
+            writer.WriteElementString("cash_expected", businessReport.cashExpected.ToString)
+            writer.WriteElementString("cash_counted_diff_reason", businessReport.reason4CashCountedVersusBroughtForwardDiff)
             writer.WriteEndElement()
 
             ' Supplier Modified 
@@ -1045,7 +1055,8 @@ Public Class BusinessReportDAO
         sqlStr += businessReport.cashCounted.ToString + ", "
 
         sqlStr += prepStrSql(businessReport.absXmlFileName.Replace("\", "\\")) + ","
-        sqlStr += "NULL"
+        sqlStr += prepStrSql(businessReport.reason4CashCountedVersusBroughtForwardDiff) + ","
+        sqlStr += businessReport.cashExpected.ToString
         sqlStr += ")"
         executeNonRetrievalSql(sqlStr, cn)
     End Sub
@@ -1061,7 +1072,9 @@ Public Class BusinessReportDAO
         sqlStr += "cash_brought_forward, "
         sqlStr += "cash_counted, "
         sqlStr += "report_type, "
-        sqlStr += "report_file_loc "
+        sqlStr += "report_file_loc, "
+        sqlStr += "comments, "
+        sqlStr += "expected_cash "
         sqlStr += "From report_load_submit_status "
         sqlStr += "Where report_load_submit_status.report_from = (Select max(report_load_submit_status.report_from) "
         sqlStr += "                                               From report_load_submit_status "
@@ -1083,6 +1096,8 @@ Public Class BusinessReportDAO
             stat.cashBroughtForward = UIUtil.parseDouble(dt.Rows(0).Item("cash_brought_forward"))
             stat.cashCounted = UIUtil.parseDouble(dt.Rows(0).Item("cash_counted"))
             stat.reportFileLocation = dt.Rows(0).Item("report_file_loc")
+            stat.cashExpected = UIUtil.parseDouble(dt.Rows(0).Item("expected_cash"))
+            stat.reason4CashDiff = StringUtil.isNullThenEmptyStr(dt.Rows(0).Item("comments"))
             Return stat
         End If
 
@@ -2094,7 +2109,7 @@ Public Class BusinessReportDAO
 
     Public Function runMySqlScript(sqlScriptAbsPath As String) As Boolean
         Dim sqlScriptCmd As String = ControlChars.Quote + My.Settings.mysql_execs_path + My.Settings.mysql_cmd + ControlChars.Quote
-        Dim sqlScriptArg As String = "--user=root --password=arusha " + My.Settings.database_name + " -e " + ControlChars.Quote + "source " + sqlScriptAbsPath + ControlChars.Quote
+        Dim sqlScriptArg As String = "--user=root --password=arusha239 " + My.Settings.database_name + " -e " + ControlChars.Quote + "source " + sqlScriptAbsPath + ControlChars.Quote
         Dim cmdUtil As New RunCmdUtil
         '-e "source batch-file"
         cmdUtil.runCmd(sqlScriptCmd, sqlScriptArg)
@@ -2126,7 +2141,7 @@ Public Class BusinessReportDAO
         Dim backupCmd As String = ControlChars.Quote + My.Settings.mysql_execs_path + My.Settings.mysql_backup_cmd + ControlChars.Quote
 
         Dim cmdUtil As New RunCmdUtil
-        cmdUtil.runCmd(backupCmd, "--databases " + My.Settings.database_name + " -uroot -parusha --result-file=" + ControlChars.Quote + backupFileAbsLoc + ControlChars.Quote)
+        cmdUtil.runCmd(backupCmd, "--databases " + My.Settings.database_name + " -uroot -parusha239 --result-file=" + ControlChars.Quote + backupFileAbsLoc + ControlChars.Quote)
 
         If (Not File.Exists(backupFileAbsLoc)) Then
             Throw New FileNotFoundException("Backup failed.  Backup file:" + backupFileAbsLoc + " not found")

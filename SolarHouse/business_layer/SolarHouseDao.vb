@@ -14,7 +14,7 @@ Public Class SolarHouseDao
         Server_Name = "127.0.0.1"
         Database_Name = My.Settings.database_name
         User_ID = "root"
-        Password = "arusha"
+        Password = "arusha239"
         Dim connection As MySqlConnection = New MySqlConnection()
 
         connection.ConnectionString = String.Format("server={0}; user id={1}; password={2}; database={3}; pooling=false", Server_Name, User_ID, Password, Database_Name)

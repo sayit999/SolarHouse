@@ -68,3 +68,4 @@ C:\firoz\Arusha\Shop\SolarHouse\SolarHouse\obj\Release\SolarHouse.LowStockAlertF
 C:\firoz\Arusha\Shop\SolarHouse\SolarHouse\obj\Release\SolarHouse.CreditPurchPaymentHistDlg.resources
 C:\firoz\Arusha\Shop\SolarHouse\SolarHouse\obj\Release\SolarHouse.SubmittedBusinessReportDlg.resources
 C:\firoz\Arusha\Shop\SolarHouse\SolarHouse\obj\Release\SolarHouse.LowStockAlertDataGrid.resources
+C:\development\SolarHouse\SolarHouse\bin\Release\MySql.Data.dll

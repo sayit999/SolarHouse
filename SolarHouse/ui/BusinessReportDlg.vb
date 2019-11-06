@@ -465,6 +465,7 @@ Public Class BusinessReportDlg
             Dim isCashError As Boolean = False
             cashBroughtForwardErrorPic.setErrorText("")
             countedCashErrorPic.setErrorText("")
+            diffInCashReasonPic.setErrorText("")
             If (UIUtil.isEmpty(cashBroughtFwdTextBox.Text)) Then
                 cashBroughtForwardErrorPic.setErrorText("Cash Brought Forward has to be entered")
                 isCashError = True
@@ -478,14 +479,16 @@ Public Class BusinessReportDlg
             End If
 
             If (UIUtil.isEmpty(maunuallyCountedCashTxtBox.Text)) Then
-                countedCashErrorPic.setErrorText("Cash you Counted has to be entered")
+                countedCashErrorPic.setErrorText("Lazima uhesabu cash kwenye droo")
                 isCashError = True
             Else
                 Dim cashVal As Integer = UIUtil.zeroIfEmpty(maunuallyCountedCashTxtBox.Text)
                 If cashVal <= 0 Then
-                    countedCashErrorPic.setErrorText("Cash you Counted cannot be negative or zero")
+                    countedCashErrorPic.setErrorText("Cashi ulio hesabu kwenye droo hai wezi kuwa 0 au negative")
                     isCashError = True
-
+                ElseIf UIUtil.zeroIfEmpty(countedVersusExpCashTxtBox.Text) <> 0 AndAlso UIUtil.isEmpty(countedCashDiffReasonTxtBox.Text) Then
+                    diffInCashReasonPic.setErrorText("Ingiza sababu kuna tofauti kwenye cash ya shs " + countedVersusExpCashTxtBox.Text)
+                    isCashError = True
                 End If
             End If
 
@@ -1021,6 +1024,9 @@ Public Class BusinessReportDlg
 
         businessReport.cashBroughtForward = UIUtil.parseDouble(cashBroughtFwdTextBox.Text)
         businessReport.cashCounted = UIUtil.parseDouble(maunuallyCountedCashTxtBox.Text)
+        businessReport.cashExpected = UIUtil.parseDouble(expectedCashFlowTxtBox.Text)
+        businessReport.reason4CashCountedVersusBroughtForwardDiff = countedCashDiffReasonTxtBox.Text
+
 
         loadProductsEntitiesChangedIntoVO(businessReport)
         loadExpenseCategoriesEntitiesChangedIntoVO(businessReport)
@@ -1040,6 +1046,8 @@ Public Class BusinessReportDlg
 
         cashBroughtFwdTextBox.Text = UIUtil.toAmtString(businessReport.cashBroughtForward)
         maunuallyCountedCashTxtBox.Text = UIUtil.toAmtString(businessReport.cashCounted)
+        expectedCashFlowTxtBox.Text = UIUtil.toAmtString(businessReport.cashExpected)
+        countedCashDiffReasonTxtBox.Text = businessReport.reason4CashCountedVersusBroughtForwardDiff
 
         loadEntitiesChangedIntoDataTable(businessReport)
         purchasesGrdView.loadBusinessReportDataIntoGrid(businessReport)
@@ -1076,6 +1084,8 @@ Public Class BusinessReportDlg
         expectedCashFlowTxtBox.Text = ""
         cashBroughtFwdTextBox.Text = ""
         maunuallyCountedCashTxtBox.Text = ""
+        countedVersusExpCashTxtBox.Text = ""
+        countedCashDiffReasonTxtBox.Text = ""
 
 
         If (isDefaultToFromBusinessDates) Then
@@ -1086,6 +1096,7 @@ Public Class BusinessReportDlg
         toDateErrorPic.setErrorText("")
         cashBroughtForwardErrorPic.setErrorText("")
         countedCashErrorPic.setErrorText("")
+        diffInCashReasonPic.setErrorText("")
 
 
         Me.isModified = False
@@ -1414,4 +1425,7 @@ Public Class BusinessReportDlg
         expenseIncomeIndicator.refreshCntrl(startFromJun2018ChkBox.Checked)
     End Sub
 
+    Private Sub countedCashDiffReasonTxtBox_TextChanged(sender As Object, e As EventArgs) Handles countedCashDiffReasonTxtBox.TextChanged
+
+    End Sub
 End Class

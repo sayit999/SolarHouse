@@ -15,7 +15,7 @@ Option Explicit On
 Namespace My
     
     <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "12.0.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0"),  _
      Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
     Partial Friend NotInheritable Class MySettings
         Inherits Global.System.Configuration.ApplicationSettingsBase
@@ -189,8 +189,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("server=127.0.0.1;user id=root;password=arusha;persistsecurityinfo=True;database=s"& _ 
-            "olarhousearushadatabase")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=127.0.0.1;user id=root;password=arusha239;persistsecurityinfo=True;databas"& _ 
+            "e=solarhousearushadatabase")>  _
         Public ReadOnly Property solarhousearushadatabaseConnectionString() As String
             Get
                 Return CType(Me("solarhousearushadatabaseConnectionString"),String)

@@ -23,9 +23,32 @@ Partial Class BusinessReportDlg
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(BusinessReportDlg))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(BusinessReportDlg))
         Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -39,29 +62,6 @@ Partial Class BusinessReportDlg
         Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.newBusinessReportBtn = New System.Windows.Forms.Button()
         Me.reportsAvailComboBox = New System.Windows.Forms.ComboBox()
@@ -79,8 +79,7 @@ Partial Class BusinessReportDlg
         Me.expectedCashFlowTxtBox = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.countedCashErrorPic = New SolarHouse.TextBoxErrorPictureBox()
-        Me.cashBroughtForwardErrorPic = New SolarHouse.TextBoxErrorPictureBox()
+        Me.countedCashDiffReasonTxtBox = New System.Windows.Forms.TextBox()
         Me.cashOutflowTxtBox = New System.Windows.Forms.TextBox()
         Me.creditPurchasesTxtBox = New System.Windows.Forms.TextBox()
         Me.totProfitsTxtBox = New System.Windows.Forms.TextBox()
@@ -94,13 +93,9 @@ Partial Class BusinessReportDlg
         Me.validateBusReportBtn = New System.Windows.Forms.Button()
         Me.businessReportTabControl = New System.Windows.Forms.TabControl()
         Me.salesReportTab = New System.Windows.Forms.TabPage()
-        Me.salesGrdView = New SolarHouse.SalesRprtGridView()
         Me.purchasesReportTab = New System.Windows.Forms.TabPage()
-        Me.purchasesGrdView = New SolarHouse.PurchasesRprtGridView()
         Me.expensesReportTab = New System.Windows.Forms.TabPage()
-        Me.expensesGrdView = New SolarHouse.ExpensesRprtGridView()
         Me.debtPaymentsReportTab = New System.Windows.Forms.TabPage()
-        Me.debtPaymentGrdView = New SolarHouse.DebtPaymentRprtGridView()
         Me.saveBusReportBtn = New System.Windows.Forms.Button()
         Me.insertTranRowBtn = New System.Windows.Forms.Button()
         Me.deleteTranRowBtn = New System.Windows.Forms.Button()
@@ -109,8 +104,6 @@ Partial Class BusinessReportDlg
         Me.Label14 = New System.Windows.Forms.Label()
         Me.reportToDateTxtBox = New System.Windows.Forms.MaskedTextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.fromDateErrorPic = New SolarHouse.TextBoxErrorPictureBox()
-        Me.toDateErrorPic = New SolarHouse.TextBoxErrorPictureBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
@@ -131,24 +124,9 @@ Partial Class BusinessReportDlg
         Me.expenseIncIndTxtBox = New System.Windows.Forms.TextBox()
         Me.profitSummaryIndGrpBox = New System.Windows.Forms.GroupBox()
         Me.startFromJun2018ChkBox = New System.Windows.Forms.CheckBox()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.expenseIncomeIndicator = New SolarHouse.ExpenseIncomeIndicator()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.salesGrdView = New SolarHouse.SalesRprtGridView()
         Me.saleSoldOn = New SolarHouse.MaskedEditColumn()
         Me.saleProductCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.saleProductName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -166,16 +144,7 @@ Partial Class BusinessReportDlg
         Me.isSalePosted = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.isSalePostedReversal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.is_sale_amendment = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.expenseExpensedOn = New SolarHouse.MaskedEditColumn()
-        Me.expenseCategoryCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.expenseExpenseCategoryName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.expenseAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.expenseComments = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.expenseId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.expenseExpenseCategoryId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.isExpensePosted = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.isExpensePostedReversal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.is_expense_amendment = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.purchasesGrdView = New SolarHouse.PurchasesRprtGridView()
         Me.purchasePurchasedOn = New SolarHouse.MaskedEditColumn()
         Me.purchaseSupplierCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.purchaseSupplierName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -195,6 +164,18 @@ Partial Class BusinessReportDlg
         Me.isPurchasePosted = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.isPurchasePostedReversal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.is_purchase_amendment = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.expensesGrdView = New SolarHouse.ExpensesRprtGridView()
+        Me.expenseExpensedOn = New SolarHouse.MaskedEditColumn()
+        Me.expenseCategoryCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.expenseExpenseCategoryName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.expenseAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.expenseComments = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.expenseId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.expenseExpenseCategoryId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.isExpensePosted = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.isExpensePostedReversal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.is_expense_amendment = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.debtPaymentGrdView = New SolarHouse.DebtPaymentRprtGridView()
         Me.debtPaymentPaidOn = New SolarHouse.MaskedEditColumn()
         Me.debtPaymentSupplierCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.debtPaymentSupplierName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -205,25 +186,48 @@ Partial Class BusinessReportDlg
         Me.isDebtPaymentPosted = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.isDebtPaymentPostedReversal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.is_debt_payment_amendment = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.diffInCashReasonPic = New SolarHouse.TextBoxErrorPictureBox()
+        Me.countedCashErrorPic = New SolarHouse.TextBoxErrorPictureBox()
+        Me.cashBroughtForwardErrorPic = New SolarHouse.TextBoxErrorPictureBox()
+        Me.fromDateErrorPic = New SolarHouse.TextBoxErrorPictureBox()
+        Me.toDateErrorPic = New SolarHouse.TextBoxErrorPictureBox()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.countedCashErrorPic, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cashBroughtForwardErrorPic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.businessReportTabControl.SuspendLayout()
         Me.salesReportTab.SuspendLayout()
-        CType(Me.salesGrdView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.purchasesReportTab.SuspendLayout()
-        CType(Me.purchasesGrdView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.expensesReportTab.SuspendLayout()
-        CType(Me.expensesGrdView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.debtPaymentsReportTab.SuspendLayout()
-        CType(Me.debtPaymentGrdView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
-        CType(Me.fromDateErrorPic, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.toDateErrorPic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SaleBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SaleBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.profitSummaryIndGrpBox.SuspendLayout()
         CType(Me.expenseIncomeIndicator, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.salesGrdView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.purchasesGrdView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.expensesGrdView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.debtPaymentGrdView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.diffInCashReasonPic, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.countedCashErrorPic, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cashBroughtForwardErrorPic, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.fromDateErrorPic, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.toDateErrorPic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -266,12 +270,12 @@ Partial Class BusinessReportDlg
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(161, 120)
+        Me.Label2.Location = New System.Drawing.Point(182, 120)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(115, 13)
+        Me.Label2.Size = New System.Drawing.Size(96, 13)
         Me.Label2.TabIndex = 8
-        Me.Label2.Text = "Cash Brought Forward:"
+        Me.Label2.Text = "Tuli anza na cashi:"
         '
         'cashBroughtFwdTextBox
         '
@@ -378,12 +382,12 @@ Partial Class BusinessReportDlg
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(205, 220)
+        Me.Label7.Location = New System.Drawing.Point(136, 220)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(73, 13)
+        Me.Label7.Size = New System.Drawing.Size(142, 13)
         Me.Label7.TabIndex = 18
-        Me.Label7.Text = "Cash Outflow:"
+        Me.Label7.Text = "Cashi ime baadilika kwa shs:"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'expectedCashFlowTxtBox
@@ -401,16 +405,18 @@ Partial Class BusinessReportDlg
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(199, 240)
+        Me.Label8.Location = New System.Drawing.Point(110, 240)
         Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(82, 13)
+        Me.Label8.Size = New System.Drawing.Size(168, 13)
         Me.Label8.TabIndex = 20
-        Me.Label8.Text = "Expected Cash:"
+        Me.Label8.Text = "Cashi tuna tegemea kwenye droo:"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.diffInCashReasonPic)
+        Me.GroupBox1.Controls.Add(Me.countedCashDiffReasonTxtBox)
         Me.GroupBox1.Controls.Add(Me.countedCashErrorPic)
         Me.GroupBox1.Controls.Add(Me.cashBroughtForwardErrorPic)
         Me.GroupBox1.Controls.Add(Me.cashOutflowTxtBox)
@@ -423,7 +429,7 @@ Partial Class BusinessReportDlg
         Me.GroupBox1.Controls.Add(Me.maunuallyCountedCashTxtBox)
         Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(18, 104)
+        Me.GroupBox1.Location = New System.Drawing.Point(18, 103)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 3, 2, 3)
@@ -432,27 +438,18 @@ Partial Class BusinessReportDlg
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Summary"
         '
-        'countedCashErrorPic
+        'countedCashDiffReasonTxtBox
         '
-        Me.countedCashErrorPic.Image = CType(resources.GetObject("countedCashErrorPic.Image"), System.Drawing.Image)
-        Me.countedCashErrorPic.Location = New System.Drawing.Point(436, 156)
-        Me.countedCashErrorPic.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.countedCashErrorPic.Name = "countedCashErrorPic"
-        Me.countedCashErrorPic.Size = New System.Drawing.Size(17, 19)
-        Me.countedCashErrorPic.TabIndex = 36
-        Me.countedCashErrorPic.TabStop = False
-        Me.countedCashErrorPic.Visible = False
-        '
-        'cashBroughtForwardErrorPic
-        '
-        Me.cashBroughtForwardErrorPic.Image = CType(resources.GetObject("cashBroughtForwardErrorPic.Image"), System.Drawing.Image)
-        Me.cashBroughtForwardErrorPic.Location = New System.Drawing.Point(436, 14)
-        Me.cashBroughtForwardErrorPic.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.cashBroughtForwardErrorPic.Name = "cashBroughtForwardErrorPic"
-        Me.cashBroughtForwardErrorPic.Size = New System.Drawing.Size(17, 19)
-        Me.cashBroughtForwardErrorPic.TabIndex = 29
-        Me.cashBroughtForwardErrorPic.TabStop = False
-        Me.cashBroughtForwardErrorPic.Visible = False
+        Me.countedCashDiffReasonTxtBox.BackColor = System.Drawing.SystemColors.Window
+        Me.countedCashDiffReasonTxtBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.countedCashDiffReasonTxtBox.Location = New System.Drawing.Point(458, 107)
+        Me.countedCashDiffReasonTxtBox.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.countedCashDiffReasonTxtBox.MaxLength = 500
+        Me.countedCashDiffReasonTxtBox.Multiline = True
+        Me.countedCashDiffReasonTxtBox.Name = "countedCashDiffReasonTxtBox"
+        Me.countedCashDiffReasonTxtBox.Size = New System.Drawing.Size(280, 87)
+        Me.countedCashDiffReasonTxtBox.TabIndex = 37
+        Me.countedCashDiffReasonTxtBox.TabStop = False
         '
         'cashOutflowTxtBox
         '
@@ -519,7 +516,7 @@ Partial Class BusinessReportDlg
         '
         Me.countedVersusExpCashTxtBox.BackColor = System.Drawing.SystemColors.Control
         Me.countedVersusExpCashTxtBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.countedVersusExpCashTxtBox.Location = New System.Drawing.Point(263, 175)
+        Me.countedVersusExpCashTxtBox.Location = New System.Drawing.Point(263, 178)
         Me.countedVersusExpCashTxtBox.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.countedVersusExpCashTxtBox.Name = "countedVersusExpCashTxtBox"
         Me.countedVersusExpCashTxtBox.ReadOnly = True
@@ -532,12 +529,12 @@ Partial Class BusinessReportDlg
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(173, 175)
+        Me.Label10.Location = New System.Drawing.Point(155, 180)
         Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(86, 13)
+        Me.Label10.Size = New System.Drawing.Size(105, 13)
         Me.Label10.TabIndex = 25
-        Me.Label10.Text = "Cash Difference:"
+        Me.Label10.Text = "Tofauti kati ya cashi:"
         Me.Label10.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'maunuallyCountedCashTxtBox
@@ -554,12 +551,12 @@ Partial Class BusinessReportDlg
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(181, 155)
+        Me.Label9.Location = New System.Drawing.Point(103, 160)
         Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(77, 13)
+        Me.Label9.Size = New System.Drawing.Size(157, 13)
         Me.Label9.TabIndex = 0
-        Me.Label9.Text = "Counted Cash:"
+        Me.Label9.Text = "Cashi uilo hesabu kwenye droo:"
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'commitBusReportBtn
@@ -612,29 +609,6 @@ Partial Class BusinessReportDlg
         Me.salesReportTab.Text = "Sales"
         Me.salesReportTab.UseVisualStyleBackColor = True
         '
-        'salesGrdView
-        '
-        Me.salesGrdView.AllowUserToAddRows = False
-        Me.salesGrdView.AllowUserToDeleteRows = False
-        Me.salesGrdView.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.MenuHighlight
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.salesGrdView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.salesGrdView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.salesGrdView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.saleSoldOn, Me.saleProductCode, Me.saleProductName, Me.saleQtySold, Me.saleUomName, Me.saleTotalCost, Me.saleSaleAmt, Me.saleProfit, Me.saleProfitPercentage, Me.saleComments, Me.saleSaleId, Me.saleQtyUomId, Me.saleProductId, Me.saleProdAcbCost, Me.isSalePosted, Me.isSalePostedReversal, Me.is_sale_amendment})
-        Me.salesGrdView.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.salesGrdView.Location = New System.Drawing.Point(2, 3)
-        Me.salesGrdView.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.salesGrdView.Name = "salesGrdView"
-        Me.salesGrdView.RowTemplate.Height = 24
-        Me.salesGrdView.Size = New System.Drawing.Size(976, 224)
-        Me.salesGrdView.TabIndex = 0
-        '
         'purchasesReportTab
         '
         Me.purchasesReportTab.Controls.Add(Me.purchasesGrdView)
@@ -647,28 +621,6 @@ Partial Class BusinessReportDlg
         Me.purchasesReportTab.Text = "Purchases"
         Me.purchasesReportTab.UseVisualStyleBackColor = True
         '
-        'purchasesGrdView
-        '
-        Me.purchasesGrdView.AllowUserToAddRows = False
-        Me.purchasesGrdView.AllowUserToDeleteRows = False
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.purchasesGrdView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
-        Me.purchasesGrdView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.purchasesGrdView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.purchasePurchasedOn, Me.purchaseSupplierCode, Me.purchaseSupplierName, Me.purchaseProductCode, Me.purchaseProductName, Me.purchaseQty, Me.purchaseQtyUomName, Me.purchaseCostPerItem, Me.purchaseAmount, Me.purchaseAmountPaidCash, Me.purchaseAmountPaidCredit, Me.purchaseComments, Me.purchaseId, Me.purchaseSupplierId, Me.purchaseProductId, Me.purchaseQtyUomId, Me.isPurchasePosted, Me.isPurchasePostedReversal, Me.is_purchase_amendment})
-        Me.purchasesGrdView.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.purchasesGrdView.Location = New System.Drawing.Point(2, 3)
-        Me.purchasesGrdView.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.purchasesGrdView.Name = "purchasesGrdView"
-        Me.purchasesGrdView.RowTemplate.Height = 24
-        Me.purchasesGrdView.Size = New System.Drawing.Size(980, 228)
-        Me.purchasesGrdView.TabIndex = 0
-        '
         'expensesReportTab
         '
         Me.expensesReportTab.Controls.Add(Me.expensesGrdView)
@@ -680,20 +632,6 @@ Partial Class BusinessReportDlg
         Me.expensesReportTab.Text = "Expenses"
         Me.expensesReportTab.UseVisualStyleBackColor = True
         '
-        'expensesGrdView
-        '
-        Me.expensesGrdView.AllowUserToAddRows = False
-        Me.expensesGrdView.AllowUserToDeleteRows = False
-        Me.expensesGrdView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.expensesGrdView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.expenseExpensedOn, Me.expenseCategoryCode, Me.expenseExpenseCategoryName, Me.expenseAmount, Me.expenseComments, Me.expenseId, Me.expenseExpenseCategoryId, Me.isExpensePosted, Me.isExpensePostedReversal, Me.is_expense_amendment})
-        Me.expensesGrdView.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.expensesGrdView.Location = New System.Drawing.Point(0, 0)
-        Me.expensesGrdView.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.expensesGrdView.Name = "expensesGrdView"
-        Me.expensesGrdView.RowTemplate.Height = 24
-        Me.expensesGrdView.Size = New System.Drawing.Size(984, 234)
-        Me.expensesGrdView.TabIndex = 0
-        '
         'debtPaymentsReportTab
         '
         Me.debtPaymentsReportTab.Controls.Add(Me.debtPaymentGrdView)
@@ -704,20 +642,6 @@ Partial Class BusinessReportDlg
         Me.debtPaymentsReportTab.TabIndex = 3
         Me.debtPaymentsReportTab.Text = "Debt Payments"
         Me.debtPaymentsReportTab.UseVisualStyleBackColor = True
-        '
-        'debtPaymentGrdView
-        '
-        Me.debtPaymentGrdView.AllowUserToAddRows = False
-        Me.debtPaymentGrdView.AllowUserToDeleteRows = False
-        Me.debtPaymentGrdView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.debtPaymentGrdView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.debtPaymentPaidOn, Me.debtPaymentSupplierCode, Me.debtPaymentSupplierName, Me.debtPaymentAmtPaid, Me.debtPaymentComments, Me.debtPaymentId, Me.debtPaymentSupplierId, Me.isDebtPaymentPosted, Me.isDebtPaymentPostedReversal, Me.is_debt_payment_amendment})
-        Me.debtPaymentGrdView.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.debtPaymentGrdView.Location = New System.Drawing.Point(0, 0)
-        Me.debtPaymentGrdView.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.debtPaymentGrdView.Name = "debtPaymentGrdView"
-        Me.debtPaymentGrdView.RowTemplate.Height = 24
-        Me.debtPaymentGrdView.Size = New System.Drawing.Size(984, 234)
-        Me.debtPaymentGrdView.TabIndex = 0
         '
         'saveBusReportBtn
         '
@@ -819,28 +743,6 @@ Partial Class BusinessReportDlg
         Me.GroupBox2.Size = New System.Drawing.Size(744, 56)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
-        '
-        'fromDateErrorPic
-        '
-        Me.fromDateErrorPic.Image = CType(resources.GetObject("fromDateErrorPic.Image"), System.Drawing.Image)
-        Me.fromDateErrorPic.Location = New System.Drawing.Point(137, 21)
-        Me.fromDateErrorPic.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.fromDateErrorPic.Name = "fromDateErrorPic"
-        Me.fromDateErrorPic.Size = New System.Drawing.Size(17, 19)
-        Me.fromDateErrorPic.TabIndex = 28
-        Me.fromDateErrorPic.TabStop = False
-        Me.fromDateErrorPic.Visible = False
-        '
-        'toDateErrorPic
-        '
-        Me.toDateErrorPic.Image = CType(resources.GetObject("toDateErrorPic.Image"), System.Drawing.Image)
-        Me.toDateErrorPic.Location = New System.Drawing.Point(275, 21)
-        Me.toDateErrorPic.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.toDateErrorPic.Name = "toDateErrorPic"
-        Me.toDateErrorPic.Size = New System.Drawing.Size(17, 19)
-        Me.toDateErrorPic.TabIndex = 27
-        Me.toDateErrorPic.TabStop = False
-        Me.toDateErrorPic.Visible = False
         '
         'TextBox3
         '
@@ -1029,6 +931,17 @@ Partial Class BusinessReportDlg
         Me.startFromJun2018ChkBox.Text = "anza mwezi wa 6/2018"
         Me.startFromJun2018ChkBox.UseVisualStyleBackColor = True
         '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(474, 194)
+        Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(159, 13)
+        Me.Label15.TabIndex = 48
+        Me.Label15.Text = "Sababu ya tofauti kwenye cash:"
+        Me.Label15.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
         'expenseIncomeIndicator
         '
         Me.expenseIncomeIndicator.Location = New System.Drawing.Point(781, 227)
@@ -1038,142 +951,28 @@ Partial Class BusinessReportDlg
         Me.expenseIncomeIndicator.TabIndex = 45
         Me.expenseIncomeIndicator.TabStop = False
         '
-        'DataGridViewTextBoxColumn2
+        'salesGrdView
         '
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Supplier Code"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 50
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        DataGridViewCellStyle26.BackColor = System.Drawing.Color.Aqua
-        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle26
-        Me.DataGridViewTextBoxColumn3.FillWeight = 200.0!
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Suppler Name"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 250
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        DataGridViewCellStyle27.Format = "N0"
-        DataGridViewCellStyle27.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle27
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Qty"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.Width = 50
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Product Code"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.Width = 50
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        DataGridViewCellStyle28.BackColor = System.Drawing.Color.Aqua
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle28
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Product Name"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        Me.DataGridViewTextBoxColumn6.Width = 250
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        DataGridViewCellStyle29.BackColor = System.Drawing.Color.Aqua
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle29
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Item Cost"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        DataGridViewCellStyle30.Format = "N0"
-        DataGridViewCellStyle30.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle30
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Cash Amount"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        DataGridViewCellStyle31.Format = "N0"
-        DataGridViewCellStyle31.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn9.DefaultCellStyle = DataGridViewCellStyle31
-        Me.DataGridViewTextBoxColumn9.HeaderText = "Credit Amount"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        DataGridViewCellStyle32.Format = "d"
-        DataGridViewCellStyle32.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn10.DefaultCellStyle = DataGridViewCellStyle32
-        Me.DataGridViewTextBoxColumn10.HeaderText = "Date"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.Width = 75
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.HeaderText = "Code"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        Me.DataGridViewTextBoxColumn11.Width = 75
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        DataGridViewCellStyle33.BackColor = System.Drawing.Color.Aqua
-        Me.DataGridViewTextBoxColumn12.DefaultCellStyle = DataGridViewCellStyle33
-        Me.DataGridViewTextBoxColumn12.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        Me.DataGridViewTextBoxColumn12.ReadOnly = True
-        Me.DataGridViewTextBoxColumn12.Width = 250
-        '
-        'DataGridViewTextBoxColumn13
-        '
-        DataGridViewCellStyle34.Format = "N0"
-        DataGridViewCellStyle34.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn13.DefaultCellStyle = DataGridViewCellStyle34
-        Me.DataGridViewTextBoxColumn13.HeaderText = "Amount"
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        '
-        'DataGridViewTextBoxColumn14
-        '
-        Me.DataGridViewTextBoxColumn14.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
-        Me.DataGridViewTextBoxColumn14.Width = 400
-        '
-        'DataGridViewTextBoxColumn15
-        '
-        Me.DataGridViewTextBoxColumn15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle35.Format = "d"
-        DataGridViewCellStyle35.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn15.DefaultCellStyle = DataGridViewCellStyle35
-        Me.DataGridViewTextBoxColumn15.HeaderText = "Paid On"
-        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
-        Me.DataGridViewTextBoxColumn15.Width = 75
-        '
-        'DataGridViewTextBoxColumn16
-        '
-        DataGridViewCellStyle36.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn16.DefaultCellStyle = DataGridViewCellStyle36
-        Me.DataGridViewTextBoxColumn16.HeaderText = "Supplier Code"
-        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
-        '
-        'DataGridViewTextBoxColumn17
-        '
-        DataGridViewCellStyle37.BackColor = System.Drawing.Color.Aqua
-        Me.DataGridViewTextBoxColumn17.DefaultCellStyle = DataGridViewCellStyle37
-        Me.DataGridViewTextBoxColumn17.HeaderText = "Supplier Name"
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        Me.DataGridViewTextBoxColumn17.ReadOnly = True
-        Me.DataGridViewTextBoxColumn17.Width = 250
-        '
-        'DataGridViewTextBoxColumn18
-        '
-        DataGridViewCellStyle38.Format = "N0"
-        DataGridViewCellStyle38.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn18.DefaultCellStyle = DataGridViewCellStyle38
-        Me.DataGridViewTextBoxColumn18.HeaderText = "Debt Amount"
-        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        Me.salesGrdView.AllowUserToAddRows = False
+        Me.salesGrdView.AllowUserToDeleteRows = False
+        Me.salesGrdView.BorderStyle = System.Windows.Forms.BorderStyle.None
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.MenuHighlight
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.salesGrdView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.salesGrdView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.salesGrdView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.saleSoldOn, Me.saleProductCode, Me.saleProductName, Me.saleQtySold, Me.saleUomName, Me.saleTotalCost, Me.saleSaleAmt, Me.saleProfit, Me.saleProfitPercentage, Me.saleComments, Me.saleSaleId, Me.saleQtyUomId, Me.saleProductId, Me.saleProdAcbCost, Me.isSalePosted, Me.isSalePostedReversal, Me.is_sale_amendment})
+        Me.salesGrdView.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.salesGrdView.Location = New System.Drawing.Point(2, 3)
+        Me.salesGrdView.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.salesGrdView.Name = "salesGrdView"
+        Me.salesGrdView.RowTemplate.Height = 24
+        Me.salesGrdView.Size = New System.Drawing.Size(976, 224)
+        Me.salesGrdView.TabIndex = 0
         '
         'saleSoldOn
         '
@@ -1314,82 +1113,27 @@ Partial Class BusinessReportDlg
         Me.is_sale_amendment.Name = "is_sale_amendment"
         Me.is_sale_amendment.Visible = False
         '
-        'expenseExpensedOn
+        'purchasesGrdView
         '
-        Me.expenseExpensedOn.DataPropertyName = "expensed_on"
-        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.expenseExpensedOn.DefaultCellStyle = DataGridViewCellStyle20
-        Me.expenseExpensedOn.HeaderText = "Expensed On"
-        Me.expenseExpensedOn.Mask = Nothing
-        Me.expenseExpensedOn.Name = "expenseExpensedOn"
-        Me.expenseExpensedOn.PromptChar = Global.Microsoft.VisualBasic.ChrW(95)
-        Me.expenseExpensedOn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.expenseExpensedOn.ValidatingType = Nothing
-        Me.expenseExpensedOn.Width = 70
-        '
-        'expenseCategoryCode
-        '
-        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.expenseCategoryCode.DefaultCellStyle = DataGridViewCellStyle21
-        Me.expenseCategoryCode.HeaderText = "Expense Code"
-        Me.expenseCategoryCode.Name = "expenseCategoryCode"
-        '
-        'expenseExpenseCategoryName
-        '
-        Me.expenseExpenseCategoryName.DataPropertyName = "expense_category_name"
-        Me.expenseExpenseCategoryName.HeaderText = "Expense Category"
-        Me.expenseExpenseCategoryName.Name = "expenseExpenseCategoryName"
-        Me.expenseExpenseCategoryName.ReadOnly = True
-        Me.expenseExpenseCategoryName.Width = 300
-        '
-        'expenseAmount
-        '
-        Me.expenseAmount.DataPropertyName = "expense_amt"
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle22.Format = "N0"
-        Me.expenseAmount.DefaultCellStyle = DataGridViewCellStyle22
-        Me.expenseAmount.HeaderText = "Amount"
-        Me.expenseAmount.Name = "expenseAmount"
-        '
-        'expenseComments
-        '
-        Me.expenseComments.DataPropertyName = "comments"
-        Me.expenseComments.HeaderText = "Comments"
-        Me.expenseComments.Name = "expenseComments"
-        Me.expenseComments.Width = 400
-        '
-        'expenseId
-        '
-        Me.expenseId.DataPropertyName = "expense_id"
-        Me.expenseId.HeaderText = "ID"
-        Me.expenseId.Name = "expenseId"
-        Me.expenseId.ReadOnly = True
-        '
-        'expenseExpenseCategoryId
-        '
-        Me.expenseExpenseCategoryId.DataPropertyName = "expense_category_id"
-        Me.expenseExpenseCategoryId.HeaderText = "expenseExpenseCategoryId"
-        Me.expenseExpenseCategoryId.Name = "expenseExpenseCategoryId"
-        Me.expenseExpenseCategoryId.ReadOnly = True
-        Me.expenseExpenseCategoryId.Visible = False
-        '
-        'isExpensePosted
-        '
-        Me.isExpensePosted.HeaderText = "isExpensePosted"
-        Me.isExpensePosted.Name = "isExpensePosted"
-        Me.isExpensePosted.Visible = False
-        '
-        'isExpensePostedReversal
-        '
-        Me.isExpensePostedReversal.HeaderText = "isExpensePostedReversal"
-        Me.isExpensePostedReversal.Name = "isExpensePostedReversal"
-        Me.isExpensePostedReversal.Visible = False
-        '
-        'is_expense_amendment
-        '
-        Me.is_expense_amendment.HeaderText = "is_expense_amendment"
-        Me.is_expense_amendment.Name = "is_expense_amendment"
-        Me.is_expense_amendment.Visible = False
+        Me.purchasesGrdView.AllowUserToAddRows = False
+        Me.purchasesGrdView.AllowUserToDeleteRows = False
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.purchasesGrdView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+        Me.purchasesGrdView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.purchasesGrdView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.purchasePurchasedOn, Me.purchaseSupplierCode, Me.purchaseSupplierName, Me.purchaseProductCode, Me.purchaseProductName, Me.purchaseQty, Me.purchaseQtyUomName, Me.purchaseCostPerItem, Me.purchaseAmount, Me.purchaseAmountPaidCash, Me.purchaseAmountPaidCredit, Me.purchaseComments, Me.purchaseId, Me.purchaseSupplierId, Me.purchaseProductId, Me.purchaseQtyUomId, Me.isPurchasePosted, Me.isPurchasePostedReversal, Me.is_purchase_amendment})
+        Me.purchasesGrdView.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.purchasesGrdView.Location = New System.Drawing.Point(2, 3)
+        Me.purchasesGrdView.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.purchasesGrdView.Name = "purchasesGrdView"
+        Me.purchasesGrdView.RowTemplate.Height = 24
+        Me.purchasesGrdView.Size = New System.Drawing.Size(980, 228)
+        Me.purchasesGrdView.TabIndex = 0
         '
         'purchasePurchasedOn
         '
@@ -1549,6 +1293,111 @@ Partial Class BusinessReportDlg
         Me.is_purchase_amendment.Name = "is_purchase_amendment"
         Me.is_purchase_amendment.Visible = False
         '
+        'expensesGrdView
+        '
+        Me.expensesGrdView.AllowUserToAddRows = False
+        Me.expensesGrdView.AllowUserToDeleteRows = False
+        Me.expensesGrdView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.expensesGrdView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.expenseExpensedOn, Me.expenseCategoryCode, Me.expenseExpenseCategoryName, Me.expenseAmount, Me.expenseComments, Me.expenseId, Me.expenseExpenseCategoryId, Me.isExpensePosted, Me.isExpensePostedReversal, Me.is_expense_amendment})
+        Me.expensesGrdView.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.expensesGrdView.Location = New System.Drawing.Point(0, 0)
+        Me.expensesGrdView.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.expensesGrdView.Name = "expensesGrdView"
+        Me.expensesGrdView.RowTemplate.Height = 24
+        Me.expensesGrdView.Size = New System.Drawing.Size(984, 234)
+        Me.expensesGrdView.TabIndex = 0
+        '
+        'expenseExpensedOn
+        '
+        Me.expenseExpensedOn.DataPropertyName = "expensed_on"
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.expenseExpensedOn.DefaultCellStyle = DataGridViewCellStyle20
+        Me.expenseExpensedOn.HeaderText = "Expensed On"
+        Me.expenseExpensedOn.Mask = Nothing
+        Me.expenseExpensedOn.Name = "expenseExpensedOn"
+        Me.expenseExpensedOn.PromptChar = Global.Microsoft.VisualBasic.ChrW(95)
+        Me.expenseExpensedOn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.expenseExpensedOn.ValidatingType = Nothing
+        Me.expenseExpensedOn.Width = 70
+        '
+        'expenseCategoryCode
+        '
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.expenseCategoryCode.DefaultCellStyle = DataGridViewCellStyle21
+        Me.expenseCategoryCode.HeaderText = "Expense Code"
+        Me.expenseCategoryCode.Name = "expenseCategoryCode"
+        '
+        'expenseExpenseCategoryName
+        '
+        Me.expenseExpenseCategoryName.DataPropertyName = "expense_category_name"
+        Me.expenseExpenseCategoryName.HeaderText = "Expense Category"
+        Me.expenseExpenseCategoryName.Name = "expenseExpenseCategoryName"
+        Me.expenseExpenseCategoryName.ReadOnly = True
+        Me.expenseExpenseCategoryName.Width = 300
+        '
+        'expenseAmount
+        '
+        Me.expenseAmount.DataPropertyName = "expense_amt"
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle22.Format = "N0"
+        Me.expenseAmount.DefaultCellStyle = DataGridViewCellStyle22
+        Me.expenseAmount.HeaderText = "Amount"
+        Me.expenseAmount.Name = "expenseAmount"
+        '
+        'expenseComments
+        '
+        Me.expenseComments.DataPropertyName = "comments"
+        Me.expenseComments.HeaderText = "Comments"
+        Me.expenseComments.Name = "expenseComments"
+        Me.expenseComments.Width = 400
+        '
+        'expenseId
+        '
+        Me.expenseId.DataPropertyName = "expense_id"
+        Me.expenseId.HeaderText = "ID"
+        Me.expenseId.Name = "expenseId"
+        Me.expenseId.ReadOnly = True
+        '
+        'expenseExpenseCategoryId
+        '
+        Me.expenseExpenseCategoryId.DataPropertyName = "expense_category_id"
+        Me.expenseExpenseCategoryId.HeaderText = "expenseExpenseCategoryId"
+        Me.expenseExpenseCategoryId.Name = "expenseExpenseCategoryId"
+        Me.expenseExpenseCategoryId.ReadOnly = True
+        Me.expenseExpenseCategoryId.Visible = False
+        '
+        'isExpensePosted
+        '
+        Me.isExpensePosted.HeaderText = "isExpensePosted"
+        Me.isExpensePosted.Name = "isExpensePosted"
+        Me.isExpensePosted.Visible = False
+        '
+        'isExpensePostedReversal
+        '
+        Me.isExpensePostedReversal.HeaderText = "isExpensePostedReversal"
+        Me.isExpensePostedReversal.Name = "isExpensePostedReversal"
+        Me.isExpensePostedReversal.Visible = False
+        '
+        'is_expense_amendment
+        '
+        Me.is_expense_amendment.HeaderText = "is_expense_amendment"
+        Me.is_expense_amendment.Name = "is_expense_amendment"
+        Me.is_expense_amendment.Visible = False
+        '
+        'debtPaymentGrdView
+        '
+        Me.debtPaymentGrdView.AllowUserToAddRows = False
+        Me.debtPaymentGrdView.AllowUserToDeleteRows = False
+        Me.debtPaymentGrdView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.debtPaymentGrdView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.debtPaymentPaidOn, Me.debtPaymentSupplierCode, Me.debtPaymentSupplierName, Me.debtPaymentAmtPaid, Me.debtPaymentComments, Me.debtPaymentId, Me.debtPaymentSupplierId, Me.isDebtPaymentPosted, Me.isDebtPaymentPostedReversal, Me.is_debt_payment_amendment})
+        Me.debtPaymentGrdView.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.debtPaymentGrdView.Location = New System.Drawing.Point(0, 0)
+        Me.debtPaymentGrdView.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.debtPaymentGrdView.Name = "debtPaymentGrdView"
+        Me.debtPaymentGrdView.RowTemplate.Height = 24
+        Me.debtPaymentGrdView.Size = New System.Drawing.Size(984, 234)
+        Me.debtPaymentGrdView.TabIndex = 0
+        '
         'debtPaymentPaidOn
         '
         Me.debtPaymentPaidOn.DataPropertyName = "paid_on"
@@ -1625,12 +1474,205 @@ Partial Class BusinessReportDlg
         Me.is_debt_payment_amendment.Name = "is_debt_payment_amendment"
         Me.is_debt_payment_amendment.Visible = False
         '
+        'diffInCashReasonPic
+        '
+        Me.diffInCashReasonPic.Image = CType(resources.GetObject("diffInCashReasonPic.Image"), System.Drawing.Image)
+        Me.diffInCashReasonPic.Location = New System.Drawing.Point(615, 88)
+        Me.diffInCashReasonPic.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.diffInCashReasonPic.Name = "diffInCashReasonPic"
+        Me.diffInCashReasonPic.Size = New System.Drawing.Size(17, 19)
+        Me.diffInCashReasonPic.TabIndex = 38
+        Me.diffInCashReasonPic.TabStop = False
+        Me.diffInCashReasonPic.Visible = False
+        '
+        'countedCashErrorPic
+        '
+        Me.countedCashErrorPic.Image = CType(resources.GetObject("countedCashErrorPic.Image"), System.Drawing.Image)
+        Me.countedCashErrorPic.Location = New System.Drawing.Point(436, 156)
+        Me.countedCashErrorPic.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.countedCashErrorPic.Name = "countedCashErrorPic"
+        Me.countedCashErrorPic.Size = New System.Drawing.Size(17, 19)
+        Me.countedCashErrorPic.TabIndex = 36
+        Me.countedCashErrorPic.TabStop = False
+        Me.countedCashErrorPic.Visible = False
+        '
+        'cashBroughtForwardErrorPic
+        '
+        Me.cashBroughtForwardErrorPic.Image = CType(resources.GetObject("cashBroughtForwardErrorPic.Image"), System.Drawing.Image)
+        Me.cashBroughtForwardErrorPic.Location = New System.Drawing.Point(436, 14)
+        Me.cashBroughtForwardErrorPic.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.cashBroughtForwardErrorPic.Name = "cashBroughtForwardErrorPic"
+        Me.cashBroughtForwardErrorPic.Size = New System.Drawing.Size(17, 19)
+        Me.cashBroughtForwardErrorPic.TabIndex = 29
+        Me.cashBroughtForwardErrorPic.TabStop = False
+        Me.cashBroughtForwardErrorPic.Visible = False
+        '
+        'fromDateErrorPic
+        '
+        Me.fromDateErrorPic.Image = CType(resources.GetObject("fromDateErrorPic.Image"), System.Drawing.Image)
+        Me.fromDateErrorPic.Location = New System.Drawing.Point(137, 21)
+        Me.fromDateErrorPic.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.fromDateErrorPic.Name = "fromDateErrorPic"
+        Me.fromDateErrorPic.Size = New System.Drawing.Size(17, 19)
+        Me.fromDateErrorPic.TabIndex = 28
+        Me.fromDateErrorPic.TabStop = False
+        Me.fromDateErrorPic.Visible = False
+        '
+        'toDateErrorPic
+        '
+        Me.toDateErrorPic.Image = CType(resources.GetObject("toDateErrorPic.Image"), System.Drawing.Image)
+        Me.toDateErrorPic.Location = New System.Drawing.Point(275, 21)
+        Me.toDateErrorPic.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.toDateErrorPic.Name = "toDateErrorPic"
+        Me.toDateErrorPic.Size = New System.Drawing.Size(17, 19)
+        Me.toDateErrorPic.TabIndex = 27
+        Me.toDateErrorPic.TabStop = False
+        Me.toDateErrorPic.Visible = False
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Supplier Code"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Width = 50
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        DataGridViewCellStyle26.BackColor = System.Drawing.Color.Aqua
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle26
+        Me.DataGridViewTextBoxColumn3.FillWeight = 200.0!
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Suppler Name"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Width = 250
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        DataGridViewCellStyle27.Format = "N0"
+        DataGridViewCellStyle27.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle27
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Qty"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.Width = 50
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Product Code"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.Width = 50
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        DataGridViewCellStyle28.BackColor = System.Drawing.Color.Aqua
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle28
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Product Name"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Width = 250
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        DataGridViewCellStyle29.BackColor = System.Drawing.Color.Aqua
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle29
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Item Cost"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        DataGridViewCellStyle30.Format = "N0"
+        DataGridViewCellStyle30.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle30
+        Me.DataGridViewTextBoxColumn8.HeaderText = "Cash Amount"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        DataGridViewCellStyle31.Format = "N0"
+        DataGridViewCellStyle31.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn9.DefaultCellStyle = DataGridViewCellStyle31
+        Me.DataGridViewTextBoxColumn9.HeaderText = "Credit Amount"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        DataGridViewCellStyle32.Format = "d"
+        DataGridViewCellStyle32.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn10.DefaultCellStyle = DataGridViewCellStyle32
+        Me.DataGridViewTextBoxColumn10.HeaderText = "Date"
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.Width = 75
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.HeaderText = "Code"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        Me.DataGridViewTextBoxColumn11.Width = 75
+        '
+        'DataGridViewTextBoxColumn12
+        '
+        DataGridViewCellStyle33.BackColor = System.Drawing.Color.Aqua
+        Me.DataGridViewTextBoxColumn12.DefaultCellStyle = DataGridViewCellStyle33
+        Me.DataGridViewTextBoxColumn12.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        Me.DataGridViewTextBoxColumn12.ReadOnly = True
+        Me.DataGridViewTextBoxColumn12.Width = 250
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        DataGridViewCellStyle34.Format = "N0"
+        DataGridViewCellStyle34.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn13.DefaultCellStyle = DataGridViewCellStyle34
+        Me.DataGridViewTextBoxColumn13.HeaderText = "Amount"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        '
+        'DataGridViewTextBoxColumn14
+        '
+        Me.DataGridViewTextBoxColumn14.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
+        Me.DataGridViewTextBoxColumn14.Width = 400
+        '
+        'DataGridViewTextBoxColumn15
+        '
+        Me.DataGridViewTextBoxColumn15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle35.Format = "d"
+        DataGridViewCellStyle35.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn15.DefaultCellStyle = DataGridViewCellStyle35
+        Me.DataGridViewTextBoxColumn15.HeaderText = "Paid On"
+        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
+        Me.DataGridViewTextBoxColumn15.Width = 75
+        '
+        'DataGridViewTextBoxColumn16
+        '
+        DataGridViewCellStyle36.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn16.DefaultCellStyle = DataGridViewCellStyle36
+        Me.DataGridViewTextBoxColumn16.HeaderText = "Supplier Code"
+        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        DataGridViewCellStyle37.BackColor = System.Drawing.Color.Aqua
+        Me.DataGridViewTextBoxColumn17.DefaultCellStyle = DataGridViewCellStyle37
+        Me.DataGridViewTextBoxColumn17.HeaderText = "Supplier Name"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        Me.DataGridViewTextBoxColumn17.ReadOnly = True
+        Me.DataGridViewTextBoxColumn17.Width = 250
+        '
+        'DataGridViewTextBoxColumn18
+        '
+        DataGridViewCellStyle38.Format = "N0"
+        DataGridViewCellStyle38.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn18.DefaultCellStyle = DataGridViewCellStyle38
+        Me.DataGridViewTextBoxColumn18.HeaderText = "Debt Amount"
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        '
         'BusinessReportDlg
         '
         Me.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1272, 732)
+        Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.expenseIncIndTxtBox)
         Me.Controls.Add(Me.expenseIncomeIndicator)
         Me.Controls.Add(Me.showPostedAmendedRecsChkBox)
@@ -1676,26 +1718,27 @@ Partial Class BusinessReportDlg
         Me.Text = "Business Report"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.countedCashErrorPic, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cashBroughtForwardErrorPic, System.ComponentModel.ISupportInitialize).EndInit()
         Me.businessReportTabControl.ResumeLayout(False)
         Me.salesReportTab.ResumeLayout(False)
-        CType(Me.salesGrdView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.purchasesReportTab.ResumeLayout(False)
-        CType(Me.purchasesGrdView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.expensesReportTab.ResumeLayout(False)
-        CType(Me.expensesGrdView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.debtPaymentsReportTab.ResumeLayout(False)
-        CType(Me.debtPaymentGrdView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        CType(Me.fromDateErrorPic, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.toDateErrorPic, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SaleBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SaleBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.profitSummaryIndGrpBox.ResumeLayout(False)
         Me.profitSummaryIndGrpBox.PerformLayout()
         CType(Me.expenseIncomeIndicator, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.salesGrdView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.purchasesGrdView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.expensesGrdView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.debtPaymentGrdView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.diffInCashReasonPic, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.countedCashErrorPic, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cashBroughtForwardErrorPic, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.fromDateErrorPic, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.toDateErrorPic, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1851,4 +1894,7 @@ Partial Class BusinessReportDlg
     Friend WithEvents isDebtPaymentPosted As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents isDebtPaymentPostedReversal As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents is_debt_payment_amendment As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents diffInCashReasonPic As SolarHouse.TextBoxErrorPictureBox
+    Friend WithEvents countedCashDiffReasonTxtBox As System.Windows.Forms.TextBox
+    Friend WithEvents Label15 As System.Windows.Forms.Label
 End Class

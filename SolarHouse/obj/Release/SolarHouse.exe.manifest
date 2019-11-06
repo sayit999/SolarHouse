@@ -4,7 +4,7 @@
   <description asmv2:iconFile="favicon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="SolarHouse" version="1.2.25.2" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="SolarHouse" version="1.2.26.3" language="neutral" processorArchitecture="msil" />
     <commandLine file="SolarHouse.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,19 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MySql.Data.dll" size="457728">
       <assemblyIdentity name="MySql.Data" version="6.9.8.0" publicKeyToken="C5687FC88969C44D" language="neutral" processorArchitecture="msil" />
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SolarHouse.exe" size="655360">
-      <assemblyIdentity name="SolarHouse" version="1.2.25.2" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>LuhKqesLRlh6LimLiDJtSvtf5zEcLfnEQL61/DQo48I=</dsig:DigestValue>
+        <dsig:DigestValue>vZOt5pn+YIjqzABheL5YRnsrxRe1pFgyD4tfa0entVA=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SolarHouse.exe" size="636416">
+      <assemblyIdentity name="SolarHouse" version="1.2.26.3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>XvZoMVYxXpV5xhecBtyLDAaZ1oZ/Skk4IOFPy176bus=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -80,13 +87,13 @@
       <dsig:DigestValue>NHL4ENaH815helDnQN+N1+TwCGRcKziCT/BtqeYBICs=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SolarHouse.exe.config" size="2735">
+  <file name="SolarHouse.exe.config" size="2738">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>7k4ODGPRfDcO9JXEKB7zR7gn31Tr6olKjTA9jYYrx1E=</dsig:DigestValue>
+      <dsig:DigestValue>7Hb4TOtfDjx5miowXzDRgmfxDcNgXPXgQkxI5+GXw4Q=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
